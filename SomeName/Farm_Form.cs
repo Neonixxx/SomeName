@@ -21,32 +21,6 @@ namespace SomeName
             set => Level_Label.Text = value.ToString();
         }
 
-        private long _maxExp;
-
-        public long MaxExp
-        {
-            get => _maxExp;
-
-            set
-            {
-                _maxExp = value;
-                UpdateExp();
-            }
-        }
-
-        private long _exp;
-
-        public long Exp
-        {
-            get => _exp;
-
-            set
-            {
-                _exp = value;
-                UpdateExp();
-            }
-        }
-
         public long Gold
         {
             get => Gold_Label.Text.ToInt32();
@@ -54,22 +28,35 @@ namespace SomeName
             set => Gold_Label.Text = value.ToString();
         }
 
+        public string MonsterInfo
+        {
+            set => MonsterInfo_Label.Text = value;
+        }
+
         public Farm_Form()
         {
             InitializeComponent();
         }
 
-        public void UpdateExp()
+        public void UpdatePlayerExp(long exp, long maxExp)
         {
-            double exp = 100 * _exp.ToDouble() / _maxExp;
+            double percent = 100 * exp.ToDouble() / maxExp;
 
-            Exp_Bar.Value = exp.ToInt32();
-            Exp_Label.Text = exp.ToString("F2") + "%";
+            Exp_Bar.Value = percent.ToInt32();
+            Exp_Label.Text = percent.ToPercentString();
+        }
+
+        public void UpdateMonsterHealth(long health, long maxHealth)
+        {
+            double percent = 100 * health.ToDouble() / maxHealth;
+
+            MonsterHealth_Bar.Value = percent.ToInt32();
+            MonsterHealth_Label.Text = percent.ToPercentString();
         }
 
         public void StartFarm()
         {
-            FarmController.Update();
+            FarmController.StartFarm();
             ShowDialog();
         }
 

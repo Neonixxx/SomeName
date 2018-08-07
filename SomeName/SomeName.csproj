@@ -45,7 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Balance.cs" />
+    <Compile Include="Balance\DamageBalance.cs" />
+    <Compile Include="Balance\DropBalance.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
     <Compile Include="Farm_Form.cs">
@@ -70,6 +71,8 @@
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Drop.cs" />
+    <Compile Include="Monsters.Impl\MonsterFacture.cs" />
+    <Compile Include="Monsters.Impl\SimpleMonster.cs" />
     <Compile Include="Monsters.Interfaces\Monster.cs" />
     <Compile Include="Exceptions\MonsterNotDeadException.cs" />
     <Compile Include="Player.cs" />

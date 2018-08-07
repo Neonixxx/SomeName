@@ -7,9 +7,9 @@ using System.Resources;
 using static System.Math;
 using SomeName.Items.Interfaces;
 
-namespace SomeName
+namespace SomeName.Balance
 {
-    public static class Balance
+    public static class DamageBalance
     {
         public static long GetExp(int level)
             => Convert.ToInt64(GetDefaultDamage(level) * GetTapsForLevel(level));
@@ -20,6 +20,9 @@ namespace SomeName
 
             return CalculateDamage(level, weaponDamage);
         }
+
+        public static long GetDefaultMonsterHealth(int level)
+            => Convert.ToInt64(GetDefaultDamage(level) * GetTapsForMonster(level));
 
         public static long GetBaseWeaponDamage(int level)
             => Convert.ToInt64(100 * Pow(E, 0.04 * level) - 100);
@@ -32,6 +35,9 @@ namespace SomeName
 
         public static double GetTapsForLevel(int level)
             => Pow(level, 1.4) * 20;
+
+        public static double GetTapsForMonster(int level)
+            => Pow(level, 0.6) * 10;
 
         public static long CalculateDamage(Player player)
             => CalculateDamage(player.Level, player.Weapon);

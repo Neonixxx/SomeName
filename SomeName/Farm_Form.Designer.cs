@@ -38,6 +38,7 @@
             this.Exp_Label = new System.Windows.Forms.Label();
             this.MonsterHealth_Bar = new System.Windows.Forms.ProgressBar();
             this.MonsterInfo_Label = new System.Windows.Forms.Label();
+            this.MonsterHealth_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Attack_Button
@@ -127,11 +128,22 @@
             this.MonsterInfo_Label.TabIndex = 10;
             this.MonsterInfo_Label.Text = "MonsterInfo";
             // 
+            // MonsterHealth_Label
+            // 
+            this.MonsterHealth_Label.AutoSize = true;
+            this.MonsterHealth_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MonsterHealth_Label.Location = new System.Drawing.Point(376, 57);
+            this.MonsterHealth_Label.Name = "MonsterHealth_Label";
+            this.MonsterHealth_Label.Size = new System.Drawing.Size(188, 22);
+            this.MonsterHealth_Label.TabIndex = 11;
+            this.MonsterHealth_Label.Text = "MonsterHealthPercent";
+            // 
             // Farm_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.MonsterHealth_Label);
             this.Controls.Add(this.MonsterInfo_Label);
             this.Controls.Add(this.MonsterHealth_Bar);
             this.Controls.Add(this.Exp_Label);
@@ -161,5 +173,6 @@
         private System.Windows.Forms.Label Exp_Label;
         private System.Windows.Forms.ProgressBar MonsterHealth_Bar;
         private System.Windows.Forms.Label MonsterInfo_Label;
+        private System.Windows.Forms.Label MonsterHealth_Label;
     }
 }

@@ -22,5 +22,8 @@ namespace SomeName
 
         public static double ToDouble(this long value)
             => Convert.ToDouble(value);
+
+        public static string ToPercentString(this double value)
+            => value.ToString("F2") + "%";
     }
 }

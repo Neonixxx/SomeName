@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SomeName.Balance;
+using SomeName.Monsters.Impl;
 
 namespace SomeName
 {
@@ -26,15 +28,33 @@ namespace SomeName
             var damage = _player.GetDamage();
             var dealtDamage = _monster.DealDamage(damage);
             if (_monster.IsDead)
-                
+            {
+                _player.TakeDrop(_monster.GetDrop());
+                NewMonster();
+            }
+
+            Update();
         }
 
         public void Update()
         {
             _farmForm.Level = _player.Level;
-            _farmForm.MaxExp = Balance.GetExp(_player.Level);
-            _farmForm.Exp = _player.Exp;
+            _farmForm.UpdatePlayerExp(_player.Exp, _player.ExpForNextLevel);
             _farmForm.Gold = _player.Gold;
+
+            _farmForm.UpdateMonsterHealth(_monster.Health, _monster.MaxHealth);
+            _farmForm.MonsterInfo = _monster.Description;
+        }
+
+        public void NewMonster()
+        {
+            _monster = MonsterFacture.GetRandomMonster(_player.Level);
+        }
+
+        public void StartFarm()
+        {
+            NewMonster();
+            Update();
         }
     }
 }
