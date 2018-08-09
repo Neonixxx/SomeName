@@ -10,8 +10,7 @@ namespace SomeName
 {
     public class Player
     {
-        public long GetDamage()
-            => DamageBalance.CalculateDamage(this);
+        public Player() { }
 
         public int Level { get; set; }
 
@@ -24,6 +23,9 @@ namespace SomeName
         public Weapon Weapon { get; set; }
 
         public List<Item> Inventory { get; set; }
+
+        public long GetDamage()
+            => DamageBalance.CalculateDamage(this);
 
         public void TakeDrop(Drop drop)
         {

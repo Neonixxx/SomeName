@@ -19,13 +19,16 @@ namespace SomeName
 
         private void NewGame_Button_Click(object sender, EventArgs e)
         {
-            new Main_Form(PlayerIO.StartNew())
-                .ShowDialog();
+            new Main_Form(PlayerIO.StartNew()).ShowDialog();
         }
 
         private void Load_Button_Click(object sender, EventArgs e)
         {
-
+            var isLoaded = PlayerIO.TryLoad(out var player);
+            if (isLoaded)
+                new Main_Form(player).ShowDialog();
+            else
+                MessageBox.Show("Не удалось загрузить персонажа.");
         }
     }
 }

@@ -35,5 +35,12 @@ namespace SomeName
         {
             _farmForm.StartFarm();
         }
+
+        private void Save_Button_Click(object sender, EventArgs e)
+        {
+            var isSaved = PlayerIO.TrySave(_player);
+            if (isSaved)
+                MessageBox.Show("Saved succesful.");
+        }
     }
 }
