@@ -25,5 +25,8 @@ namespace SomeName
 
         public static string ToPercentString(this double value)
             => value.ToString("F2") + "%";
+
+        public static bool ContainsOnly<T>(this IEnumerable<T> enumerable, params T[] items)
+            => enumerable.Count() == enumerable.Intersect(items).Count();
     }
 }

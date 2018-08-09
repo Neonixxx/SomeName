@@ -18,8 +18,8 @@ namespace SomeName.Balance
         {
             return new Drop()
             {
-                Gold = 7,
-                Exp = 37,
+                Gold = value,
+                Exp = value,
                 Items = new List<Item>()
             };
         }
