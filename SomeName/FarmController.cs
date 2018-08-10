@@ -39,12 +39,12 @@ namespace SomeName
 
         public void Update()
         {
-            _farmForm.Level = _player.Level;
+            _farmForm.UpdatePlayerLevel(_player.Level);
             _farmForm.UpdatePlayerExp(_player.Exp, _player.ExpForNextLevel);
-            _farmForm.Gold = _player.Gold;
+            _farmForm.UpdatePlayerGold(_player.Gold);
 
             _farmForm.UpdateMonsterHealth(_monster.Health, _monster.MaxHealth);
-            _farmForm.MonsterInfo = _monster.Description;
+            _farmForm.MonsterInfo(_monster.Description);
         }
 
         public void NewMonster()

@@ -14,29 +14,16 @@ namespace SomeName.Forms
     {
         public FarmController FarmController;
 
-        public int Level
-        {
-            get => Level_Label.Text.ToInt32();
-
-            set => Level_Label.Text = value.ToString();
-        }
-
-        public long Gold
-        {
-            get => Gold_Label.Text.ToInt32();
-
-            set => Gold_Label.Text = value.ToString();
-        }
-
-        public string MonsterInfo
-        {
-            set => MonsterInfo_Label.Text = value;
-        }
-
         public Farm_Form()
         {
             InitializeComponent();
         }
+
+        // TODO : Сделать все обновления в один метод с параметром FarmInfo + настроить маппинг.
+        #region Методы обновления UI
+
+        public void UpdatePlayerLevel(int level)
+            => Level_Label.Text = level.ToString();
 
         public void UpdatePlayerExp(long exp, long maxExp)
         {
@@ -46,6 +33,12 @@ namespace SomeName.Forms
             Exp_Label.Text = percent.ToPercentString();
         }
 
+        public void UpdatePlayerGold(long gold)
+            => Gold_Label.Text = gold.ToString();
+
+        public string MonsterInfo(string monsterText)
+            => MonsterInfo_Label.Text = monsterText;
+
         public void UpdateMonsterHealth(long health, long maxHealth)
         {
             double percent = 100 * health.ToDouble() / maxHealth;
@@ -53,6 +46,8 @@ namespace SomeName.Forms
             MonsterHealth_Bar.Value = percent.ToInt32();
             MonsterHealth_Label.Text = percent.ToPercentString();
         }
+
+        #endregion
 
         public void StartFarm()
         {
