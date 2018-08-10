@@ -52,25 +52,25 @@
     <Compile Include="Balance\DropBalance.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
-    <Compile Include="Farm_Form.cs">
+    <Compile Include="Forms\Farm_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Farm_Form.Designer.cs">
+    <Compile Include="Forms\Farm_Form.Designer.cs">
       <DependentUpon>Farm_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Items.Impl\BeginnerSword.cs" />
-    <Compile Include="Main_Form.cs">
+    <Compile Include="Forms\Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main_Form.Designer.cs">
+    <Compile Include="Forms\Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Items.Interfaces\Item.cs" />
     <Compile Include="Items.Interfaces\Weapon.cs" />
-    <Compile Include="Menu_Form.cs">
+    <Compile Include="Forms\Menu_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu_Form.Designer.cs">
+    <Compile Include="Forms\Menu_Form.Designer.cs">
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Drop.cs" />
@@ -82,13 +82,13 @@
     <Compile Include="PlayerIO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Farm_Form.resx">
+    <EmbeddedResource Include="Forms\Farm_Form.resx">
       <DependentUpon>Farm_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main_Form.resx">
+    <EmbeddedResource Include="Forms\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu_Form.resx">
+    <EmbeddedResource Include="Forms\Menu_Form.resx">
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

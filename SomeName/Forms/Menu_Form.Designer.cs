@@ -1,4 +1,4 @@
-﻿namespace SomeName
+﻿namespace SomeName.Forms
 {
     partial class Menu_Form
     {

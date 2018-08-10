@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SomeName.Balance;
 using SomeName.Monsters.Impl;
+using SomeName.Forms;
 
 namespace SomeName
 {
