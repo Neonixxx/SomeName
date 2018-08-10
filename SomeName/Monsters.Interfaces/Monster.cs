@@ -29,7 +29,7 @@ namespace SomeName.Monsters.Interfaces
             Level = level;
             MaxHealth = DamageBalance.GetDefaultMonsterHealth(level);
             Health = MaxHealth;
-            DroppedItems = DropBalance.CalculateDrop(MaxHealth);
+            DroppedItems = DropBalance.CalculateDrop(Level, MaxHealth);
             IsDead = false;
             IsDropTaken = false;
         }

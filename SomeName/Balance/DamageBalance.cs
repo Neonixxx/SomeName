@@ -16,7 +16,7 @@ namespace SomeName.Balance
 
         public static long GetDefaultDamage(int level)
         {
-            var weaponDamage = Convert.ToInt64(GetBaseWeaponDamage(level) * GetValueKoef(level));
+            var weaponDamage = GetWeaponDamage(level, GetItemDamageKoef(level));
 
             return CalculateDamage(level, weaponDamage);
         }
@@ -24,13 +24,16 @@ namespace SomeName.Balance
         public static long GetDefaultMonsterHealth(int level)
             => Convert.ToInt64(GetDefaultDamage(level) * GetTapsForMonster(level));
 
+        public static long GetWeaponDamage(int level, double damageValueKoef)
+            => Convert.ToInt64(GetBaseWeaponDamage(level) * damageValueKoef);
+
         public static long GetBaseWeaponDamage(int level)
             => Convert.ToInt64(100 * Pow(E, 0.04 * level) - 100);
 
-        public static double GetValueKoef(int level)
-            => GetValueKoef(1.0 / level);
+        public static double GetItemDamageKoef(int level)
+            => GetItemDamageKoef(1.0 / level);
 
-        public static double GetValueKoef(double diceValue)
+        public static double GetItemDamageKoef(double diceValue)
             => Pow(diceValue, -0.35);
 
         public static double GetTapsForLevel(int level)

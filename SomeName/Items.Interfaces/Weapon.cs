@@ -8,6 +8,8 @@ namespace SomeName.Items.Interfaces
 {
     public abstract class Weapon : Item
     {
-        public int Damage { get; set; }
+        public long BaseDamage { get; set; }
+
+        public long Damage { get; set; }
     }
 }

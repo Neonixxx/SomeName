@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SomeName
+{
+    public static class Dice
+    {
+        private static readonly Random _rand = new Random();
+
+        public static double Roll
+            => _rand.NextDouble();
+
+        public static bool TryGetChance(double chance)
+            => Roll <= chance;
+    }
+}

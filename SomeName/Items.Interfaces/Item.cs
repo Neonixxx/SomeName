@@ -10,6 +10,10 @@ namespace SomeName.Items.Interfaces
     {
         public int Level { get; set; }
 
-        public int Value { get; set; }
+        public long GoldValue { get; set; }
+
+        public double DamageValueKoef { get; set; }
+
+        public string Description { get; set; }
     }
 }

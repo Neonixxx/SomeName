@@ -11,6 +11,10 @@ namespace SomeName.Items.Impl
     {
         public BeginnerSword()
         {
+            Level = 1;
+            GoldValue = 0;
+            Description = "Меч ученика";
+            BaseDamage = 5;
             Damage = 5;
         }
     }
