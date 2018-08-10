@@ -9,6 +9,7 @@ namespace SomeName.Balance
 {
     public static class DropBalance
     {
+        // TODO : реализовать расчет выпавших вещей.
         /// <summary>
         /// Не реализовано (заглушка).
         /// </summary>

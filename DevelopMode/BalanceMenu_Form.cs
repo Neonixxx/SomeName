@@ -16,5 +16,11 @@ namespace DevelopMode
         {
             InitializeComponent();
         }
+
+        private void PrintBalanceInfo_Button_Click(object sender, EventArgs e)
+        {
+            BalanceInfoToExcel.FillExcel();
+            MessageBox.Show("Completed");
+        }
     }
 }

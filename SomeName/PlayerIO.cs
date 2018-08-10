@@ -23,7 +23,7 @@ namespace SomeName
             {
                 Level = 1,
                 Exp = 0,
-                ExpForNextLevel = DamageBalance.GetExp(2),
+                ExpForNextLevel = DamageBalance.GetExp(1),
                 Gold = 0,
                 Weapon = new BeginnerSword(),
                 Inventory = new List<Item>()
