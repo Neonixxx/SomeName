@@ -26,7 +26,7 @@ namespace SomeName.Forms
         {
             var isLoaded = PlayerIO.TryLoad(out var player);
             if (isLoaded)
-                new Main_Form(player).ShowDialog();
+                this.StartForm(new Main_Form(player));
             else
                 MessageBox.Show("Не удалось загрузить персонажа.");
         }
