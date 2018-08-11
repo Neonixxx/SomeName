@@ -43,7 +43,7 @@ namespace SomeName.Balance
             => Pow(level, 0.6) * 10;
 
         public static long CalculateDamage(Player player)
-            => CalculateDamage(player.Level, player.Weapon);
+            => CalculateDamage(player.Level, player.EquippedItems.Weapon);
 
         public static long CalculateDamage(int level, Weapon weapon)
             => CalculateDamage(level, weapon.Damage);

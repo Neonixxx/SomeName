@@ -22,6 +22,7 @@ namespace SomeName
         public void Update()
         {
             InventoryForm.UpdateInventory(Player.Inventory);
+            InventoryForm.UpdateEquippedItems(Player.EquippedItems);
         }
     }
 }

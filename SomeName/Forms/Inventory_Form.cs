@@ -115,35 +115,17 @@ namespace SomeName.Forms
             }
         }
 
-        //private void EquippedRefresh()
-        //{
-        //    foreach(Item item in Player.EquippedItems)
-        //    {
-        //        if(!(item is null))
-        //            switch (item.Type)
-        //            {
-        //                case ItemType.OneHandWeapon:
-        //                    if (Player.EquippedItems.MainHandWeapon == item)
-        //                        SetEquippedSlot(MainHandSlot, item);
-        //                    else if (Player.EquippedItems.OffHandWeapon == item)
-        //                        SetEquippedSlot(OffHandSlot, item);
-        //                    break;
-        //                case ItemType.TwoHandWeapon: SetEquippedSlot(MainHandSlot, item); break;
-        //                case ItemType.Shield: SetEquippedSlot(OffHandSlot, item); break;
-        //                case ItemType.Helmet: SetEquippedSlot(HelmetSlot, item); break;
-        //                case ItemType.Chest: SetEquippedSlot(ChestSlot, item); break;
-        //                case ItemType.Pants: SetEquippedSlot(PantsSlot, item); break;
-        //                case ItemType.Gloves: SetEquippedSlot(GlovesSlot, item); break;
-        //                case ItemType.Boots: SetEquippedSlot(BootsSlot, item); break;
-        //            }
-        //    }
-        //}
+        public void UpdateEquippedItems(EquippedItems equippedItems)
+        {
+            if (equippedItems.Weapon != null)
+                SetEquippedSlot(MainHandSlot, equippedItems.Weapon);
+        }
 
-        //private void SetEquippedSlot(PictureBox pictureBox, Item item)
-        //{
-        //    pictureBox.Image = Image.FromFile(item.PicturePath);
-        //    ToolTip1.SetToolTip(pictureBox, item.ToString());
-        //}
+        private void SetEquippedSlot(PictureBox pictureBox, Item item)
+        {
+            pictureBox.Image = item.Image;
+            ToolTip1.SetToolTip(pictureBox, item.ToString());
+        }
 
         //private void InventoryPanelControls_MouseMove(object sender, MouseEventArgs e)
         //{

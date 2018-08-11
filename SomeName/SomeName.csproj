@@ -51,6 +51,7 @@
     <Compile Include="Balance\DamageBalance.cs" />
     <Compile Include="Balance\DropBalance.cs" />
     <Compile Include="Dice.cs" />
+    <Compile Include="Equipped.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
     <Compile Include="Forms\Farm_Form.cs">
@@ -65,7 +66,7 @@
     <Compile Include="Forms\Inventory_Form.Designer.cs">
       <DependentUpon>Inventory_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interface1.cs" />
+    <Compile Include="ICanStart.cs" />
     <Compile Include="InventoryController.cs" />
     <Compile Include="Items.Impl\BeginnerSword.cs" />
     <Compile Include="Forms\Main_Form.cs">

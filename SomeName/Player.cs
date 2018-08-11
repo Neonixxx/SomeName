@@ -20,7 +20,7 @@ namespace SomeName
 
         public long Gold { get; set; }
 
-        public Weapon Weapon { get; set; }
+        public EquippedItems EquippedItems { get; set; }
 
         public List<Item> Inventory { get; set; }
 
