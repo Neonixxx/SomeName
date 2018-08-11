@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace SomeName
 {
@@ -28,5 +29,12 @@ namespace SomeName
 
         public static bool ContainsOnly<T>(this IEnumerable<T> enumerable, params T[] items)
             => enumerable.Count() == enumerable.Intersect(items).Count();
+
+        public static void StartForm(this Form thisForm, ICanStart formToStart)
+        {
+            thisForm.Hide();
+            formToStart.Start();
+            thisForm.Show();
+        }
     }
 }

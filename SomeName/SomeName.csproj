@@ -59,12 +59,25 @@
     <Compile Include="Forms\Farm_Form.Designer.cs">
       <DependentUpon>Farm_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Inventory_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inventory_Form.Designer.cs">
+      <DependentUpon>Inventory_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interface1.cs" />
+    <Compile Include="InventoryController.cs" />
     <Compile Include="Items.Impl\BeginnerSword.cs" />
     <Compile Include="Forms\Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items.Impl\ItemImages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemImages.resx</DependentUpon>
     </Compile>
     <Compile Include="Items.Impl\Sword.cs" />
     <Compile Include="Items.Interfaces\Item.cs" />
@@ -87,11 +100,18 @@
     <EmbeddedResource Include="Forms\Farm_Form.resx">
       <DependentUpon>Farm_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Inventory_Form.resx">
+      <DependentUpon>Inventory_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main_Form.resx">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Menu_Form.resx">
       <DependentUpon>Menu_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items.Impl\ItemImages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ItemImages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -116,8 +136,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\weapon_squires_sword_i00.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weapon_bastard_sword_i00.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

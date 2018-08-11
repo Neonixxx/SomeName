@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SomeName.Forms
 {
-    public partial class Farm_Form : Form
+    public partial class Farm_Form : Form, ICanStart
     {
         public FarmController FarmController;
 
@@ -49,15 +49,10 @@ namespace SomeName.Forms
 
         #endregion
 
-        public void StartFarm()
+        public void Start()
         {
             FarmController.StartFarm();
             ShowDialog();
-        }
-
-        public void StopFarm()
-        {
-
         }
 
         private void Attack_Button_Click(object sender, EventArgs e)

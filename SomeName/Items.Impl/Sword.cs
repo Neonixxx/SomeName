@@ -13,6 +13,7 @@ namespace SomeName.Items.Impl
         public Sword()
         {
             Description = "Стальной меч";
+            Image = ItemImages.Sword;
         }
     }
 }

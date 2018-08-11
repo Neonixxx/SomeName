@@ -19,7 +19,7 @@ namespace SomeName.Forms
 
         private void NewGame_Button_Click(object sender, EventArgs e)
         {
-            new Main_Form(PlayerIO.StartNew()).ShowDialog();
+            this.StartForm(new Main_Form(PlayerIO.StartNew()));
         }
 
         private void Load_Button_Click(object sender, EventArgs e)

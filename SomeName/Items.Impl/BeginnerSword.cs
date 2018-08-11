@@ -16,6 +16,7 @@ namespace SomeName.Items.Impl
             Description = "Меч ученика";
             BaseDamage = 5;
             Damage = 5;
+            Image = ItemImages.BeginnerSword;
         }
     }
 }

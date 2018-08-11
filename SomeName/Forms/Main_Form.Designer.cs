@@ -30,6 +30,7 @@
         {
             this.Farm_Button = new System.Windows.Forms.Button();
             this.Save_Button = new System.Windows.Forms.Button();
+            this.Inventory_Button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Farm_Button
@@ -52,11 +53,22 @@
             this.Save_Button.UseVisualStyleBackColor = true;
             this.Save_Button.Click += new System.EventHandler(this.Save_Button_Click);
             // 
+            // Inventory_Button
+            // 
+            this.Inventory_Button.Location = new System.Drawing.Point(157, 197);
+            this.Inventory_Button.Name = "Inventory_Button";
+            this.Inventory_Button.Size = new System.Drawing.Size(122, 68);
+            this.Inventory_Button.TabIndex = 2;
+            this.Inventory_Button.Text = "Inventory";
+            this.Inventory_Button.UseVisualStyleBackColor = true;
+            this.Inventory_Button.Click += new System.EventHandler(this.Inventory_Button_Click);
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Inventory_Button);
             this.Controls.Add(this.Save_Button);
             this.Controls.Add(this.Farm_Button);
             this.Name = "Main_Form";
@@ -70,6 +82,7 @@
 
         private System.Windows.Forms.Button Farm_Button;
         private System.Windows.Forms.Button Save_Button;
+        private System.Windows.Forms.Button Inventory_Button;
     }
 }
 
