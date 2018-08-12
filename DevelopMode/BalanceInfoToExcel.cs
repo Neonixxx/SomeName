@@ -39,6 +39,9 @@ namespace DevelopMode
             {
                 workSheet.Cells[i + 3, "E"] = DamageBalance.GetExp(i);
                 workSheet.Cells[i + 3, "F"] = DamageBalance.GetDefaultDamage(i);
+                workSheet.Cells[i + 3, "G"] = DamageBalance.GetDefaultMonsterHealth(i);
+                workSheet.Cells[i + 3, "H"] = DropBalance.GetBaseWeaponGoldValue(i);
+                workSheet.Cells[i + 3, "I"] = DamageBalance.GetDefaultMonsterHealth(i) * DropBalance.DropItemsValueKoef / DropBalance.GetBaseWeaponGoldValue(i); // Шанс дропа оружия с монстра.
             }
         }
     }

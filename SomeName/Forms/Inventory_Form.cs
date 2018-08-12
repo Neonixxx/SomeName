@@ -12,12 +12,8 @@ using System.Windows.Input;
 
 namespace SomeName.Forms
 {
-    // TODO : реализовать экипировку предметов.
     public partial class Inventory_Form : Form, ICanStart
     {
-        //private bool IsElementDragged = false;
-        //private Control DraggedControl;
-
         public InventoryController InventoryController { get; set; }
 
         private Dictionary<PictureBox, ItemType> _equippedItemsSlots;
@@ -98,12 +94,6 @@ namespace SomeName.Forms
             else
                 itemsOnPage = ItemsPerPage;
 
-            //InventoryItems.Clear();
-            //for (int i = ITEMS_PER_PAGE * (CurrentPage - 1); i < itemsOnPage + ITEMS_PER_PAGE * (CurrentPage - 1); i++)
-            //{
-            //    InventoryItems.Add(Player.Items[i]);
-            //}
-
             PictureBox[] pb = new PictureBox[itemsOnPage];
             InventoryPanel.Controls.Clear();
 
@@ -119,8 +109,6 @@ namespace SomeName.Forms
                 ToolTip1.SetToolTip(InventoryPanel.Controls[i], items[i + _firstItemIndex].ToString());
                 InventoryPanel.Controls[i].AllowDrop = true;
                 InventoryPanel.Controls[i].MouseDown += InventoryPanelControls_MouseDown;
-                //InventoryPanel.Controls[i].MouseUp += InventoryPanelControls_MouseUp;
-                //InventoryPanel.Controls[i].MouseMove += InventoryPanelControls_MouseMove;
             }
         }
 
@@ -135,19 +123,6 @@ namespace SomeName.Forms
             ToolTip1.SetToolTip(pictureBox, item?.ToString());
             pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
         }
-
-        //private void InventoryPanelControls_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    if (IsElementDragged)
-        //    {
-        //        DraggedControl.Location = e.Location;
-        //    }
-        //}
-
-        //private void InventoryPanelControls_MouseUp(object sender, MouseEventArgs e)
-        //{
-        //    IsElementDragged = false;
-        //}
 
         private void InventoryPanelControls_MouseDown(object sender, MouseEventArgs e)
         {

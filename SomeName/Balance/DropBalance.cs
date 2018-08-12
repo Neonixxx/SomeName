@@ -82,6 +82,6 @@ namespace SomeName.Balance
         /// Получить коэффициент ценности оружия по отношению к стандартному.
         /// </summary>
         /// <param name="level"></param>
-        public const double WeaponGoldValueKoef = 0.65;
+        public const double WeaponGoldValueKoef = 0.5;
     }
 }

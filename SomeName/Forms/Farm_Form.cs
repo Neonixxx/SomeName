@@ -19,7 +19,7 @@ namespace SomeName.Forms
             InitializeComponent();
         }
 
-        // TODO : Сделать все обновления в один метод с параметром FarmInfo + настроить маппинг.
+        // TODO : сделать все обновления в один метод с параметром FarmInfo + настроить маппинг.
         #region Методы обновления UI
 
         public void UpdatePlayerLevel(int level)
