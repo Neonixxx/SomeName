@@ -46,7 +46,7 @@ namespace SomeName.Balance
             => CalculateDamage(player.Level, player.EquippedItems.Weapon);
 
         public static long CalculateDamage(int level, Weapon weapon)
-            => CalculateDamage(level, weapon.Damage);
+            => CalculateDamage(level, weapon?.Damage ?? 1);
 
         public static long CalculateDamage(int level, long weaponDamage)
         {

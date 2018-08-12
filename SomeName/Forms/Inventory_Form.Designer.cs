@@ -41,6 +41,10 @@
             this.MainHandSlot = new System.Windows.Forms.PictureBox();
             this.OffHandSlot = new System.Windows.Forms.PictureBox();
             this.GlovesSlot = new System.Windows.Forms.PictureBox();
+            this.Inventory_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.надетьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EquippedItems_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.снятьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).BeginInit();
@@ -48,6 +52,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainHandSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OffHandSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GlovesSlot)).BeginInit();
+            this.Inventory_ContextMenuStrip.SuspendLayout();
+            this.EquippedItems_ContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousPageButton
@@ -184,6 +190,34 @@
             this.GlovesSlot.TabIndex = 45;
             this.GlovesSlot.TabStop = false;
             // 
+            // Inventory_ContextMenuStrip
+            // 
+            this.Inventory_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.надетьToolStripMenuItem});
+            this.Inventory_ContextMenuStrip.Name = "Inventory_ContextMenuStrip";
+            this.Inventory_ContextMenuStrip.Size = new System.Drawing.Size(113, 26);
+            // 
+            // надетьToolStripMenuItem
+            // 
+            this.надетьToolStripMenuItem.Name = "надетьToolStripMenuItem";
+            this.надетьToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.надетьToolStripMenuItem.Text = "Надеть";
+            this.надетьToolStripMenuItem.Click += new System.EventHandler(this.НадетьToolStripMenuItem_Click);
+            // 
+            // EquippedItems_ContextMenuStrip
+            // 
+            this.EquippedItems_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.снятьToolStripMenuItem});
+            this.EquippedItems_ContextMenuStrip.Name = "EquippedItems_ContextMenuStrip";
+            this.EquippedItems_ContextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            // 
+            // снятьToolStripMenuItem
+            // 
+            this.снятьToolStripMenuItem.Name = "снятьToolStripMenuItem";
+            this.снятьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.снятьToolStripMenuItem.Text = "Снять";
+            this.снятьToolStripMenuItem.Click += new System.EventHandler(this.СнятьToolStripMenuItem_Click);
+            // 
             // Inventory_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,6 +243,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.MainHandSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OffHandSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GlovesSlot)).EndInit();
+            this.Inventory_ContextMenuStrip.ResumeLayout(false);
+            this.EquippedItems_ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,5 +263,9 @@
         private System.Windows.Forms.PictureBox MainHandSlot;
         private System.Windows.Forms.PictureBox OffHandSlot;
         private System.Windows.Forms.PictureBox GlovesSlot;
+        private System.Windows.Forms.ContextMenuStrip Inventory_ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem надетьToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip EquippedItems_ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem снятьToolStripMenuItem;
     }
 }

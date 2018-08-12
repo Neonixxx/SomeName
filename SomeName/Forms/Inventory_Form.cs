@@ -22,6 +22,8 @@ namespace SomeName.Forms
 
         private Dictionary<PictureBox, ItemType> _equippedItemsSlots;
 
+        private PictureBox _selectedPictureBox;
+
         public const int ItemsPerPage = 30;
 
         private int _currentPage = 1;
@@ -131,7 +133,7 @@ namespace SomeName.Forms
         {
             pictureBox.Image = item?.Image;
             ToolTip1.SetToolTip(pictureBox, item?.ToString());
-            pictureBox.MouseDown += InventoryPanelControls_MouseDown;
+            pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
         }
 
         //private void InventoryPanelControls_MouseMove(object sender, MouseEventArgs e)
@@ -151,35 +153,21 @@ namespace SomeName.Forms
         {
             if (e.Button == MouseButtons.Right)
             {
-                var pictureBox = (PictureBox)sender;
-                if (InventoryPanel.Controls.Contains(pictureBox))
-                {
-                    var itemIndex = InventoryPanel.Controls.IndexOf(pictureBox);
-                    InventoryController.EquipItem(itemIndex);
-                }
-                else if (_equippedItemsSlots.ContainsKey(pictureBox))
-                {
-                    var itemType = _equippedItemsSlots[pictureBox];
-                    InventoryController.UnequipItem(itemType);
-                }
+                if (sender is PictureBox pictureBox)
+                    _selectedPictureBox = pictureBox;
+                Inventory_ContextMenuStrip.Show(Cursor.Position);
             }
-            //else if (e.Button == MouseButtons.Left)
-            //{
-            //    IsElementDragged = true;
-            //    DraggedControl = sender as Control;
-            //    DraggedControl.MouseUp += InventoryPanelControls_MouseUp;
-            //    DraggedControl.MouseMove += InventoryPanelControls_MouseMove;
-            //    DraggedControl.Visible = true;
-            //    Player.Items.RemoveAt(InventoryPanel.Controls.IndexOf(sender as Control));
-            //    InventoryPanel.Controls.RemoveAt(InventoryPanel.Controls.IndexOf(sender as Control));
-            //    InventoryRefresh();
-            //}
         }
 
-        //private void ContexMenuStrip_Opening(object sender, CancelEventArgs e)
-        //{
-        //    //Point point = (sender as PictureBox).PointToClient(ContexMenuItems.Bounds.Location);
-        //}
+        private void EquippedItemsSlots_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                if (sender is PictureBox pictureBox)
+                    _selectedPictureBox = pictureBox;
+                EquippedItems_ContextMenuStrip.Show(Cursor.Position);
+            }
+        }
 
         private void PreviousPageButton_Click(object sender, EventArgs e)
         {
@@ -189,6 +177,24 @@ namespace SomeName.Forms
         private void NextPageButton_Click(object sender, EventArgs e)
         {
             CurrentPage = CurrentPage + 1;
+        }
+
+        private void НадетьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (InventoryPanel.Controls.Contains(_selectedPictureBox))
+            {
+                var itemIndex = InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+                InventoryController.EquipItem(itemIndex);
+            }
+        }
+
+        private void СнятьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (_equippedItemsSlots.ContainsKey(_selectedPictureBox))
+            {
+                var itemType = _equippedItemsSlots[_selectedPictureBox];
+                InventoryController.UnequipItem(itemType);
+            }
         }
     }
 }
