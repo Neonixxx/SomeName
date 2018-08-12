@@ -1,4 +1,5 @@
-﻿using SomeName.Items.Interfaces;
+﻿using Newtonsoft.Json;
+using SomeName.Items.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

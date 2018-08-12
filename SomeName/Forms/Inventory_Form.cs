@@ -8,17 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SomeName.Items.Interfaces;
+using System.Windows.Input;
 
 namespace SomeName.Forms
 {
     // TODO : реализовать экипировку предметов.
-    // TODO : реализовать отображение экипированных предметов.
     public partial class Inventory_Form : Form, ICanStart
     {
         //private bool IsElementDragged = false;
         //private Control DraggedControl;
 
         public InventoryController InventoryController { get; set; }
+
+        private Dictionary<PictureBox, ItemType> _equippedItemsSlots;
 
         public const int ItemsPerPage = 30;
 
@@ -61,6 +63,11 @@ namespace SomeName.Forms
         {
             InitializeComponent();
             ToolTip1.InitialDelay = 1;
+
+            _equippedItemsSlots = new Dictionary<PictureBox, ItemType>
+            {
+                { MainHandSlot, ItemType.Weapon }
+            };
         }
 
         public void Start()
@@ -117,14 +124,14 @@ namespace SomeName.Forms
 
         public void UpdateEquippedItems(EquippedItems equippedItems)
         {
-            if (equippedItems.Weapon != null)
-                SetEquippedSlot(MainHandSlot, equippedItems.Weapon);
+            SetEquippedSlot(MainHandSlot, equippedItems.Weapon);
         }
 
         private void SetEquippedSlot(PictureBox pictureBox, Item item)
         {
-            pictureBox.Image = item.Image;
-            ToolTip1.SetToolTip(pictureBox, item.ToString());
+            pictureBox.Image = item?.Image;
+            ToolTip1.SetToolTip(pictureBox, item?.ToString());
+            pictureBox.MouseDown += InventoryPanelControls_MouseDown;
         }
 
         //private void InventoryPanelControls_MouseMove(object sender, MouseEventArgs e)
@@ -143,7 +150,19 @@ namespace SomeName.Forms
         private void InventoryPanelControls_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
-                ContexMenuItems.Show(Cursor.Position);
+            {
+                var pictureBox = (PictureBox)sender;
+                if (InventoryPanel.Controls.Contains(pictureBox))
+                {
+                    var itemIndex = InventoryPanel.Controls.IndexOf(pictureBox);
+                    InventoryController.EquipItem(itemIndex);
+                }
+                else if (_equippedItemsSlots.ContainsKey(pictureBox))
+                {
+                    var itemType = _equippedItemsSlots[pictureBox];
+                    InventoryController.UnequipItem(itemType);
+                }
+            }
             //else if (e.Button == MouseButtons.Left)
             //{
             //    IsElementDragged = true;

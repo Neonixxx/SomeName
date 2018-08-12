@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SomeName.Forms;
+using SomeName.Items.Interfaces;
 
 namespace SomeName
 {
@@ -23,6 +24,18 @@ namespace SomeName
         {
             InventoryForm.UpdateInventory(Player.Inventory);
             InventoryForm.UpdateEquippedItems(Player.EquippedItems);
+        }
+
+        public void EquipItem(int itemNumber)
+        {
+            if (Player.Equip(Player.Inventory[itemNumber]))
+                Update();
+        }
+
+        public void UnequipItem(ItemType itemType)
+        {
+            Player.Unequip(itemType);
+            Update();
         }
     }
 }

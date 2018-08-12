@@ -34,8 +34,6 @@
             this.PageLabel = new System.Windows.Forms.Label();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.InventoryPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.ContexMenuItems = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.надетьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelmetSlot = new System.Windows.Forms.PictureBox();
             this.ChestSlot = new System.Windows.Forms.PictureBox();
             this.PantsSlot = new System.Windows.Forms.PictureBox();
@@ -43,7 +41,6 @@
             this.MainHandSlot = new System.Windows.Forms.PictureBox();
             this.OffHandSlot = new System.Windows.Forms.PictureBox();
             this.GlovesSlot = new System.Windows.Forms.PictureBox();
-            this.ContexMenuItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).BeginInit();
@@ -89,23 +86,10 @@
             this.InventoryPanel.Size = new System.Drawing.Size(306, 260);
             this.InventoryPanel.TabIndex = 38;
             // 
-            // ContexMenuItems
-            // 
-            this.ContexMenuItems.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.надетьToolStripMenuItem});
-            this.ContexMenuItems.Name = "ContextMenuStrip1";
-            this.ContexMenuItems.Size = new System.Drawing.Size(113, 26);
-            // 
-            // надетьToolStripMenuItem
-            // 
-            this.надетьToolStripMenuItem.Name = "надетьToolStripMenuItem";
-            this.надетьToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
-            this.надетьToolStripMenuItem.Text = "Надеть";
-            // 
             // HelmetSlot
             // 
-            this.HelmetSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.HelmetSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HelmetSlot.BackColor = System.Drawing.SystemColors.Control;
             this.HelmetSlot.ImageLocation = "";
@@ -118,8 +102,8 @@
             // 
             // ChestSlot
             // 
-            this.ChestSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.ChestSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ChestSlot.BackColor = System.Drawing.SystemColors.Control;
             this.ChestSlot.ImageLocation = "";
@@ -132,8 +116,8 @@
             // 
             // PantsSlot
             // 
-            this.PantsSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.PantsSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PantsSlot.BackColor = System.Drawing.SystemColors.Control;
             this.PantsSlot.ImageLocation = "";
@@ -146,8 +130,8 @@
             // 
             // BootsSlot
             // 
-            this.BootsSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.BootsSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BootsSlot.BackColor = System.Drawing.SystemColors.Control;
             this.BootsSlot.ImageLocation = "";
@@ -160,8 +144,8 @@
             // 
             // MainHandSlot
             // 
-            this.MainHandSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.MainHandSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MainHandSlot.BackColor = System.Drawing.SystemColors.Control;
             this.MainHandSlot.ImageLocation = "";
@@ -174,8 +158,8 @@
             // 
             // OffHandSlot
             // 
-            this.OffHandSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.OffHandSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.OffHandSlot.BackColor = System.Drawing.SystemColors.Control;
             this.OffHandSlot.ImageLocation = "";
@@ -188,8 +172,8 @@
             // 
             // GlovesSlot
             // 
-            this.GlovesSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.GlovesSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GlovesSlot.BackColor = System.Drawing.SystemColors.Control;
             this.GlovesSlot.ImageLocation = "";
@@ -200,7 +184,7 @@
             this.GlovesSlot.TabIndex = 45;
             this.GlovesSlot.TabStop = false;
             // 
-            // InventoryForm
+            // Inventory_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,9 +200,8 @@
             this.Controls.Add(this.PageLabel);
             this.Controls.Add(this.NextPageButton);
             this.Controls.Add(this.PreviousPageButton);
-            this.Name = "InventoryForm";
+            this.Name = "Inventory_Form";
             this.Text = "InventoryForm";
-            this.ContexMenuItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).EndInit();
@@ -237,9 +220,6 @@
         private System.Windows.Forms.Label PageLabel;
         private System.Windows.Forms.ToolTip ToolTip1;
         private System.Windows.Forms.FlowLayoutPanel InventoryPanel;
-        private System.Windows.Forms.ContextMenuStrip ContexMenuItems;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem надетьToolStripMenuItem;
         private System.Windows.Forms.PictureBox HelmetSlot;
         private System.Windows.Forms.PictureBox ChestSlot;
         private System.Windows.Forms.PictureBox PantsSlot;

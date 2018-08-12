@@ -27,6 +27,34 @@ namespace SomeName
         public long GetDamage()
             => DamageBalance.CalculateDamage(this);
 
+        public bool Equip(Item item)
+        {
+            if (item is Weapon weapon)
+            {
+                if (EquippedItems.Weapon != null)
+                    Inventory.Add(EquippedItems.Weapon);
+                Inventory.Remove(item);
+                EquippedItems.Weapon = weapon;
+                return true;
+            }
+
+            return false;
+        }
+
+        public void Unequip(ItemType itemType)
+        {
+            switch (itemType)
+            {
+                case ItemType.Weapon:
+                    if (EquippedItems.Weapon != null)
+                    {
+                        Inventory.Add(EquippedItems.Weapon);
+                        EquippedItems.Weapon = null;
+                    }
+                    break;
+            }
+        }
+
         public void TakeDrop(Drop drop)
         {
             TakeExp(drop.Exp);
@@ -45,6 +73,9 @@ namespace SomeName
             }
             Exp = totalExp;
         }
+
+        public void TakeItem(Item item)
+            => Inventory.Add(item);
 
         public void TakeItems(List<Item> items)
         {

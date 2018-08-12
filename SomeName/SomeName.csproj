@@ -51,7 +51,7 @@
     <Compile Include="Balance\DamageBalance.cs" />
     <Compile Include="Balance\DropBalance.cs" />
     <Compile Include="Dice.cs" />
-    <Compile Include="Equipped.cs" />
+    <Compile Include="EquippedItems.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
     <Compile Include="Forms\Farm_Form.cs">
@@ -90,6 +90,7 @@
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Drop.cs" />
+    <Compile Include="ItemType.cs" />
     <Compile Include="Monsters.Impl\MonsterFacture.cs" />
     <Compile Include="Monsters.Impl\SimpleMonster.cs" />
     <Compile Include="Monsters.Interfaces\Monster.cs" />
