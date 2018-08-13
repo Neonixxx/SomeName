@@ -31,13 +31,15 @@ namespace SomeName.Balance
             => Convert.ToInt64(100 * Pow(E, 0.04 * level) - 100);
 
         public static double GetItemDamageKoef(int level)
-            => GetItemDamageKoef(1.0 / level);
+            => level >= 70
+                ? GetItemDamageKoef(5.0 / (level - 65))
+                : 1.0;
 
         public static double GetItemDamageKoef(double diceValue)
             => Pow(diceValue, -0.35);
 
         public static double GetTapsForLevel(int level)
-            => Pow(level, 1.4) * 20;
+            => Pow(level, 1.2) * 20;
 
         public static double GetTapsForMonster(int level)
             => Pow(level, 0.6) * 10;

@@ -37,7 +37,7 @@ namespace DevelopMode
         {
             for (int i = 1; i <= 100; i++)
             {
-                workSheet.Cells[i + 3, "E"] = DamageBalance.GetExp(i);
+                workSheet.Cells[i + 3, "E"] = DamageBalance.GetTapsForLevel(i);
                 workSheet.Cells[i + 3, "F"] = DamageBalance.GetDefaultDamage(i);
                 workSheet.Cells[i + 3, "G"] = DamageBalance.GetDefaultMonsterHealth(i);
                 workSheet.Cells[i + 3, "H"] = DropBalance.GetBaseWeaponGoldValue(i);
