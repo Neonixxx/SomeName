@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SomeName.Items.Interfaces;
 
-namespace SomeName
+namespace SomeName.Domain
 {
     public class Drop
     {

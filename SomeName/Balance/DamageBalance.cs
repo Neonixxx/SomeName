@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Resources;
 using static System.Math;
 using SomeName.Items.Interfaces;
+using SomeName.Domain;
 
 namespace SomeName.Balance
 {

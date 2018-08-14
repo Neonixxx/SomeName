@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SomeName.Balance;
 using SomeName.Monsters.Impl;
 using SomeName.Forms;
+using SomeName.Domain;
 
 namespace SomeName
 {

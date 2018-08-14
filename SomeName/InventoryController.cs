@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SomeName.Domain;
 using SomeName.Forms;
 using SomeName.Items.Interfaces;
 
@@ -24,6 +25,7 @@ namespace SomeName
         {
             InventoryForm.UpdateInventory(Player.Inventory);
             InventoryForm.UpdateEquippedItems(Player.EquippedItems);
+            InventoryForm.UpdateStatsInfo(GetStatsInfo());
         }
 
         public void EquipItem(int itemNumber)
@@ -36,6 +38,15 @@ namespace SomeName
         {
             Player.Unequip(itemType);
             Update();
+        }
+
+        private StatsInfo GetStatsInfo()
+        {
+            return new StatsInfo
+            {
+                Level = Player.Level,
+                Damage = Player.GetDamage()
+            };
         }
     }
 }

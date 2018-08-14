@@ -1,4 +1,4 @@
-﻿namespace SomeName
+﻿namespace SomeName.Domain
 {
     public interface ICanStart
     {

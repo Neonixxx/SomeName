@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SomeName.Items.Interfaces;
 using System.Windows.Input;
+using SomeName.Domain;
 
 namespace SomeName.Forms
 {
@@ -122,6 +123,11 @@ namespace SomeName.Forms
             pictureBox.Image = item?.Image;
             ToolTip1.SetToolTip(pictureBox, item?.ToString());
             pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
+        }
+
+        public void UpdateStatsInfo(StatsInfo statsInfo)
+        {
+            StatsInfo_Label.Text = statsInfo.ToString();
         }
 
         /// <summary>

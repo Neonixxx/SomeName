@@ -45,6 +45,7 @@
             this.надетьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EquippedItems_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.снятьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.StatsInfo_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).BeginInit();
@@ -58,7 +59,7 @@
             // 
             // PreviousPageButton
             // 
-            this.PreviousPageButton.Location = new System.Drawing.Point(9, 176);
+            this.PreviousPageButton.Location = new System.Drawing.Point(522, 520);
             this.PreviousPageButton.Name = "PreviousPageButton";
             this.PreviousPageButton.Size = new System.Drawing.Size(50, 42);
             this.PreviousPageButton.TabIndex = 35;
@@ -68,7 +69,7 @@
             // 
             // NextPageButton
             // 
-            this.NextPageButton.Location = new System.Drawing.Point(377, 176);
+            this.NextPageButton.Location = new System.Drawing.Point(890, 520);
             this.NextPageButton.Name = "NextPageButton";
             this.NextPageButton.Size = new System.Drawing.Size(50, 42);
             this.NextPageButton.TabIndex = 36;
@@ -79,7 +80,7 @@
             // PageLabel
             // 
             this.PageLabel.AutoSize = true;
-            this.PageLabel.Location = new System.Drawing.Point(174, 52);
+            this.PageLabel.Location = new System.Drawing.Point(687, 396);
             this.PageLabel.Name = "PageLabel";
             this.PageLabel.Size = new System.Drawing.Size(88, 13);
             this.PageLabel.TabIndex = 37;
@@ -87,20 +88,18 @@
             // 
             // InventoryPanel
             // 
-            this.InventoryPanel.Location = new System.Drawing.Point(65, 68);
+            this.InventoryPanel.Location = new System.Drawing.Point(578, 412);
             this.InventoryPanel.Name = "InventoryPanel";
             this.InventoryPanel.Size = new System.Drawing.Size(306, 260);
             this.InventoryPanel.TabIndex = 38;
             // 
             // HelmetSlot
             // 
-            this.HelmetSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.HelmetSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HelmetSlot.BackColor = System.Drawing.SystemColors.Control;
             this.HelmetSlot.ImageLocation = "";
             this.HelmetSlot.InitialImage = null;
-            this.HelmetSlot.Location = new System.Drawing.Point(550, 52);
+            this.HelmetSlot.Location = new System.Drawing.Point(755, 58);
             this.HelmetSlot.Name = "HelmetSlot";
             this.HelmetSlot.Size = new System.Drawing.Size(45, 45);
             this.HelmetSlot.TabIndex = 39;
@@ -108,13 +107,11 @@
             // 
             // ChestSlot
             // 
-            this.ChestSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChestSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChestSlot.BackColor = System.Drawing.SystemColors.Control;
             this.ChestSlot.ImageLocation = "";
             this.ChestSlot.InitialImage = null;
-            this.ChestSlot.Location = new System.Drawing.Point(550, 118);
+            this.ChestSlot.Location = new System.Drawing.Point(755, 124);
             this.ChestSlot.Name = "ChestSlot";
             this.ChestSlot.Size = new System.Drawing.Size(45, 45);
             this.ChestSlot.TabIndex = 40;
@@ -122,13 +119,11 @@
             // 
             // PantsSlot
             // 
-            this.PantsSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PantsSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PantsSlot.BackColor = System.Drawing.SystemColors.Control;
             this.PantsSlot.ImageLocation = "";
             this.PantsSlot.InitialImage = null;
-            this.PantsSlot.Location = new System.Drawing.Point(550, 184);
+            this.PantsSlot.Location = new System.Drawing.Point(755, 190);
             this.PantsSlot.Name = "PantsSlot";
             this.PantsSlot.Size = new System.Drawing.Size(45, 45);
             this.PantsSlot.TabIndex = 41;
@@ -136,13 +131,11 @@
             // 
             // BootsSlot
             // 
-            this.BootsSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BootsSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BootsSlot.BackColor = System.Drawing.SystemColors.Control;
             this.BootsSlot.ImageLocation = "";
             this.BootsSlot.InitialImage = null;
-            this.BootsSlot.Location = new System.Drawing.Point(550, 250);
+            this.BootsSlot.Location = new System.Drawing.Point(755, 256);
             this.BootsSlot.Name = "BootsSlot";
             this.BootsSlot.Size = new System.Drawing.Size(45, 45);
             this.BootsSlot.TabIndex = 42;
@@ -150,13 +143,11 @@
             // 
             // MainHandSlot
             // 
-            this.MainHandSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MainHandSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MainHandSlot.BackColor = System.Drawing.SystemColors.Control;
             this.MainHandSlot.ImageLocation = "";
             this.MainHandSlot.InitialImage = null;
-            this.MainHandSlot.Location = new System.Drawing.Point(460, 250);
+            this.MainHandSlot.Location = new System.Drawing.Point(665, 256);
             this.MainHandSlot.Name = "MainHandSlot";
             this.MainHandSlot.Size = new System.Drawing.Size(45, 45);
             this.MainHandSlot.TabIndex = 43;
@@ -164,13 +155,11 @@
             // 
             // OffHandSlot
             // 
-            this.OffHandSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.OffHandSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.OffHandSlot.BackColor = System.Drawing.SystemColors.Control;
             this.OffHandSlot.ImageLocation = "";
             this.OffHandSlot.InitialImage = null;
-            this.OffHandSlot.Location = new System.Drawing.Point(640, 250);
+            this.OffHandSlot.Location = new System.Drawing.Point(845, 256);
             this.OffHandSlot.Name = "OffHandSlot";
             this.OffHandSlot.Size = new System.Drawing.Size(45, 45);
             this.OffHandSlot.TabIndex = 44;
@@ -178,13 +167,11 @@
             // 
             // GlovesSlot
             // 
-            this.GlovesSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GlovesSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GlovesSlot.BackColor = System.Drawing.SystemColors.Control;
             this.GlovesSlot.ImageLocation = "";
             this.GlovesSlot.InitialImage = null;
-            this.GlovesSlot.Location = new System.Drawing.Point(460, 184);
+            this.GlovesSlot.Location = new System.Drawing.Point(665, 190);
             this.GlovesSlot.Name = "GlovesSlot";
             this.GlovesSlot.Size = new System.Drawing.Size(45, 45);
             this.GlovesSlot.TabIndex = 45;
@@ -200,7 +187,7 @@
             // надетьToolStripMenuItem
             // 
             this.надетьToolStripMenuItem.Name = "надетьToolStripMenuItem";
-            this.надетьToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.надетьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.надетьToolStripMenuItem.Text = "Надеть";
             this.надетьToolStripMenuItem.Click += new System.EventHandler(this.НадетьToolStripMenuItem_Click);
             // 
@@ -209,20 +196,30 @@
             this.EquippedItems_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.снятьToolStripMenuItem});
             this.EquippedItems_ContextMenuStrip.Name = "EquippedItems_ContextMenuStrip";
-            this.EquippedItems_ContextMenuStrip.Size = new System.Drawing.Size(181, 48);
+            this.EquippedItems_ContextMenuStrip.Size = new System.Drawing.Size(107, 26);
             // 
             // снятьToolStripMenuItem
             // 
             this.снятьToolStripMenuItem.Name = "снятьToolStripMenuItem";
-            this.снятьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.снятьToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.снятьToolStripMenuItem.Text = "Снять";
             this.снятьToolStripMenuItem.Click += new System.EventHandler(this.СнятьToolStripMenuItem_Click);
+            // 
+            // StatsInfo_Label
+            // 
+            this.StatsInfo_Label.AutoSize = true;
+            this.StatsInfo_Label.Location = new System.Drawing.Point(478, 58);
+            this.StatsInfo_Label.Name = "StatsInfo_Label";
+            this.StatsInfo_Label.Size = new System.Drawing.Size(49, 13);
+            this.StatsInfo_Label.TabIndex = 46;
+            this.StatsInfo_Label.Text = "StatsInfo";
             // 
             // Inventory_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(753, 352);
+            this.ClientSize = new System.Drawing.Size(952, 711);
+            this.Controls.Add(this.StatsInfo_Label);
             this.Controls.Add(this.GlovesSlot);
             this.Controls.Add(this.OffHandSlot);
             this.Controls.Add(this.MainHandSlot);
@@ -267,5 +264,6 @@
         private System.Windows.Forms.ToolStripMenuItem надетьToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip EquippedItems_ContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem снятьToolStripMenuItem;
+        private System.Windows.Forms.Label StatsInfo_Label;
     }
 }

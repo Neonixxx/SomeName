@@ -10,6 +10,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using SomeName.Domain;
 
 namespace SomeName
 {
@@ -65,7 +66,7 @@ namespace SomeName
                 var data = (string)binaryFormatter.Deserialize(stream);
                 player = JsonConvert.DeserializeObject<Player>(data, new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.Objects });
             }
-            catch (SerializationException)
+            catch (JsonSerializationException)
             {
                 player = null;
                 return false;

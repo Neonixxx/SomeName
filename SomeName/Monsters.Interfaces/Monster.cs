@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SomeName.Balance;
+using SomeName.Domain;
 
 namespace SomeName.Monsters.Interfaces
 {

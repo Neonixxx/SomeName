@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using SomeName.Items.Interfaces;
 using SomeName.Balance;
+using SomeName.Domain;
 
-namespace SomeName
+namespace SomeName.Domain
 {
     public class Player
     {
