@@ -48,6 +48,19 @@ namespace SomeName.Forms
             MonsterHealth_Label.Text = percent.ToPercentString();
         }
 
+        private string[] _drops = new string[3] { "", "", "" };
+
+        public void UpdateDropInfo(DropInfo dropInfo)
+        {
+            _drops[2] = _drops[1];
+            _drops[1] = _drops[0];
+            _drops[0] = dropInfo.ToString();
+            var doubleNewLine = Environment.NewLine + Environment.NewLine;
+            DropInfo_Label.Text = $"{_drops[0]}" +
+                $"{doubleNewLine}{_drops[1]}" +
+                $"{doubleNewLine}{_drops[2]}";
+        }
+
         #endregion
 
         public void Start()

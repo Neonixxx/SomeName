@@ -15,8 +15,8 @@ namespace SomeName.Domain
 
         public override string ToString()
         {
-            return $"Level - {Level}" +
-                $"{NewLine}Damage - {Damage}";
+            return $"Level: {Level}" +
+                $"{NewLine}Damage: {Damage}";
         }
     }
 }

@@ -13,25 +13,27 @@ namespace SomeName
 {
     public class FarmController
     {
-        private Player _player { get; set; }
+        public Player Player { get; set; }
+
+        public Farm_Form FarmForm { get; set; }
 
         private Monster _monster { get; set; }
 
-        private Farm_Form _farmForm { get; set; }
-
         public FarmController(Player player, Farm_Form farm_form)
         {
-            _player = player;
-            _farmForm = farm_form;
+            Player = player;
+            FarmForm = farm_form;
         }
 
         public void Attack()
         {
-            var damage = _player.GetDamage();
+            var damage = Player.GetDamage();
             var dealtDamage = _monster.DealDamage(damage);
             if (_monster.IsDead)
             {
-                _player.TakeDrop(_monster.GetDrop());
+                var drop = _monster.GetDrop();
+                Player.TakeDrop(drop);
+                FarmForm.UpdateDropInfo(new DropInfo(_monster, drop));
                 NewMonster();
             }
 
@@ -40,17 +42,17 @@ namespace SomeName
 
         public void Update()
         {
-            _farmForm.UpdatePlayerLevel(_player.Level);
-            _farmForm.UpdatePlayerExp(_player.Exp, _player.ExpForNextLevel);
-            _farmForm.UpdatePlayerGold(_player.Gold);
+            FarmForm.UpdatePlayerLevel(Player.Level);
+            FarmForm.UpdatePlayerExp(Player.Exp, Player.ExpForNextLevel);
+            FarmForm.UpdatePlayerGold(Player.Gold);
 
-            _farmForm.UpdateMonsterHealth(_monster.Health, _monster.MaxHealth);
-            _farmForm.MonsterInfo(_monster.Description);
+            FarmForm.UpdateMonsterHealth(_monster.Health, _monster.MaxHealth);
+            FarmForm.MonsterInfo(_monster.Description);
         }
 
         public void NewMonster()
         {
-            _monster = MonsterFacture.GetRandomMonster(_player.Level);
+            _monster = MonsterFacture.GetRandomMonster(Player.Level);
         }
 
         public void StartFarm()

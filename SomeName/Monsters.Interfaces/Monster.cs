@@ -58,5 +58,8 @@ namespace SomeName.Monsters.Interfaces
 
             return DroppedItems;
         }
+
+        public override string ToString()
+            => $"Level {Level} {Description}";
     }
 }
