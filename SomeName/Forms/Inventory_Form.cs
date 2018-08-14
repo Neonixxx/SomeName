@@ -124,24 +124,47 @@ namespace SomeName.Forms
             pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
         }
 
+        /// <summary>
+        /// Событие нажатия мышки на предмет в инвентаре.
+        /// </summary>
+        /// <param name="sender">PictureBox предмета в инвентаре.</param>
+        /// <param name="e"></param>
         private void InventoryPanelControls_MouseDown(object sender, MouseEventArgs e)
         {
+            SetSelectedPictureBox((PictureBox)sender);
+
             if (e.Button == MouseButtons.Right)
             {
-                if (sender is PictureBox pictureBox)
-                    _selectedPictureBox = pictureBox;
                 Inventory_ContextMenuStrip.Show(Cursor.Position);
             }
         }
 
+        /// <summary>
+        /// Событие нажатия мышки на экипированный предмет.
+        /// </summary>
+        /// <param name="sender">PictureBox экипированного предмета.</param>
+        /// <param name="e"></param>
         private void EquippedItemsSlots_MouseDown(object sender, MouseEventArgs e)
         {
+            SetSelectedPictureBox((PictureBox)sender);
+
             if (e.Button == MouseButtons.Right)
             {
-                if (sender is PictureBox pictureBox)
-                    _selectedPictureBox = pictureBox;
                 EquippedItems_ContextMenuStrip.Show(Cursor.Position);
             }
+        }
+
+        /// <summary>
+        /// Поместить выбранный предмет (PictureBox) в фокус.
+        /// </summary>
+        /// <param name="pictureBox">Выбранный предмет (PictureBox).</param>
+        private void SetSelectedPictureBox(PictureBox pictureBox)
+        {
+            if (_selectedPictureBox != null)
+                _selectedPictureBox.BorderStyle = BorderStyle.None;
+
+            _selectedPictureBox = pictureBox;
+            _selectedPictureBox.BorderStyle = BorderStyle.Fixed3D;
         }
 
         private void PreviousPageButton_Click(object sender, EventArgs e)

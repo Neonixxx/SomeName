@@ -60,6 +60,11 @@
     <Compile Include="Forms\Farm_Form.Designer.cs">
       <DependentUpon>Farm_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Inventory_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +107,10 @@
     <EmbeddedResource Include="Forms\Farm_Form.resx">
       <DependentUpon>Farm_Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inventory_Form.resx">
       <DependentUpon>Inventory_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,12 +147,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\weapon_squires_sword_i00.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\weapon_bastard_sword_i00.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureBoxBackground.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
