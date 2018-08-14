@@ -11,11 +11,14 @@ namespace SomeName.Domain
     {
         public int Level { get; set; }
 
+        public int Power { get; set; }
+
         public long Damage { get; set; }
 
         public override string ToString()
         {
             return $"Level: {Level}" +
+                $"{NewLine}Power: {Power}" +
                 $"{NewLine}Damage: {Damage}";
         }
     }

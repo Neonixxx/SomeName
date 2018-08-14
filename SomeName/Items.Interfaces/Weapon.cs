@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomeName.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +14,14 @@ namespace SomeName.Items.Interfaces
 
         public long Damage { get; set; }
 
+        public WeaponBonuses Bonuses { get; set; } = new WeaponBonuses();
+
         public override string ToString()
-            => $"{base.ToString()}" +
-                $"{NewLine}Damage: {Damage}";
+        {
+            var result = new StringBuilder($"{base.ToString()}{NewLine}Damage: {Damage}");
+            if (Bonuses.ToString() != string.Empty)
+                result.Append($"{NewLine}{Bonuses.ToString()}");
+            return result.ToString();
+        }
     }
 }

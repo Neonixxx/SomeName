@@ -11,5 +11,8 @@ namespace SomeName.Domain
     public class EquippedItems
     {
         public Weapon Weapon { get; set; }
+
+        public int GetPower()
+            => Weapon?.Bonuses.Power ?? 0;
     }
 }

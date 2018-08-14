@@ -45,6 +45,7 @@ namespace SomeName
             return new StatsInfo
             {
                 Level = Player.Level,
+                Power = Player.GetPower(),
                 Damage = Player.GetDamage()
             };
         }

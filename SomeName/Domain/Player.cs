@@ -28,6 +28,9 @@ namespace SomeName.Domain
         public long GetDamage()
             => DamageBalance.CalculateDamage(this);
 
+        public int GetPower()
+            => DamageBalance.CalculatePower(this);
+
         public bool Equip(Item item)
         {
             if (item is Weapon weapon)
@@ -79,8 +82,6 @@ namespace SomeName.Domain
             => Inventory.Add(item);
 
         public void TakeItems(List<Item> items)
-        {
-            Inventory.AddRange(items);
-        }
+            => Inventory.AddRange(items);
     }
 }

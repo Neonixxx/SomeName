@@ -61,9 +61,20 @@ namespace SomeName.Balance
                 DamageValueKoef = damageValueKoef,
                 GoldValue = GetWeaponGoldValue(level, damageValueKoef),
                 BaseDamage = DamageBalance.GetWeaponDamage(level, damageValueKoef),
+                Bonuses = CalculateWeaponBonuses(level)
             };
             weapon.Damage = weapon.BaseDamage;
             return weapon;
+        }
+
+        // TODO : Реализовать шанс выпадения бонусов.
+        public static WeaponBonuses CalculateWeaponBonuses(int level)
+        {
+            var powerValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            return new WeaponBonuses
+            {
+                Power = DamageBalance.GetWeaponPower(level, powerValueKoef)
+            };
         }
 
         public static long GetWeaponGoldValue(int level, double damageValueKoef)

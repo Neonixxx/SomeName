@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SomeName.Domain;
 using static System.Environment;
 
 namespace SomeName.Items.Interfaces
