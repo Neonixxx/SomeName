@@ -11,6 +11,7 @@ using static System.Convert;
 
 namespace SomeName.Balance
 {
+    // TODO : Сделать расчет шанса и силы крита в стандартном уроне игрока.
     public static class DamageBalance
     {
         public static long GetExp(int level)
@@ -58,14 +59,17 @@ namespace SomeName.Balance
             => ToInt32(Pow(level, 1.5));
 
         public static long CalculateDamage(Player player)
-            => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon);
+            => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon, player.GetCritChance(), player.GetCritDamage());
 
-        public static long CalculateDamage(int power, Weapon weapon)
-            => CalculateDamage(power, weapon?.Damage ?? 1);
+        public static long CalculateDamage(int power, Weapon weapon, double critChance, double critDamage)
+            => CalculateDamage(power, weapon?.Damage ?? 1, critChance, critDamage);
 
-        public static long CalculateDamage(int power, long weaponDamage)
+        public static long CalculateDamage(int power, long weaponDamage, double critChance = 0, double critDamage = 0)
         {
-            return ToInt64((1 + ToDouble(power) / 100) * weaponDamage);
+            var damageWithoutCrit = ToInt64((1 + ToDouble(power) / 100) * weaponDamage);
+            if (Dice.TryGetChance(critChance))
+                damageWithoutCrit = ToInt64(damageWithoutCrit * critDamage);
+            return damageWithoutCrit;
         }
 
         public static int CalculatePower(Player player)
@@ -74,10 +78,26 @@ namespace SomeName.Balance
         public static int CalculatePower(int level, EquippedItems equippedItems)
             => StartPower + level * PowerPerLevel + equippedItems.GetPower();
 
+        public static double CalculateCritChance(Player player)
+            => CalculateCritChance(player.EquippedItems);
+
+        public static double CalculateCritChance(EquippedItems equippedItems)
+            => StartCritChance + equippedItems.GetCritChance();
+
+        public static double CalculateCritDamage(Player player)
+            => CalculateCritDamage(player.EquippedItems);
+
+        public static double CalculateCritDamage(EquippedItems equippedItems)
+            => StartCritDamage + equippedItems.GetCritDamage();
+
         public static readonly int StartPower = 20;
 
         public static readonly int PowerPerLevel = 10;
 
         public static readonly int VitalityPerLevel = 10;
+
+        public static readonly double StartCritChance = 0.05;
+
+        public static readonly double StartCritDamage = 1.5;
     }
 }

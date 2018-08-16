@@ -19,8 +19,9 @@ namespace SomeName.Items.Interfaces
         public override string ToString()
         {
             var result = new StringBuilder($"{base.ToString()}{NewLine}Damage: {Damage}");
-            if (Bonuses.ToString() != string.Empty)
-                result.Append($"{NewLine}{Bonuses.ToString()}");
+            var bonusesString = Bonuses.ToString();
+            if (bonusesString != string.Empty)
+                result.Append($"{NewLine}{bonusesString}");
             return result.ToString();
         }
     }

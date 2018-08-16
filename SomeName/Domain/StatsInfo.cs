@@ -13,13 +13,19 @@ namespace SomeName.Domain
 
         public int Power { get; set; }
 
+        public double CritChance { get; set; }
+
+        public double CritDamage { get; set; }
+
         public long Damage { get; set; }
 
         public override string ToString()
         {
             return $"Level: {Level}" +
                 $"{NewLine}Power: {Power}" +
-                $"{NewLine}Damage: {Damage}";
+                $"{NewLine}Damage: {Damage}" +
+                $"{NewLine}Шанс крита: {CritChance.ToPercentString(0)}" +
+                $"{NewLine}Сила крита: {CritDamage.ToPercentString(0)}";
         }
     }
 }

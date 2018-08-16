@@ -46,7 +46,9 @@ namespace SomeName
             {
                 Level = Player.Level,
                 Power = Player.GetPower(),
-                Damage = Player.GetDamage()
+                Damage = Player.GetDamage(),
+                CritChance = Player.GetCritChance(),
+                CritDamage = Player.GetCritDamage()
             };
         }
     }

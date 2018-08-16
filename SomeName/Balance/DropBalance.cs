@@ -67,6 +67,7 @@ namespace SomeName.Balance
             return weapon;
         }
 
+        // TODO : Реализовать возможность выпадения бонусов шанса и силы крита.
         // TODO : Реализовать шанс выпадения бонусов.
         public static WeaponBonuses CalculateWeaponBonuses(int level)
         {

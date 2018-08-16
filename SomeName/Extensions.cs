@@ -25,8 +25,8 @@ namespace SomeName
         public static double ToDouble(this long value)
             => Convert.ToDouble(value);
 
-        public static string ToPercentString(this double value)
-            => value.ToString("F2") + "%";
+        public static string ToPercentString(this double value, int chars = 2)
+            => (value * 100).ToString($"F{chars}") + "%";
 
         public static bool ContainsOnly<T>(this IEnumerable<T> enumerable, params T[] items)
             => enumerable.Count() == enumerable.Intersect(items).Count();

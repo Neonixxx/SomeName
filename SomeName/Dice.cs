@@ -14,6 +14,8 @@ namespace SomeName
             => _rand.NextDouble();
 
         public static bool TryGetChance(double chance)
-            => Roll <= chance;
+            => chance == 0
+            ? false
+            : Roll <= chance;
     }
 }

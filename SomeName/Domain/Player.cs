@@ -31,6 +31,12 @@ namespace SomeName.Domain
         public int GetPower()
             => DamageBalance.CalculatePower(this);
 
+        public double GetCritChance()
+            => DamageBalance.CalculateCritChance(this);
+
+        public double GetCritDamage()
+            => DamageBalance.CalculateCritDamage(this);
+
         public bool Equip(Item item)
         {
             if (item is Weapon weapon)

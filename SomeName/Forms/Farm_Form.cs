@@ -28,9 +28,9 @@ namespace SomeName.Forms
 
         public void UpdatePlayerExp(long exp, long maxExp)
         {
-            double percent = 100 * exp.ToDouble() / maxExp;
+            double percent = exp.ToDouble() / maxExp;
 
-            Exp_Bar.Value = percent.ToInt32();
+            Exp_Bar.Value = (percent * 100).ToInt32();
             Exp_Label.Text = percent.ToPercentString();
         }
 
@@ -42,9 +42,9 @@ namespace SomeName.Forms
 
         public void UpdateMonsterHealth(long health, long maxHealth)
         {
-            double percent = 100 * health.ToDouble() / maxHealth;
+            double percent = health.ToDouble() / maxHealth;
 
-            MonsterHealth_Bar.Value = percent.ToInt32();
+            MonsterHealth_Bar.Value = (percent * 100).ToInt32();
             MonsterHealth_Label.Text = percent.ToPercentString();
         }
 

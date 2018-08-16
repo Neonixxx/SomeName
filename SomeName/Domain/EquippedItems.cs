@@ -14,5 +14,11 @@ namespace SomeName.Domain
 
         public int GetPower()
             => Weapon?.Bonuses.Power ?? 0;
+
+        public double GetCritChance()
+            => Weapon?.Bonuses.CritChance ?? 0;
+
+        public double GetCritDamage()
+            => Weapon?.Bonuses.CritDamage ?? 0;
     }
 }
