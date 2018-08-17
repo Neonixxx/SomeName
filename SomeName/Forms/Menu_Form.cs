@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace SomeName.Forms
 {
+    // TODO : сделать открытие форм по центру от изначальной формы.
     public partial class Menu_Form : Form
     {
         public Menu_Form()

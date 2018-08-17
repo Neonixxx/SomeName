@@ -11,7 +11,6 @@ using static System.Convert;
 
 namespace SomeName.Balance
 {
-    // TODO : Сделать расчет шанса и силы крита в стандартном уроне игрока.
     public static class DamageBalance
     {
         public static long GetExp(int level)
@@ -23,7 +22,11 @@ namespace SomeName.Balance
             var power = GetPlayerPower(level, itemDamageKoef);
             var weaponDamage = GetWeaponDamage(level, itemDamageKoef);
 
-            return CalculateDamage(power, weaponDamage);
+            var damageWithoutCritCoef = CalculateDamage(power, weaponDamage);
+            var critCoef = GetBaseCritCoef(level);
+
+
+            return ToInt64(damageWithoutCritCoef * critCoef);
         }
 
         public static long GetDefaultMonsterHealth(int level)
@@ -57,6 +60,21 @@ namespace SomeName.Balance
 
         public static int GetBaseWeaponPower(int level)
             => ToInt32(Pow(level, 1.5));
+
+        public static double GetBaseCritCoef(int level)
+            => GetPlayerCritChance(level) * (GetPlayerCritDamage(level) - 1) + 1;
+
+        public static double GetPlayerCritChance(int level)
+            => StartCritChance + GetBaseWeaponCritChance(level);
+
+        public static double GetBaseWeaponCritChance(int level)
+            => 0.0;
+
+        public static double GetPlayerCritDamage(int level)
+            => StartCritDamage + GetBaseWeaponCritDamage(level);
+
+        public static double GetBaseWeaponCritDamage(int level)
+            => 0.0;
 
         public static long CalculateDamage(Player player)
             => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon, player.GetCritChance(), player.GetCritDamage());
