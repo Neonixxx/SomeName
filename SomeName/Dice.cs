@@ -17,5 +17,8 @@ namespace SomeName
             => chance == 0
             ? false
             : Roll <= chance;
+
+        public static int GetRange(int from, int to)
+            => _rand.Next(from, to + 1);
     }
 }

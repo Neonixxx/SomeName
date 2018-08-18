@@ -28,7 +28,7 @@ namespace SomeName.Monsters.Interfaces
         public void Respawn(int level)
         {
             Level = level;
-            MaxHealth = DamageBalance.GetDefaultMonsterHealth(level);
+            MaxHealth = MonsterBalance.GetDefaultMonsterHealth(level);
             Health = MaxHealth;
             DroppedItems = DropBalance.CalculateDrop(Level, MaxHealth);
             IsDead = false;

@@ -21,6 +21,8 @@ namespace SomeName.Domain
 
         public long Gold { get; set; }
 
+        public long Health { get; set; }
+
         public EquippedItems EquippedItems { get; set; }
 
         public List<Item> Inventory { get; set; }
@@ -28,8 +30,14 @@ namespace SomeName.Domain
         public long GetDamage()
             => DamageBalance.CalculateDamage(this);
 
+        public long GetMaxHealth()
+            => DamageBalance.CalculateMaxHealth(this);
+
         public int GetPower()
             => DamageBalance.CalculatePower(this);
+
+        public int GetVitality()
+            => DamageBalance.CalculateVitality(this);
 
         public double GetCritChance()
             => DamageBalance.CalculateCritChance(this);

@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="Balance\DamageBalance.cs" />
     <Compile Include="Balance\DropBalance.cs" />
+    <Compile Include="Balance\MonsterBalance.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Domain\DropInfo.cs" />
     <Compile Include="Domain\EquippedItems.cs" />

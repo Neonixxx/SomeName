@@ -15,6 +15,9 @@ namespace SomeName.Domain
         public int GetPower()
             => Weapon?.Bonuses.Power ?? 0;
 
+        public int GetVitality()
+            => Weapon?.Bonuses.Vitality ?? 0;
+
         public double GetCritChance()
             => Weapon?.Bonuses.CritChance ?? 0;
 

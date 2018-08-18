@@ -69,14 +69,30 @@ namespace SomeName.Balance
 
         // TODO : Реализовать возможность выпадения бонусов шанса и силы крита.
         // TODO : Реализовать шанс выпадения бонусов.
+        // TODO : Доделать выпадение разного числа бонусов.
         public static WeaponBonuses CalculateWeaponBonuses(int level)
         {
             var powerValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            var vitalityValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            var itemBonusesCount = CalculateItemBonusesCount(level);
+
             return new WeaponBonuses
             {
-                Power = DamageBalance.GetWeaponPower(level, powerValueKoef)
+                Power = DamageBalance.GetWeaponPower(level, powerValueKoef),
+                Vitality = DamageBalance.GetWeaponVitality(level, vitalityValueKoef)
             };
         }
+
+        public static int CalculateItemBonusesCount(int level)
+            => Dice.GetRange(GetMinItemBonusesCount(level), GetMaxItemBonusesCount(level));
+
+        // TODO : Сделать формулу.
+        public static int GetMinItemBonusesCount(int level)
+            => 1;
+
+        // TODO : Сделать формулу.
+        public static int GetMaxItemBonusesCount(int level)
+            => 2;
 
         public static long GetWeaponGoldValue(int level, double damageValueKoef)
             => Convert.ToInt64(GetBaseWeaponGoldValue(level) * damageValueKoef);

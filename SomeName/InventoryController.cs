@@ -46,7 +46,9 @@ namespace SomeName
             {
                 Level = Player.Level,
                 Power = Player.GetPower(),
+                Vitality = Player.GetVitality(),
                 Damage = Player.GetDamage(),
+                MaxHealth = Player.GetMaxHealth(),
                 CritChance = Player.GetCritChance(),
                 CritDamage = Player.GetCritDamage()
             };

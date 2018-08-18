@@ -33,6 +33,7 @@ namespace SomeName
             {
                 var drop = _monster.GetDrop();
                 Player.TakeDrop(drop);
+                Player.Health = Player.GetMaxHealth();
                 FarmForm.UpdateDropInfo(new DropInfo(_monster, drop));
                 NewMonster();
             }
@@ -45,6 +46,7 @@ namespace SomeName
             FarmForm.UpdatePlayerLevel(Player.Level);
             FarmForm.UpdatePlayerExp(Player.Exp, Player.ExpForNextLevel);
             FarmForm.UpdatePlayerGold(Player.Gold);
+            FarmForm.UpdatePlayerHealth(Player.Health, Player.GetMaxHealth());
 
             FarmForm.UpdateMonsterHealth(_monster.Health, _monster.MaxHealth);
             FarmForm.MonsterInfo(_monster.Description);
@@ -57,6 +59,7 @@ namespace SomeName
 
         public void StartFarm()
         {
+            Player.Health = Player.GetMaxHealth();
             NewMonster();
             Update();
         }

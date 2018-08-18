@@ -29,9 +29,6 @@ namespace SomeName.Balance
             return ToInt64(damageWithoutCritCoef * critCoef);
         }
 
-        public static long GetDefaultMonsterHealth(int level)
-            => ToInt64(GetDefaultDamage(level) * GetTapsForMonster(level));
-
         public static long GetWeaponDamage(int level, double damageValueKoef)
             => ToInt64(GetBaseWeaponDamage(level) * damageValueKoef);
 
@@ -53,13 +50,33 @@ namespace SomeName.Balance
             => Pow(level, 0.6) * 10;
 
         public static int GetPlayerPower(int level, double damageValueKoef)
-            => level * PowerPerLevel + GetWeaponPower(level, damageValueKoef);
+            => StartPower + level * PowerPerLevel + GetWeaponPower(level, damageValueKoef);
 
         public static int GetWeaponPower(int level, double damageValueKoef)
             => ToInt32(GetBaseWeaponPower(level) * damageValueKoef);
 
         public static int GetBaseWeaponPower(int level)
-            => ToInt32(Pow(level, 1.5));
+            => GetBaseItemStat(level);
+
+        public static long GetPlayerMaxHealth(int level, double damageValueKoef)
+            => ToInt64(GetPlayerVitality(level, damageValueKoef)) * GetMaxHealthPerVitality(level);
+
+        public static int GetMaxHealthPerVitality(int level)
+            => level >= 10
+                ? level
+                : 10;
+
+        public static int GetPlayerVitality(int level, double damageValueKoef)
+            => StartVitality + level * VitalityPerLevel + GetWeaponVitality(level, damageValueKoef);
+
+        public static int GetWeaponVitality(int level, double damageValueKoef)
+            => ToInt32(GetBaseWeaponVitality(level) * damageValueKoef);
+
+        public static int GetBaseWeaponVitality(int level)
+            => GetBaseItemStat(level);
+
+        public static int GetBaseItemStat(int level)
+            => ToInt32(Pow(level, 1.3));
 
         public static double GetBaseCritCoef(int level)
             => GetPlayerCritChance(level) * (GetPlayerCritDamage(level) - 1) + 1;
@@ -96,6 +113,15 @@ namespace SomeName.Balance
         public static int CalculatePower(int level, EquippedItems equippedItems)
             => StartPower + level * PowerPerLevel + equippedItems.GetPower();
 
+        public static long CalculateMaxHealth(Player player)
+            => ToInt64(CalculateVitality(player)) * GetMaxHealthPerVitality(player.Level);
+
+        public static int CalculateVitality(Player player)
+            => CalculateVitality(player.Level, player.EquippedItems);
+
+        public static int CalculateVitality(int level, EquippedItems equippedItems)
+            => StartVitality + level * VitalityPerLevel + equippedItems.GetVitality();
+
         public static double CalculateCritChance(Player player)
             => CalculateCritChance(player.EquippedItems);
 
@@ -111,6 +137,8 @@ namespace SomeName.Balance
         public static readonly int StartPower = 20;
 
         public static readonly int PowerPerLevel = 10;
+
+        public static readonly int StartVitality = 20;
 
         public static readonly int VitalityPerLevel = 10;
 

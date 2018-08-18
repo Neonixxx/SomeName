@@ -31,7 +31,6 @@
             this.Attack_Button = new System.Windows.Forms.Button();
             this.GoldText_Label = new System.Windows.Forms.Label();
             this.Gold_Label = new System.Windows.Forms.Label();
-            this.ExpText_Label = new System.Windows.Forms.Label();
             this.Level_Label = new System.Windows.Forms.Label();
             this.LevelText_Label = new System.Windows.Forms.Label();
             this.Exp_Bar = new System.Windows.Forms.ProgressBar();
@@ -40,6 +39,9 @@
             this.MonsterInfo_Label = new System.Windows.Forms.Label();
             this.MonsterHealth_Label = new System.Windows.Forms.Label();
             this.DropInfo_Label = new System.Windows.Forms.Label();
+            this.ExpText_Label = new System.Windows.Forms.Label();
+            this.PlayerHealth_Bar = new System.Windows.Forms.ProgressBar();
+            this.PlayerHealth_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Attack_Button
@@ -69,15 +71,6 @@
             this.Gold_Label.Size = new System.Drawing.Size(56, 13);
             this.Gold_Label.TabIndex = 2;
             this.Gold_Label.Text = "GoldValue";
-            // 
-            // ExpText_Label
-            // 
-            this.ExpText_Label.AutoSize = true;
-            this.ExpText_Label.Location = new System.Drawing.Point(61, 57);
-            this.ExpText_Label.Name = "ExpText_Label";
-            this.ExpText_Label.Size = new System.Drawing.Size(25, 13);
-            this.ExpText_Label.TabIndex = 3;
-            this.ExpText_Label.Text = "Exp";
             // 
             // Level_Label
             // 
@@ -148,11 +141,39 @@
             this.DropInfo_Label.TabIndex = 12;
             this.DropInfo_Label.Text = "DropInfo";
             // 
+            // ExpText_Label
+            // 
+            this.ExpText_Label.AutoSize = true;
+            this.ExpText_Label.Location = new System.Drawing.Point(61, 57);
+            this.ExpText_Label.Name = "ExpText_Label";
+            this.ExpText_Label.Size = new System.Drawing.Size(25, 13);
+            this.ExpText_Label.TabIndex = 3;
+            this.ExpText_Label.Text = "Exp";
+            // 
+            // PlayerHealth_Bar
+            // 
+            this.PlayerHealth_Bar.Location = new System.Drawing.Point(12, 393);
+            this.PlayerHealth_Bar.Name = "PlayerHealth_Bar";
+            this.PlayerHealth_Bar.Size = new System.Drawing.Size(840, 45);
+            this.PlayerHealth_Bar.TabIndex = 13;
+            // 
+            // PlayerHealth_Label
+            // 
+            this.PlayerHealth_Label.AutoSize = true;
+            this.PlayerHealth_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PlayerHealth_Label.Location = new System.Drawing.Point(395, 404);
+            this.PlayerHealth_Label.Name = "PlayerHealth_Label";
+            this.PlayerHealth_Label.Size = new System.Drawing.Size(175, 22);
+            this.PlayerHealth_Label.TabIndex = 14;
+            this.PlayerHealth_Label.Text = "PlayerHealthPercent";
+            // 
             // Farm_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(864, 450);
+            this.Controls.Add(this.PlayerHealth_Label);
+            this.Controls.Add(this.PlayerHealth_Bar);
             this.Controls.Add(this.DropInfo_Label);
             this.Controls.Add(this.MonsterHealth_Label);
             this.Controls.Add(this.MonsterInfo_Label);
@@ -177,7 +198,6 @@
         private System.Windows.Forms.Button Attack_Button;
         private System.Windows.Forms.Label GoldText_Label;
         private System.Windows.Forms.Label Gold_Label;
-        private System.Windows.Forms.Label ExpText_Label;
         private System.Windows.Forms.Label Level_Label;
         private System.Windows.Forms.Label LevelText_Label;
         private System.Windows.Forms.ProgressBar Exp_Bar;
@@ -186,5 +206,8 @@
         private System.Windows.Forms.Label MonsterInfo_Label;
         private System.Windows.Forms.Label MonsterHealth_Label;
         private System.Windows.Forms.Label DropInfo_Label;
+        private System.Windows.Forms.Label ExpText_Label;
+        private System.Windows.Forms.ProgressBar PlayerHealth_Bar;
+        private System.Windows.Forms.Label PlayerHealth_Label;
     }
 }

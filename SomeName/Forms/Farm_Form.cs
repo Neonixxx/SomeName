@@ -37,6 +37,14 @@ namespace SomeName.Forms
         public void UpdatePlayerGold(long gold)
             => Gold_Label.Text = gold.ToString();
 
+        public void UpdatePlayerHealth(long health, long maxHealth)
+        {
+            double percent = health.ToDouble() / maxHealth;
+
+            PlayerHealth_Bar.Value = (percent * 100).ToInt32();
+            PlayerHealth_Label.Text = percent.ToPercentString();
+        }
+
         public string MonsterInfo(string monsterText)
             => MonsterInfo_Label.Text = monsterText;
 
