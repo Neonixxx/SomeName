@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Attack_Button = new System.Windows.Forms.Button();
             this.GoldText_Label = new System.Windows.Forms.Label();
             this.Gold_Label = new System.Windows.Forms.Label();
@@ -42,6 +43,7 @@
             this.ExpText_Label = new System.Windows.Forms.Label();
             this.PlayerHealth_Bar = new System.Windows.Forms.ProgressBar();
             this.PlayerHealth_Label = new System.Windows.Forms.Label();
+            this.UpdateTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Attack_Button
@@ -209,5 +211,6 @@
         private System.Windows.Forms.Label ExpText_Label;
         private System.Windows.Forms.ProgressBar PlayerHealth_Bar;
         private System.Windows.Forms.Label PlayerHealth_Label;
+        private System.Windows.Forms.Timer UpdateTimer;
     }
 }

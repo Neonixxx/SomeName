@@ -13,7 +13,7 @@ namespace SomeName
         public AutoAttackController(IAutoAttack attacker)
             => Attacker = attacker;
 
-        public void StartAttacking(IAttackTarget target)
+        public void StartAttacking(IAttackTarget target, object locker)
         {
             IsAttacking = true;
             var attackCooldown = Convert.ToInt32(1000 / Attacker.AttackSpeed);
@@ -22,13 +22,14 @@ namespace SomeName
             {
                 Thread.Sleep(attackCooldown);
 
-                if (Attacker.IsDead || target.IsDead)
-                    break;
-
-                var dealtDamage = target.TakeDamage(Attacker.Damage);
-                if (target.IsDead)
+                lock (locker)
                 {
-                    break;
+                    if (Attacker.IsDead || target.IsDead)
+                        break;
+
+                    var dealtDamage = target.TakeDamage(Attacker.Damage);
+                    if (target.IsDead)
+                        break;
                 }
             }
         }

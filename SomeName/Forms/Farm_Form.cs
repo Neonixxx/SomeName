@@ -19,10 +19,16 @@ namespace SomeName.Forms
         {
             InitializeComponent();
             FormClosing += Farm_Form_FormClosing;
+            UpdateTimer.Tick += UpdateTimer_Tick;
+            UpdateTimer.Interval = 50;
         }
+
+        private void UpdateTimer_Tick(object sender, EventArgs e)
+            => FarmController.Update();
 
         private void Farm_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
+            UpdateTimer.Enabled = false;
             FarmController.StopFarm();
         }
 
@@ -80,6 +86,7 @@ namespace SomeName.Forms
         public void Start()
         {
             FarmController.StartFarm();
+            UpdateTimer.Enabled = true;
             ShowDialog();
         }
 

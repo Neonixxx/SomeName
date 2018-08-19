@@ -46,8 +46,8 @@ namespace SomeName.Monsters.Interfaces
             IsDropTaken = false;
         }
 
-        public void StartAttacking(IAttackTarget target)
-            => Attacker.StartAttacking(target);
+        public void StartAttacking(IAttackTarget target, object locker)
+            => Attacker.StartAttacking(target, locker);
 
         public bool StopAttacking()
             => Attacker.IsAttacking = false;
