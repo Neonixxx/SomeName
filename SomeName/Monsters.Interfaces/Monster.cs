@@ -13,6 +13,12 @@ namespace SomeName.Monsters.Interfaces
     {
         public int Level { get; private set; }
 
+
+        public long Damage { get; set; }
+
+        public long AttackSpeed { get; set; }
+
+
         public long MaxHealth { get; private set; }
 
         public long Health { get; private set; }
@@ -25,26 +31,30 @@ namespace SomeName.Monsters.Interfaces
 
         public string Description { get; private set; } = "Not implemented";
 
+
+        // TODO : Сделать разную скорость атаки монстров.
         public void Respawn(int level)
         {
             Level = level;
+            Damage = MonsterBalance.GetDefaultMonsterDPS(level);
+            AttackSpeed = 1;
             MaxHealth = MonsterBalance.GetDefaultMonsterHealth(level);
             Health = MaxHealth;
-            DroppedItems = DropBalance.CalculateDrop(Level, MaxHealth);
+            DroppedItems = DropBalance.CalculateDrop(level, MaxHealth);
             IsDead = false;
             IsDropTaken = false;
         }
 
-        public long DealDamage(long damage)
+        public long TakeDamage(long damage)
         {
-            var dealtDamage = GetDealtDamage(damage);
+            var dealtDamage = GetTakenDamage(damage);
             Health -= dealtDamage;
             if (Health == 0)
                 IsDead = true;
             return dealtDamage;
         }
 
-        public long GetDealtDamage(long damage)
+        public long GetTakenDamage(long damage)
         {
             return Health - damage >= 0
                 ? damage

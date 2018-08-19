@@ -28,7 +28,7 @@ namespace SomeName
         public void Attack()
         {
             var damage = Player.GetDamage();
-            var dealtDamage = _monster.DealDamage(damage);
+            var dealtDamage = _monster.TakeDamage(damage);
             if (_monster.IsDead)
             {
                 var drop = _monster.GetDrop();

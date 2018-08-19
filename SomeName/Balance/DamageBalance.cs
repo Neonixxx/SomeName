@@ -49,6 +49,9 @@ namespace SomeName.Balance
         public static double GetTapsForMonster(int level)
             => Pow(level, 0.6) * 10;
 
+        public static double GetTapsPerSecond(int level)
+            => 2 + 0.03 * level;
+
         public static int GetPlayerPower(int level, double damageValueKoef)
             => StartPower + level * PowerPerLevel + GetWeaponPower(level, damageValueKoef);
 
@@ -57,6 +60,9 @@ namespace SomeName.Balance
 
         public static int GetBaseWeaponPower(int level)
             => GetBaseItemStat(level);
+
+        public static long GetDefaultPlayerMaxHealth(int level)
+            => GetPlayerMaxHealth(level, GetItemDamageKoef(level));
 
         public static long GetPlayerMaxHealth(int level, double damageValueKoef)
             => ToInt64(GetPlayerVitality(level, damageValueKoef)) * GetMaxHealthPerVitality(level);
