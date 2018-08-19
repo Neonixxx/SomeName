@@ -9,15 +9,15 @@ using SomeName.Domain;
 
 namespace SomeName.Monsters.Interfaces
 {
-    public abstract class Monster
+    public abstract class Monster : IAutoAttack
     {
-        public int Level { get; private set; }
+        public AutoAttackController Attacker { get; set; }
 
+        public int Level { get; private set; }
 
         public long Damage { get; set; }
 
-        public long AttackSpeed { get; set; }
-
+        public double AttackSpeed { get; set; }
 
         public long MaxHealth { get; private set; }
 
@@ -35,15 +35,22 @@ namespace SomeName.Monsters.Interfaces
         // TODO : Сделать разную скорость атаки монстров.
         public void Respawn(int level)
         {
+            Attacker = new AutoAttackController(this);
             Level = level;
             Damage = MonsterBalance.GetDefaultMonsterDPS(level);
-            AttackSpeed = 1;
+            AttackSpeed = 1.0;
             MaxHealth = MonsterBalance.GetDefaultMonsterHealth(level);
             Health = MaxHealth;
             DroppedItems = DropBalance.CalculateDrop(level, MaxHealth);
             IsDead = false;
             IsDropTaken = false;
         }
+
+        public void StartAttacking(IAttackTarget target)
+            => Attacker.StartAttacking(target);
+
+        public bool StopAttacking()
+            => Attacker.IsAttacking = false;
 
         public long TakeDamage(long damage)
         {

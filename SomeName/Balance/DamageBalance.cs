@@ -29,11 +29,13 @@ namespace SomeName.Balance
             return ToInt64(damageWithoutCritCoef * critCoef);
         }
 
+
         public static long GetWeaponDamage(int level, double damageValueKoef)
             => ToInt64(GetBaseWeaponDamage(level) * damageValueKoef);
 
         public static long GetBaseWeaponDamage(int level)
             => ToInt64(100 * Pow(E, 0.04 * level) - 100);
+
 
         public static double GetItemDamageKoef(int level)
             => level >= 70
@@ -42,6 +44,7 @@ namespace SomeName.Balance
 
         public static double GetItemDamageKoef(double diceValue)
             => Pow(diceValue, -0.35);
+
 
         public static double GetTapsForLevel(int level)
             => Pow(level, 1.2) * 20;
@@ -52,6 +55,20 @@ namespace SomeName.Balance
         public static double GetTapsPerSecond(int level)
             => 2 + 0.03 * level;
 
+        // TODO : доделать формулу + сделать для остальных предметов.
+        public static double GetPlayerDefenceKoef(int level)
+        {
+            var defence = ToDouble(GetPlayerDefence(level, GetItemDamageKoef(level)));
+            return defence / (defence + GetBaseDefenceValue(level));
+        }
+
+        public static long GetPlayerDefence(int level, double damageValueKoef)
+            => StartDefence + DefencePerLevel * level;
+
+        public static long GetBaseDefenceValue(int level)
+            => ToInt64(Pow(level, 2));
+
+
         public static int GetPlayerPower(int level, double damageValueKoef)
             => StartPower + level * PowerPerLevel + GetWeaponPower(level, damageValueKoef);
 
@@ -61,11 +78,13 @@ namespace SomeName.Balance
         public static int GetBaseWeaponPower(int level)
             => GetBaseItemStat(level);
 
+
         public static long GetDefaultPlayerMaxHealth(int level)
             => GetPlayerMaxHealth(level, GetItemDamageKoef(level));
 
         public static long GetPlayerMaxHealth(int level, double damageValueKoef)
             => ToInt64(GetPlayerVitality(level, damageValueKoef)) * GetMaxHealthPerVitality(level);
+
 
         public static int GetMaxHealthPerVitality(int level)
             => level >= 10
@@ -84,6 +103,7 @@ namespace SomeName.Balance
         public static int GetBaseItemStat(int level)
             => ToInt32(Pow(level, 1.3));
 
+
         public static double GetBaseCritCoef(int level)
             => GetPlayerCritChance(level) * (GetPlayerCritDamage(level) - 1) + 1;
 
@@ -99,6 +119,7 @@ namespace SomeName.Balance
         public static double GetBaseWeaponCritDamage(int level)
             => 0.0;
 
+
         public static long CalculateDamage(Player player)
             => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon, player.GetCritChance(), player.GetCritDamage());
 
@@ -113,11 +134,13 @@ namespace SomeName.Balance
             return damageWithoutCrit;
         }
 
+
         public static int CalculatePower(Player player)
             => CalculatePower(player.Level, player.EquippedItems);
 
         public static int CalculatePower(int level, EquippedItems equippedItems)
             => StartPower + level * PowerPerLevel + equippedItems.GetPower();
+
 
         public static long CalculateMaxHealth(Player player)
             => ToInt64(CalculateVitality(player)) * GetMaxHealthPerVitality(player.Level);
@@ -127,6 +150,7 @@ namespace SomeName.Balance
 
         public static int CalculateVitality(int level, EquippedItems equippedItems)
             => StartVitality + level * VitalityPerLevel + equippedItems.GetVitality();
+
 
         public static double CalculateCritChance(Player player)
             => CalculateCritChance(player.EquippedItems);
@@ -139,6 +163,11 @@ namespace SomeName.Balance
 
         public static double CalculateCritDamage(EquippedItems equippedItems)
             => StartCritDamage + equippedItems.GetCritDamage();
+
+
+        public static readonly long StartDefence = 100;
+
+        public static readonly long DefencePerLevel = 10;
 
         public static readonly int StartPower = 20;
 

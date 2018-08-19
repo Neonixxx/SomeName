@@ -18,6 +18,12 @@ namespace SomeName.Forms
         public Farm_Form()
         {
             InitializeComponent();
+            FormClosing += Farm_Form_FormClosing;
+        }
+
+        private void Farm_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FarmController.StopFarm();
         }
 
         // TODO : сделать все обновления в один метод с параметром FarmInfo + настроить маппинг.

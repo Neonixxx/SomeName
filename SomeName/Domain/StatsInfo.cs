@@ -17,6 +17,10 @@ namespace SomeName.Domain
 
         public long Damage { get; set; }
 
+        public long Defence { get; set; }
+
+        public double DefenceKoef { get; set; }
+
         public long MaxHealth { get; set; }
 
         public double CritChance { get; set; }
@@ -29,6 +33,8 @@ namespace SomeName.Domain
                 $"{NewLine}Power: {Power}" +
                 $"{NewLine}Vitality: {Vitality}" +
                 $"{NewLine}Damage: {Damage}" +
+                $"{NewLine}Defence: {Defence}" +
+                $"{NewLine}Снижение получаемого урона: {DefenceKoef}" +
                 $"{NewLine}Health: {MaxHealth}" +
                 $"{NewLine}Шанс крита: {CritChance.ToPercentString(0)}" +
                 $"{NewLine}Сила крита: {CritDamage.ToPercentString(0)}";

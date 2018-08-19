@@ -9,7 +9,8 @@ using SomeName.Domain;
 
 namespace SomeName.Domain
 {
-    public class Player
+    // TODO : Сделать конвертер Player -> StatsInfo.
+    public class Player : IAttackTarget
     {
         public Player() { }
 
@@ -22,6 +23,8 @@ namespace SomeName.Domain
         public long Gold { get; set; }
 
         public long Health { get; set; }
+
+        public bool IsDead { get; private set; }
 
         public EquippedItems EquippedItems { get; set; }
 
@@ -44,6 +47,30 @@ namespace SomeName.Domain
 
         public double GetCritDamage()
             => DamageBalance.CalculateCritDamage(this);
+
+        public long TakeDamage(long damage)
+        {
+            var dealtDamage = GetTakenDamage(damage);
+            Health -= dealtDamage;
+            if (Health == 0)
+                IsDead = true;
+            return dealtDamage;
+        }
+
+        // TODO : Сделать расчет получаемого урона с учетом защиты.
+        public long GetTakenDamage(long damage)
+        {
+            return Health - damage >= 0
+                ? damage
+                : Health;
+        }
+
+        public void Respawn()
+        {
+            Health = GetMaxHealth();
+            IsDead = false;
+        }
+
 
         public bool Equip(Item item)
         {

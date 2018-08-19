@@ -36,6 +36,7 @@
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Activities" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -54,6 +55,10 @@
     <Compile Include="Dice.cs" />
     <Compile Include="Domain\DropInfo.cs" />
     <Compile Include="Domain\EquippedItems.cs" />
+    <Compile Include="Domain\IAttackTarget.cs" />
+    <Compile Include="Domain\IAutoAttack.cs" />
+    <Compile Include="Domain\ICanDie.cs" />
+    <Compile Include="Domain\IUpdater.cs" />
     <Compile Include="Domain\WeaponBonuses.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
@@ -96,6 +101,7 @@
     <Compile Include="ItemType.cs" />
     <Compile Include="Monsters.Impl\MonsterFacture.cs" />
     <Compile Include="Monsters.Impl\SimpleMonster.cs" />
+    <Compile Include="AutoAttackController.cs" />
     <Compile Include="Monsters.Interfaces\Monster.cs" />
     <Compile Include="Exceptions\MonsterNotDeadException.cs" />
     <Compile Include="Domain\Player.cs" />

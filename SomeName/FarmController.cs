@@ -8,10 +8,13 @@ using SomeName.Balance;
 using SomeName.Monsters.Impl;
 using SomeName.Forms;
 using SomeName.Domain;
+using System.Threading;
+using System.ComponentModel;
+using System.Activities.Statements;
 
 namespace SomeName
 {
-    public class FarmController
+    public class FarmController : IUpdater
     {
         public Player Player { get; set; }
 
@@ -25,8 +28,12 @@ namespace SomeName
             FarmForm = farm_form;
         }
 
+        // TODO : сделать какую нибудь информацию о смерти игрока на форме.
         public void Attack()
         {
+            if (Player.IsDead)
+                return;
+
             var damage = Player.GetDamage();
             var dealtDamage = _monster.TakeDamage(damage);
             if (_monster.IsDead)
@@ -36,6 +43,7 @@ namespace SomeName
                 Player.Health = Player.GetMaxHealth();
                 FarmForm.UpdateDropInfo(new DropInfo(_monster, drop));
                 NewMonster();
+                StartMonsterAttaking();
             }
 
             Update();
@@ -57,11 +65,23 @@ namespace SomeName
             _monster = MonsterFacture.GetRandomMonster(Player.Level);
         }
 
+        // TODO : сделать обновление здоровья игрока после атаки монстра.
+        private void StartMonsterAttaking()
+        {
+            Task.Factory.StartNew(() => _monster.StartAttacking(Player));
+        }
+
         public void StartFarm()
         {
-            Player.Health = Player.GetMaxHealth();
+            Player.Respawn();
             NewMonster();
             Update();
+            StartMonsterAttaking();
+        }
+
+        public void StopFarm()
+        {
+            _monster.StopAttacking();
         }
     }
 }
