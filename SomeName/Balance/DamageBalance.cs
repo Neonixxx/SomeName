@@ -8,6 +8,7 @@ using static System.Math;
 using SomeName.Items.Interfaces;
 using SomeName.Domain;
 using static System.Convert;
+using SomeName.Difficulties;
 
 namespace SomeName.Balance
 {
@@ -18,7 +19,7 @@ namespace SomeName.Balance
 
         public static long GetDefaultPlayerDamage(int level)
         {
-            var itemDamageKoef = GetItemDamageKoef(level);
+            var itemDamageKoef = GetItemDamageKoef();
             var power = GetPlayerPower(level, itemDamageKoef);
             var weaponDamage = GetWeaponDamage(level, itemDamageKoef);
 
@@ -31,12 +32,15 @@ namespace SomeName.Balance
 
         public static double GetDefaultPlayerDefenceKoef(int level)
         {
-            var defence = GetPlayerDefence(level, GetItemDamageKoef(level));
+            var defence = GetPlayerDefence(level, GetItemDamageKoef());
             return CalculateDefenceKoef(level, defence);
         }
 
         public static long GetDefaultPlayerToughness(int level)
             => ToInt64(GetDefaultPlayerMaxHealth(level) / GetDefaultPlayerDefenceKoef(level));
+
+        public static long GetDefaultPlayerMaxHealth(int level)
+            => GetPlayerMaxHealth(level, GetItemDamageKoef());
 
 
         public static long GetWeaponDamage(int level, double damageValueKoef)
@@ -45,11 +49,13 @@ namespace SomeName.Balance
         public static long GetBaseWeaponDamage(int level)
             => ToInt64(100 * Pow(E, 0.04 * level) - 100);
 
-
-        public static double GetItemDamageKoef(int level)
-            => level >= 70
-                ? GetItemDamageKoef(5.0 / (level - 65))
-                : 1.0;
+        /// <summary>
+        /// Получить стандартный коэффициент урона предмета для определенного уровня игрока.
+        /// </summary>
+        /// <param name="level">Уровень игрока.</param>
+        /// <returns></returns>
+        public static double GetItemDamageKoef()
+            => BattleDifficulty.Get.ItemDamageKoef;
 
         public static double GetItemDamageKoef(double diceValue)
             => Pow(diceValue, -0.35);
@@ -81,9 +87,6 @@ namespace SomeName.Balance
         public static int GetBaseWeaponPower(int level)
             => GetBaseItemStat(level);
 
-
-        public static long GetDefaultPlayerMaxHealth(int level)
-            => GetPlayerMaxHealth(level, GetItemDamageKoef(level));
 
         public static long GetPlayerMaxHealth(int level, double damageValueKoef)
             => ToInt64(GetPlayerVitality(level, damageValueKoef)) * GetMaxHealthPerVitality(level);

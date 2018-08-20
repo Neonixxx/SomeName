@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SomeName.Difficulties;
 using SomeName.Domain;
 using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
@@ -14,9 +15,9 @@ namespace SomeName.Balance
     {
         private static readonly Random _rand = new Random();
 
-        private static readonly double DropGoldValueKoef = 0.3;
+        public static readonly double DropGoldValueKoef = 0.3;
 
-        private static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
+        public static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
 
         /// <summary>
         /// Не реализовано (заглушка).
@@ -25,11 +26,15 @@ namespace SomeName.Balance
         /// <returns></returns>
         public static Drop CalculateDrop(int level, long value)
         {
+            var goldValue = Convert.ToInt64(value * BattleDifficulty.Get.GoldMultiplier);
+            var expValue = Convert.ToInt64(value * BattleDifficulty.Get.ExpMultiplier);
+            var dropValue = Convert.ToInt64(value * BattleDifficulty.Get.DropMultiplier);
+
             return new Drop()
             {
-                Gold = CalculateGoldDrop(value),
-                Exp = value,
-                Items = CalculateItemsDrop(level, value)
+                Gold = CalculateGoldDrop(goldValue),
+                Exp = expValue,
+                Items = CalculateItemsDrop(level, dropValue)
             };
         }
 
