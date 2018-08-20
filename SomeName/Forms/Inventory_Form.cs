@@ -13,7 +13,7 @@ using SomeName.Domain;
 
 namespace SomeName.Forms
 {
-    public partial class Inventory_Form : Form, ICanStart
+    public partial class Inventory_Form : Form
     {
         public InventoryController InventoryController { get; set; }
 
@@ -21,7 +21,7 @@ namespace SomeName.Forms
 
         private PictureBox _selectedPictureBox;
 
-        public const int ItemsPerPage = 30;
+        private const int ItemsPerPage = 30;
 
         private int _currentPage = 1;
         private int CurrentPage
@@ -69,19 +69,17 @@ namespace SomeName.Forms
             };
         }
 
-        public void Start()
-        {
-            InventoryController.Start();
-            ShowDialog();
-        }
-
-        public void Initialize(int itemsCount)
+        public void Start(int itemsCount)
         {
             if (itemsCount % ItemsPerPage == 0 & itemsCount != 0)
                 MaxPages = itemsCount / ItemsPerPage;
             else
                 MaxPages = itemsCount / ItemsPerPage + 1;
             _firstItemIndex = ItemsPerPage * (CurrentPage - 1);
+
+            InventoryController.Update();
+
+            ShowDialog();
         }
 
         /// <summary>
@@ -189,6 +187,7 @@ namespace SomeName.Forms
             {
                 var itemIndex = InventoryPanel.Controls.IndexOf(_selectedPictureBox);
                 InventoryController.EquipItem(itemIndex);
+                InventoryController.Update();
             }
         }
 
@@ -198,6 +197,7 @@ namespace SomeName.Forms
             {
                 var itemType = _equippedItemsSlots[_selectedPictureBox];
                 InventoryController.UnequipItem(itemType);
+                InventoryController.Update();
             }
         }
     }

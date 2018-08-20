@@ -31,10 +31,10 @@ namespace SomeName
         public static bool ContainsOnly<T>(this IEnumerable<T> enumerable, params T[] items)
             => enumerable.Count() == enumerable.Intersect(items).Count();
 
-        public static void StartForm(this Form thisForm, ICanStart formToStart)
+        public static void StartForm(this Form thisForm, ICanStart objectToStart)
         {
             thisForm.Hide();
-            formToStart.Start();
+            objectToStart.Start();
             thisForm.Show();
         }
     }

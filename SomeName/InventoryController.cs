@@ -9,17 +9,14 @@ using SomeName.Items.Interfaces;
 
 namespace SomeName
 {
-    public class InventoryController
+    public class InventoryController : ICanStart
     {
         public Inventory_Form InventoryForm { get; set; }
 
         public Player Player { get; set; }
 
         public void Start()
-        {
-            InventoryForm.Initialize(Player.Inventory.Count);
-            Update();
-        }
+            => InventoryForm.Start(Player.Inventory.Count);
 
         public void Update()
         {
@@ -29,16 +26,10 @@ namespace SomeName
         }
 
         public void EquipItem(int itemNumber)
-        {
-            if (Player.Equip(Player.Inventory[itemNumber]))
-                Update();
-        }
+            => Player.Equip(Player.Inventory[itemNumber]);
 
         public void UnequipItem(ItemType itemType)
-        {
-            Player.Unequip(itemType);
-            Update();
-        }
+            => Player.Unequip(itemType);
 
         private StatsInfo GetStatsInfo()
         {

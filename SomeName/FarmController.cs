@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace SomeName
 {
-    public class FarmController : IUpdater
+    public class FarmController : IUpdater, ICanStart
     {
         public Player Player { get; set; }
 
@@ -63,22 +63,23 @@ namespace SomeName
                 FarmForm.MonsterInfo(_monster.Description);
         }
 
-        public void NewMonster()
+        private void NewMonster()
         {
             _monster = MonsterFacture.GetRandomMonster(Player.Level);
             StartAttackingByMonster();
         }
 
-        public void StartAttackingByMonster()
+        private void StartAttackingByMonster()
             => Task.Factory.StartNew(() => _monster.StartAttacking(Player, _syncRoot));
 
-        public void StartFarm()
+        public void Start()
         {
             Player.Respawn();
             NewMonster();
+            FarmForm.Start();
         }
 
-        public void StopFarm()
+        public void Stop()
         {
             _monster.StopAttacking();
         }

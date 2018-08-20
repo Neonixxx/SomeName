@@ -29,7 +29,7 @@ namespace SomeName.Forms
         private void Farm_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             UpdateTimer.Enabled = false;
-            FarmController.StopFarm();
+            FarmController.Stop();
         }
 
         // TODO : сделать все обновления в один метод с параметром FarmInfo + настроить маппинг.
@@ -85,14 +85,11 @@ namespace SomeName.Forms
 
         public void Start()
         {
-            FarmController.StartFarm();
             UpdateTimer.Enabled = true;
             ShowDialog();
         }
 
         private void Attack_Button_Click(object sender, EventArgs e)
-        {
-            FarmController.Attack();
-        }
+            => FarmController.Attack();
     }
 }

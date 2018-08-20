@@ -52,7 +52,7 @@ namespace SomeName.Forms
 
         private void Farm_Button_Click(object sender, EventArgs e)
         {
-            this.StartForm(FarmForm);
+            this.StartForm(FarmController);
         }
 
         private void Save_Button_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace SomeName.Forms
 
         private void Inventory_Button_Click(object sender, EventArgs e)
         {
-            this.StartForm(InventoryForm);
+            this.StartForm(InventoryController);
         }
     }
 }
