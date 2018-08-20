@@ -36,10 +36,12 @@ namespace SomeName
             return new StatsInfo
             {
                 Level = Player.Level,
-                Power = Player.GetPower(),
-                Vitality = Player.GetVitality(),
                 Damage = Player.GetDamage(),
                 MaxHealth = Player.GetMaxHealth(),
+                Power = Player.GetPower(),
+                Vitality = Player.GetVitality(),
+                Defence = Player.GetDefence(),
+                DefenceKoef = Player.GetDefenceKoef(),
                 CritChance = Player.GetCritChance(),
                 CritDamage = Player.GetCritDamage()
             };

@@ -14,9 +14,9 @@ namespace SomeName.Balance
     public static class DamageBalance
     {
         public static long GetExp(int level)
-            => ToInt64(GetDefaultDamage(level) * GetTapsForLevel(level));
+            => ToInt64(GetDefaultPlayerDamage(level) * GetTapsForLevel(level));
 
-        public static long GetDefaultDamage(int level)
+        public static long GetDefaultPlayerDamage(int level)
         {
             var itemDamageKoef = GetItemDamageKoef(level);
             var power = GetPlayerPower(level, itemDamageKoef);
@@ -28,6 +28,15 @@ namespace SomeName.Balance
 
             return ToInt64(damageWithoutCritCoef * critCoef);
         }
+
+        public static double GetDefaultPlayerDefenceKoef(int level)
+        {
+            var defence = GetPlayerDefence(level, GetItemDamageKoef(level));
+            return CalculateDefenceKoef(level, defence);
+        }
+
+        public static long GetDefaultPlayerToughness(int level)
+            => ToInt64(GetDefaultPlayerMaxHealth(level) / GetDefaultPlayerDefenceKoef(level));
 
 
         public static long GetWeaponDamage(int level, double damageValueKoef)
@@ -56,12 +65,6 @@ namespace SomeName.Balance
             => 2 + 0.03 * level;
 
         // TODO : доделать формулу + сделать для остальных предметов.
-        public static double GetPlayerDefenceKoef(int level)
-        {
-            var defence = ToDouble(GetPlayerDefence(level, GetItemDamageKoef(level)));
-            return defence / (defence + GetBaseDefenceValue(level));
-        }
-
         public static long GetPlayerDefence(int level, double damageValueKoef)
             => StartDefence + DefencePerLevel * level;
 
@@ -133,6 +136,19 @@ namespace SomeName.Balance
                 damageWithoutCrit = ToInt64(damageWithoutCrit * critDamage);
             return damageWithoutCrit;
         }
+
+
+        public static double CalculateDefenceKoef(Player player)
+            => CalculateDefenceKoef(player.Level, CalculateDefence(player));
+
+        public static double CalculateDefenceKoef(int level, long defence)
+            => ToDouble(defence) / (defence + GetBaseDefenceValue(level));
+
+        public static long CalculateDefence(Player player)
+            => CalculateDefence(player.Level, player.EquippedItems);
+
+        public static long CalculateDefence(int level, EquippedItems equippedItems)
+            => StartDefence + DefencePerLevel * level + equippedItems.GetDefence();
 
 
         public static int CalculatePower(Player player)

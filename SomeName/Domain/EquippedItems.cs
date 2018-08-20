@@ -12,6 +12,9 @@ namespace SomeName.Domain
     {
         public Weapon Weapon { get; set; }
 
+        public long GetDefence()
+            => 0;
+
         public int GetPower()
             => Weapon?.Bonuses.Power ?? 0;
 

@@ -14,9 +14,9 @@ namespace SomeName.Balance
     {
         private static readonly Random _rand = new Random();
 
-        public static readonly double DropGoldValueKoef = 0.3;
+        private static readonly double DropGoldValueKoef = 0.3;
 
-        public static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
+        private static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
 
         /// <summary>
         /// Не реализовано (заглушка).

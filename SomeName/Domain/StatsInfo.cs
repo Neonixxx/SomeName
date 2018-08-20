@@ -30,12 +30,12 @@ namespace SomeName.Domain
         public override string ToString()
         {
             return $"Level: {Level}" +
+                $"{NewLine}Damage: {Damage}" +
+                $"{NewLine}Health: {MaxHealth}" +
                 $"{NewLine}Power: {Power}" +
                 $"{NewLine}Vitality: {Vitality}" +
-                $"{NewLine}Damage: {Damage}" +
                 $"{NewLine}Defence: {Defence}" +
-                $"{NewLine}Снижение получаемого урона: {DefenceKoef}" +
-                $"{NewLine}Health: {MaxHealth}" +
+                $"{NewLine}Снижение получаемого урона: {DefenceKoef.ToPercentString(2)}" +
                 $"{NewLine}Шанс крита: {CritChance.ToPercentString(0)}" +
                 $"{NewLine}Сила крита: {CritDamage.ToPercentString(0)}";
         }

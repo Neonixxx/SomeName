@@ -33,6 +33,12 @@ namespace SomeName.Domain
         public long GetDamage()
             => DamageBalance.CalculateDamage(this);
 
+        public long GetDefence()
+            => DamageBalance.CalculateDefence(this);
+
+        public double GetDefenceKoef()
+            => DamageBalance.CalculateDefenceKoef(this);
+
         public long GetMaxHealth()
             => DamageBalance.CalculateMaxHealth(this);
 
@@ -60,8 +66,9 @@ namespace SomeName.Domain
         // TODO : Сделать расчет получаемого урона с учетом защиты.
         public long GetTakenDamage(long damage)
         {
-            return Health - damage >= 0
-                ? damage
+            var dealtDamage = Convert.ToInt64(damage * (1 - GetDefenceKoef()));
+            return Health - dealtDamage >= 0
+                ? dealtDamage
                 : Health;
         }
 
