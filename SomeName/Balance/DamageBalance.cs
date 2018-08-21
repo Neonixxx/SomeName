@@ -30,18 +30,17 @@ namespace SomeName.Balance
             return ToInt64(damageWithoutCritCoef * critCoef);
         }
 
+        public static long GetDefaultPlayerToughness(int level)
+            => ToInt64(GetDefaultPlayerMaxHealth(level) / (1 - GetDefaultPlayerDefenceKoef(level)));
+
+        public static long GetDefaultPlayerMaxHealth(int level)
+            => GetPlayerMaxHealth(level, GetItemDamageKoef());
+
         public static double GetDefaultPlayerDefenceKoef(int level)
         {
             var defence = GetPlayerDefence(level, GetItemDamageKoef());
             return CalculateDefenceKoef(level, defence);
         }
-
-        public static long GetDefaultPlayerToughness(int level)
-            => ToInt64(GetDefaultPlayerMaxHealth(level) / GetDefaultPlayerDefenceKoef(level));
-
-        public static long GetDefaultPlayerMaxHealth(int level)
-            => GetPlayerMaxHealth(level, GetItemDamageKoef());
-
 
         public static long GetWeaponDamage(int level, double damageValueKoef)
             => ToInt64(GetBaseWeaponDamage(level) * damageValueKoef);
@@ -184,7 +183,7 @@ namespace SomeName.Balance
             => StartCritDamage + equippedItems.GetCritDamage();
 
 
-        public static readonly long StartDefence = 100;
+        public static readonly long StartDefence = 0;
 
         public static readonly long DefencePerLevel = 10;
 

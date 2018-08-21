@@ -63,7 +63,6 @@ namespace SomeName.Domain
             return dealtDamage;
         }
 
-        // TODO : Сделать расчет получаемого урона с учетом защиты.
         public long GetTakenDamage(long damage)
         {
             var dealtDamage = Convert.ToInt64(damage * (1 - GetDefenceKoef()));

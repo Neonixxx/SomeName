@@ -49,7 +49,6 @@ namespace SomeName.Balance
         protected virtual long CalculateExpDrop(long value)
             => value;
 
-        // TODO : реализовать выпадение других видов предметов.
         protected virtual List<Item> CalculateItemsDrop(int level, long value)
         {
             var itemDropValue = value * DropItemsValueKoef / ItemFactoriesCount;
