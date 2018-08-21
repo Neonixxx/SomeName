@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Balance\DamageBalance.cs" />
-    <Compile Include="Balance\DropBalance.cs" />
+    <Compile Include="Balance\DropFactory.cs" />
     <Compile Include="Balance\MonsterBalance.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
@@ -78,21 +78,19 @@
     </Compile>
     <Compile Include="Domain\ICanStart.cs" />
     <Compile Include="InventoryController.cs" />
-    <Compile Include="Items.Impl\BeginnerSword.cs" />
+    <Compile Include="Items\Factories\ItemFactory.cs" />
+    <Compile Include="Items\Factories\SimpleSwordFactory.cs" />
+    <Compile Include="Items\Factories\WeaponFactory.cs" />
+    <Compile Include="Items\Impl\BeginnerSword.cs" />
     <Compile Include="Forms\Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Items.Impl\ItemImages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ItemImages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Items.Impl\Sword.cs" />
-    <Compile Include="Items.Interfaces\Item.cs" />
-    <Compile Include="Items.Interfaces\Weapon.cs" />
+    <Compile Include="Items\Impl\SimpleSword.cs" />
+    <Compile Include="Items\Interfaces\Item.cs" />
+    <Compile Include="Items\Interfaces\Weapon.cs" />
     <Compile Include="Forms\Menu_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,11 +98,16 @@
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\Drop.cs" />
+    <Compile Include="Items\Resources\ItemImages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemImages.resx</DependentUpon>
+    </Compile>
     <Compile Include="ItemType.cs" />
-    <Compile Include="Monsters.Impl\MonsterFacture.cs" />
-    <Compile Include="Monsters.Impl\SimpleMonster.cs" />
+    <Compile Include="Monsters\Impl\MonsterFacture.cs" />
+    <Compile Include="Monsters\Impl\SimpleMonster.cs" />
     <Compile Include="AutoAttackController.cs" />
-    <Compile Include="Monsters.Interfaces\Monster.cs" />
+    <Compile Include="Monsters\Interfaces\Monster.cs" />
     <Compile Include="Exceptions\MonsterNotDeadException.cs" />
     <Compile Include="Domain\Player.cs" />
     <Compile Include="PlayerIO.cs" />
@@ -123,8 +126,9 @@
     <EmbeddedResource Include="Forms\Menu_Form.resx">
       <DependentUpon>Menu_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Items.Impl\ItemImages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+    <EmbeddedResource Include="Items\Resources\ItemImages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>ItemImages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -151,10 +155,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\weapon_squires_sword_i00.jpg" />
+    <None Include="Items\Resources\weapon_squires_sword_i00.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\weapon_bastard_sword_i00.jpg" />
+    <None Include="Items\Resources\weapon_bastard_sword_i00.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

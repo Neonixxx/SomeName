@@ -20,5 +20,8 @@ namespace SomeName
 
         public static int GetRange(int from, int to)
             => _rand.Next(from, to + 1);
+
+        public static double GetRange(double from, double to)
+            => _rand.NextDouble() * (to - from) + from;
     }
 }

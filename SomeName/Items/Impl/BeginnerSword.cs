@@ -1,4 +1,5 @@
 ﻿using SomeName.Items.Interfaces;
+using SomeName.Items.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;

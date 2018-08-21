@@ -13,6 +13,8 @@ namespace SomeName.Monsters.Interfaces
     {
         public AutoAttackController Attacker { get; set; }
 
+        public DropFactory DropFactory { get; set; }
+
         public int Level { get; private set; }
 
         public long Damage { get; set; }
@@ -33,7 +35,7 @@ namespace SomeName.Monsters.Interfaces
 
 
         // TODO : Сделать разную скорость атаки монстров.
-        public void Respawn(int level)
+        public virtual void Respawn(int level)
         {
             Attacker = new AutoAttackController(this);
             Level = level;
@@ -41,7 +43,7 @@ namespace SomeName.Monsters.Interfaces
             AttackSpeed = 1.0;
             MaxHealth = MonsterBalance.GetDefaultMonsterHealth(level);
             Health = MaxHealth;
-            DroppedItems = DropBalance.CalculateDrop(level, MaxHealth);
+            DroppedItems = DropFactory.Build(level, MaxHealth);
             IsDead = false;
             IsDropTaken = false;
         }
