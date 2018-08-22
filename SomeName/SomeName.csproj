@@ -55,13 +55,15 @@
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
     <Compile Include="Difficulties\BattleDifficultyEnum.cs" />
+    <Compile Include="Items\Bonuses\ArmorBonuses.cs" />
     <Compile Include="Domain\DropInfo.cs" />
     <Compile Include="Domain\EquippedItems.cs" />
     <Compile Include="Domain\IAttackTarget.cs" />
     <Compile Include="Domain\IAutoAttack.cs" />
     <Compile Include="Domain\ICanDie.cs" />
     <Compile Include="Domain\IUpdater.cs" />
-    <Compile Include="Domain\WeaponBonuses.cs" />
+    <Compile Include="Items\Bonuses\ItemBonuses.cs" />
+    <Compile Include="Items\Bonuses\WeaponBonuses.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
     <Compile Include="Forms\Farm_Form.cs">
@@ -78,7 +80,9 @@
     </Compile>
     <Compile Include="Domain\ICanStart.cs" />
     <Compile Include="InventoryController.cs" />
+    <Compile Include="Items\Factories\ArmorFactory.cs" />
     <Compile Include="Items\Factories\ItemFactory.cs" />
+    <Compile Include="Items\Factories\SimpleArmorFactory.cs" />
     <Compile Include="Items\Factories\SimpleSwordFactory.cs" />
     <Compile Include="Items\Factories\WeaponFactory.cs" />
     <Compile Include="Items\Impl\BeginnerSword.cs" />
@@ -88,7 +92,9 @@
     <Compile Include="Forms\Main_Form.Designer.cs">
       <DependentUpon>Main_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Items\Impl\SimpleArmor.cs" />
     <Compile Include="Items\Impl\SimpleSword.cs" />
+    <Compile Include="Items\Interfaces\Armor.cs" />
     <Compile Include="Items\Interfaces\Item.cs" />
     <Compile Include="Items\Interfaces\Weapon.cs" />
     <Compile Include="Forms\Menu_Form.cs">
@@ -155,13 +161,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Items\Resources\weapon_squires_sword_i00.jpg" />
+    <None Include="Items\Resources\BeginnerSword.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Items\Resources\weapon_bastard_sword_i00.jpg" />
+    <None Include="Items\Resources\SimpleSword.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Items\Resources\SimpleArmor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

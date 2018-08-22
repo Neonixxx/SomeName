@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Environment;
 
-namespace SomeName.Domain
+namespace SomeName.Items.Bonuses
 {
-    public class WeaponBonuses
+    public class ItemBonuses
     {
         public int Power { get; set; }
 

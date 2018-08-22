@@ -1,49 +1,48 @@
-﻿using System;
+﻿using SomeName.Balance;
+using SomeName.Items.Bonuses;
+using SomeName.Items.Impl;
+using SomeName.Items.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SomeName.Balance;
-using SomeName.Domain;
-using SomeName.Items.Bonuses;
-using SomeName.Items.Impl;
-using SomeName.Items.Interfaces;
 
 namespace SomeName.Items.Factories
 {
-    public class SimpleSwordFactory : WeaponFactory
+    public class SimpleArmorFactory : ArmorFactory
     {
         public override long GetItemGoldValue(int level)
-            => GetBaseWeaponGoldValue(level);
+            => GetBaseArmorGoldValue(level);
 
         public override Item Build(int level)
         {
             var damageValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
-            var weapon = new SimpleSword()
+            var item = new SimpleArmor()
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
-                GoldValue = GetWeaponGoldValue(level, damageValueKoef),
-                BaseDamage = DamageBalance.GetWeaponDamage(level, damageValueKoef),
+                GoldValue = GetArmorGoldValue(level, damageValueKoef),
+                BaseDefence = DamageBalance.GetArmorDefence(level, damageValueKoef),
                 Bonuses = CalculateBonuses(level)
             };
-            weapon.Damage = weapon.BaseDamage;
-            return weapon;
+            item.Defence = item.BaseDefence;
+            return item;
         }
 
         // TODO : Реализовать возможность выпадения бонусов шанса и силы крита.
         // TODO : Реализовать шанс выпадения бонусов.
         // TODO : Доделать выпадение разного числа бонусов.
-        private WeaponBonuses CalculateBonuses(int level)
+        private ArmorBonuses CalculateBonuses(int level)
         {
             var powerValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
             var vitalityValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
             var itemBonusesCount = CalculateItemBonusesCount(level);
 
-            return new WeaponBonuses
+            return new ArmorBonuses
             {
-                Power = DamageBalance.GetWeaponPower(level, powerValueKoef),
-                Vitality = DamageBalance.GetWeaponVitality(level, vitalityValueKoef)
+                Power = DamageBalance.GetArmorPower(level, powerValueKoef),
+                Vitality = DamageBalance.GetArmorVitality(level, vitalityValueKoef)
             };
         }
     }

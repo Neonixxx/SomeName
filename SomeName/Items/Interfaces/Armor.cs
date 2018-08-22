@@ -1,5 +1,4 @@
-﻿using SomeName.Domain;
-using SomeName.Items.Bonuses;
+﻿using SomeName.Items.Bonuses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +8,17 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Weapon : Item
+    public class Armor : Item
     {
-        public long BaseDamage { get; set; }
+        public long BaseDefence { get; set; }
 
-        public long Damage { get; set; }
+        public long Defence { get; set; }
 
-        public WeaponBonuses Bonuses { get; set; } = new WeaponBonuses();
+        public ArmorBonuses Bonuses { get; set; } = new ArmorBonuses();
 
         public override string ToString()
         {
-            var result = new StringBuilder($"{base.ToString()}{NewLine}Damage: {Damage}");
+            var result = new StringBuilder($"{base.ToString()}{NewLine}Defence: {Defence}");
             var bonusesString = Bonuses.ToString();
             if (bonusesString != string.Empty)
                 result.Append($"{NewLine}{bonusesString}");

@@ -2,6 +2,7 @@
 {
     public enum ItemType
     {
-        Weapon = 0
+        Weapon = 0,
+        Armor = 1
     }
 }

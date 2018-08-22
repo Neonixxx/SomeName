@@ -14,17 +14,12 @@ namespace SomeName.Balance
     {
         public ItemFactory[] ItemFactories { get; }
 
-        protected readonly int ItemFactoriesCount;
-
         public static readonly double DropGoldValueKoef = 0.3;
 
         public static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
 
         public DropFactory(params ItemFactory[] itemFactories)
-        {
-            ItemFactories = itemFactories;
-            ItemFactoriesCount = ItemFactories.Length;
-        }
+            => ItemFactories = itemFactories;
 
         public Drop Build(int level, long value)
         {
@@ -51,7 +46,7 @@ namespace SomeName.Balance
 
         protected virtual List<Item> CalculateItemsDrop(int level, long value)
         {
-            var itemDropValue = value * DropItemsValueKoef / ItemFactoriesCount;
+            var itemDropValue = value * DropItemsValueKoef / ItemFactories.Length;
             var items = new List<Item>();
             foreach (var itemFactory in ItemFactories)
             {
@@ -62,6 +57,6 @@ namespace SomeName.Balance
             return items;
         }
 
-        public static readonly DropFactory Standard = new DropFactory(new SimpleSwordFactory());
+        public static readonly DropFactory Standard = new DropFactory(new SimpleSwordFactory(), new SimpleArmorFactory());
     }
 }

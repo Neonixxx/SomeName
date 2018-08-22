@@ -65,7 +65,8 @@ namespace SomeName.Forms
 
             _equippedItemsSlots = new Dictionary<PictureBox, ItemType>
             {
-                { MainHandSlot, ItemType.Weapon }
+                { MainHandSlot, ItemType.Weapon },
+                { ArmorSlot, ItemType.Armor }
             };
         }
 
@@ -114,6 +115,7 @@ namespace SomeName.Forms
         public void UpdateEquippedItems(EquippedItems equippedItems)
         {
             SetEquippedSlot(MainHandSlot, equippedItems.Weapon);
+            SetEquippedSlot(ArmorSlot, equippedItems.Armor);
         }
 
         private void SetEquippedSlot(PictureBox pictureBox, Item item)

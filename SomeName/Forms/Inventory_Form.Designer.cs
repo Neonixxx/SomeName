@@ -35,7 +35,7 @@
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.InventoryPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.HelmetSlot = new System.Windows.Forms.PictureBox();
-            this.ChestSlot = new System.Windows.Forms.PictureBox();
+            this.ArmorSlot = new System.Windows.Forms.PictureBox();
             this.PantsSlot = new System.Windows.Forms.PictureBox();
             this.BootsSlot = new System.Windows.Forms.PictureBox();
             this.MainHandSlot = new System.Windows.Forms.PictureBox();
@@ -47,7 +47,7 @@
             this.снятьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatsInfo_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArmorSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BootsSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainHandSlot)).BeginInit();
@@ -105,17 +105,17 @@
             this.HelmetSlot.TabIndex = 39;
             this.HelmetSlot.TabStop = false;
             // 
-            // ChestSlot
+            // ArmorSlot
             // 
-            this.ChestSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ChestSlot.BackColor = System.Drawing.SystemColors.Control;
-            this.ChestSlot.ImageLocation = "";
-            this.ChestSlot.InitialImage = null;
-            this.ChestSlot.Location = new System.Drawing.Point(755, 124);
-            this.ChestSlot.Name = "ChestSlot";
-            this.ChestSlot.Size = new System.Drawing.Size(45, 45);
-            this.ChestSlot.TabIndex = 40;
-            this.ChestSlot.TabStop = false;
+            this.ArmorSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ArmorSlot.BackColor = System.Drawing.SystemColors.Control;
+            this.ArmorSlot.ImageLocation = "";
+            this.ArmorSlot.InitialImage = null;
+            this.ArmorSlot.Location = new System.Drawing.Point(755, 124);
+            this.ArmorSlot.Name = "ArmorSlot";
+            this.ArmorSlot.Size = new System.Drawing.Size(45, 45);
+            this.ArmorSlot.TabIndex = 40;
+            this.ArmorSlot.TabStop = false;
             // 
             // PantsSlot
             // 
@@ -187,7 +187,7 @@
             // надетьToolStripMenuItem
             // 
             this.надетьToolStripMenuItem.Name = "надетьToolStripMenuItem";
-            this.надетьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.надетьToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.надетьToolStripMenuItem.Text = "Надеть";
             this.надетьToolStripMenuItem.Click += new System.EventHandler(this.НадетьToolStripMenuItem_Click);
             // 
@@ -225,7 +225,7 @@
             this.Controls.Add(this.MainHandSlot);
             this.Controls.Add(this.BootsSlot);
             this.Controls.Add(this.PantsSlot);
-            this.Controls.Add(this.ChestSlot);
+            this.Controls.Add(this.ArmorSlot);
             this.Controls.Add(this.HelmetSlot);
             this.Controls.Add(this.InventoryPanel);
             this.Controls.Add(this.PageLabel);
@@ -234,7 +234,7 @@
             this.Name = "Inventory_Form";
             this.Text = "InventoryForm";
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ArmorSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BootsSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainHandSlot)).EndInit();
@@ -254,7 +254,7 @@
         private System.Windows.Forms.ToolTip ToolTip1;
         private System.Windows.Forms.FlowLayoutPanel InventoryPanel;
         private System.Windows.Forms.PictureBox HelmetSlot;
-        private System.Windows.Forms.PictureBox ChestSlot;
+        private System.Windows.Forms.PictureBox ArmorSlot;
         private System.Windows.Forms.PictureBox PantsSlot;
         private System.Windows.Forms.PictureBox BootsSlot;
         private System.Windows.Forms.PictureBox MainHandSlot;

@@ -73,9 +73,19 @@ namespace SomeName.Items.Resources {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Sword {
+        public static System.Drawing.Bitmap SimpleArmor {
             get {
-                object obj = ResourceManager.GetObject("Sword", resourceCulture);
+                object obj = ResourceManager.GetObject("SimpleArmor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SimpleSword {
+            get {
+                object obj = ResourceManager.GetObject("SimpleSword", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

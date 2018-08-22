@@ -12,6 +12,8 @@ using SomeName.Difficulties;
 
 namespace SomeName.Balance
 {
+    // TODO : Разделить этот класс и добиться расширяемости к внедрению новых типов предметов.
+    // Для этого можно сделать фабричные классы и методы.
     public static class DamageBalance
     {
         public static long GetExp(int level)
@@ -71,19 +73,36 @@ namespace SomeName.Balance
 
         // TODO : доделать формулу + сделать для остальных предметов.
         public static long GetPlayerDefence(int level, double damageValueKoef)
-            => StartDefence + DefencePerLevel * level;
+            => StartDefence + DefencePerLevel * level + GetArmorDefence(level, damageValueKoef);
+
+        public static long GetArmorDefence(int level, double damageValueKoef)
+            => ToInt64(GetBaseArmorDefence(level) * damageValueKoef);
+
+        public static long GetBaseArmorDefence(int level)
+            => GetBaseItemDefence(level);
+
+        public static long GetBaseItemDefence(int level)
+            => ToInt64(20 * Pow(E, 0.04 * level) - 10);
 
         public static long GetBaseDefenceValue(int level)
             => ToInt64(Pow(level, 2));
 
 
         public static int GetPlayerPower(int level, double damageValueKoef)
-            => StartPower + level * PowerPerLevel + GetWeaponPower(level, damageValueKoef);
+            => StartPower + level * PowerPerLevel 
+                + GetWeaponPower(level, damageValueKoef) 
+                + GetArmorPower(level, damageValueKoef);
 
         public static int GetWeaponPower(int level, double damageValueKoef)
             => ToInt32(GetBaseWeaponPower(level) * damageValueKoef);
 
         public static int GetBaseWeaponPower(int level)
+            => GetBaseItemStat(level);
+
+        public static int GetArmorPower(int level, double damageValueKoef)
+            => ToInt32(GetBaseArmorPower(level) * damageValueKoef);
+
+        public static int GetBaseArmorPower(int level)
             => GetBaseItemStat(level);
 
 
@@ -97,12 +116,20 @@ namespace SomeName.Balance
                 : 10;
 
         public static int GetPlayerVitality(int level, double damageValueKoef)
-            => StartVitality + level * VitalityPerLevel + GetWeaponVitality(level, damageValueKoef);
+            => StartVitality + level * VitalityPerLevel 
+                + GetWeaponVitality(level, damageValueKoef)
+                + GetArmorVitality(level, damageValueKoef);
 
         public static int GetWeaponVitality(int level, double damageValueKoef)
             => ToInt32(GetBaseWeaponVitality(level) * damageValueKoef);
 
         public static int GetBaseWeaponVitality(int level)
+            => GetBaseItemStat(level);
+
+        public static int GetArmorVitality(int level, double damageValueKoef)
+            => ToInt32(GetBaseArmorVitality(level) * damageValueKoef);
+
+        public static int GetBaseArmorVitality(int level)
             => GetBaseItemStat(level);
 
         public static int GetBaseItemStat(int level)

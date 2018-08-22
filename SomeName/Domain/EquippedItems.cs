@@ -12,19 +12,37 @@ namespace SomeName.Domain
     {
         public Weapon Weapon { get; set; }
 
+        public Armor Armor { get; set; }
+
         public long GetDefence()
-            => 0;
+            => Armor?.Defence ?? 0;
 
         public int GetPower()
-            => Weapon?.Bonuses.Power ?? 0;
+        {
+            var result = Weapon?.Bonuses.Power ?? 0;
+            result += Armor?.Bonuses.Power ?? 0;
+            return result;
+        }
 
         public int GetVitality()
-            => Weapon?.Bonuses.Vitality ?? 0;
+        {
+            var result =  Weapon?.Bonuses.Vitality ?? 0;
+            result += Armor?.Bonuses.Vitality ?? 0;
+            return result;
+        }
 
         public double GetCritChance()
-            => Weapon?.Bonuses.CritChance ?? 0;
+        {
+            var result = Weapon?.Bonuses.CritChance ?? 0;
+            result += Armor?.Bonuses.CritChance ?? 0;
+            return result;
+        }
 
         public double GetCritDamage()
-            => Weapon?.Bonuses.CritDamage ?? 0;
+        {
+            var result = Weapon?.Bonuses.CritDamage ?? 0;
+            result += Armor?.Bonuses.CritDamage ?? 0;
+            return result;
+        }
     }
 }

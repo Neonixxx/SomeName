@@ -10,7 +10,7 @@ namespace SomeName.Items.Factories
     // TODO : возможно реализовать другие виды оружия.
     public abstract class WeaponFactory : ItemFactory
     {
-        protected readonly double WeaponGoldValueKoef = 0.5;
+        protected const double WeaponGoldValueKoef = 0.5;
 
         protected long GetWeaponGoldValue(int level, double damageValueKoef)
             => Convert.ToInt64(GetBaseWeaponGoldValue(level) * damageValueKoef);

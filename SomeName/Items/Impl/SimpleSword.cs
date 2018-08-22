@@ -14,7 +14,7 @@ namespace SomeName.Items.Impl
         public SimpleSword()
         {
             Description = "Стальной меч";
-            Image = ItemImages.Sword;
+            Image = ItemImages.SimpleSword;
         }
     }
 }

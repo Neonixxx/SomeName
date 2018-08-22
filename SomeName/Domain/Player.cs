@@ -77,16 +77,24 @@ namespace SomeName.Domain
             IsDead = false;
         }
 
-
+        // TODO : Решить, как можно сделать метод более расширяемым к добавлению новых типов предметов.
         public bool Equip(Item item)
         {
-            if (item is Weapon weapon)
+            switch (item)
             {
-                if (EquippedItems.Weapon != null)
-                    Inventory.Add(EquippedItems.Weapon);
-                Inventory.Remove(item);
-                EquippedItems.Weapon = weapon;
-                return true;
+                case Weapon weapon:
+                    if (EquippedItems.Weapon != null)
+                        Inventory.Add(EquippedItems.Weapon);
+                    Inventory.Remove(item);
+                    EquippedItems.Weapon = weapon;
+                    return true;
+
+                case Armor armor:
+                    if (EquippedItems.Armor != null)
+                        Inventory.Add(EquippedItems.Armor);
+                    Inventory.Remove(item);
+                    EquippedItems.Armor = armor;
+                    return true;
             }
 
             return false;
@@ -101,6 +109,14 @@ namespace SomeName.Domain
                     {
                         Inventory.Add(EquippedItems.Weapon);
                         EquippedItems.Weapon = null;
+                    }
+                    break;
+
+                case ItemType.Armor:
+                    if (EquippedItems.Armor != null)
+                    {
+                        Inventory.Add(EquippedItems.Armor);
+                        EquippedItems.Armor = null;
                     }
                     break;
             }
