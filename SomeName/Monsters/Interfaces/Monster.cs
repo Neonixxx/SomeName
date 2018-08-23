@@ -13,7 +13,7 @@ namespace SomeName.Monsters.Interfaces
     {
         public AutoAttackController Attacker { get; set; }
 
-        public DropFactory DropFactory { get; set; }
+        public DropService DropFactory { get; set; }
 
         public int Level { get; private set; }
 

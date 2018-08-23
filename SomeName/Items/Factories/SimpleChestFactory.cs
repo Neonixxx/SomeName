@@ -10,19 +10,19 @@ using System.Threading.Tasks;
 
 namespace SomeName.Items.Factories
 {
-    public class SimpleArmorFactory : ArmorFactory
+    public class SimpleChestFactory : ChestFactory
     {
         public override long GetItemGoldValue(int level)
-            => GetBaseArmorGoldValue(level);
+            => GetBaseChestGoldValue(level);
 
         public override Item Build(int level)
         {
             var damageValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
-            var item = new SimpleArmor()
+            var item = new SimpleChest()
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
-                GoldValue = GetArmorGoldValue(level, damageValueKoef),
+                GoldValue = GetChestGoldValue(level, damageValueKoef),
                 BaseDefence = DamageBalance.GetArmorDefence(level, damageValueKoef),
                 Bonuses = CalculateBonuses(level)
             };

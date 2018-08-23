@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SomeName.Balance
 {
-    public class DropFactory
+    public class DropService
     {
         public ItemFactory[] ItemFactories { get; }
 
@@ -18,7 +18,7 @@ namespace SomeName.Balance
 
         public static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
 
-        public DropFactory(params ItemFactory[] itemFactories)
+        public DropService(params ItemFactory[] itemFactories)
             => ItemFactories = itemFactories;
 
         public Drop Build(int level, long value)
@@ -57,6 +57,6 @@ namespace SomeName.Balance
             return items;
         }
 
-        public static readonly DropFactory Standard = new DropFactory(new SimpleSwordFactory(), new SimpleArmorFactory());
+        public static readonly DropService Standard = new DropService(new SimpleSwordFactory(), new SimpleChestFactory());
     }
 }

@@ -89,7 +89,7 @@ namespace SomeName.Domain
                     EquippedItems.Weapon = weapon;
                     return true;
 
-                case Armor armor:
+                case Chest armor:
                     if (EquippedItems.Armor != null)
                         Inventory.Add(EquippedItems.Armor);
                     Inventory.Remove(item);

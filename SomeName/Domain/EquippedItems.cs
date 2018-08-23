@@ -12,7 +12,7 @@ namespace SomeName.Domain
     {
         public Weapon Weapon { get; set; }
 
-        public Armor Armor { get; set; }
+        public Chest Armor { get; set; }
 
         public long GetDefence()
             => Armor?.Defence ?? 0;

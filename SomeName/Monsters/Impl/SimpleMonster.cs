@@ -13,7 +13,7 @@ namespace SomeName.Monsters.Impl
     {
         public SimpleMonster(int level)
         {
-            DropFactory = DropFactory.Standard;
+            DropFactory = DropService.Standard;
             Respawn(level); 
         }
     }

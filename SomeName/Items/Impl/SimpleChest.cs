@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace SomeName.Items.Impl
 {
-    public class SimpleArmor : Armor
+    public class SimpleChest : Chest
     {
-        public SimpleArmor()
+        public SimpleChest()
         {
             Description = "Кожанный жилет";
             Image = ItemImages.SimpleArmor;
