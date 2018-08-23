@@ -1,4 +1,5 @@
 ﻿using SomeName.Balance;
+using SomeName.Balance.ItemStats;
 using SomeName.Items.Bonuses;
 using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
@@ -17,13 +18,13 @@ namespace SomeName.Items.Factories
 
         public override Item Build(int level)
         {
-            var damageValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            var damageValueKoef = RollItemDamageKoef();
             var item = new SimpleChest()
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
                 GoldValue = GetChestGoldValue(level, damageValueKoef),
-                BaseDefence = DamageBalance.GetArmorDefence(level, damageValueKoef),
+                BaseDefence = ChestStatsBalance.GetDefence(level, damageValueKoef),
                 Bonuses = CalculateBonuses(level)
             };
             item.Defence = item.BaseDefence;
@@ -35,14 +36,14 @@ namespace SomeName.Items.Factories
         // TODO : Доделать выпадение разного числа бонусов.
         private ArmorBonuses CalculateBonuses(int level)
         {
-            var powerValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
-            var vitalityValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            var powerValueKoef = RollItemDamageKoef();
+            var vitalityValueKoef = RollItemDamageKoef();
             var itemBonusesCount = CalculateItemBonusesCount(level);
 
             return new ArmorBonuses
             {
-                Power = DamageBalance.GetArmorPower(level, powerValueKoef),
-                Vitality = DamageBalance.GetArmorVitality(level, vitalityValueKoef)
+                Power = ChestStatsBalance.GetPower(level, powerValueKoef),
+                Vitality = ChestStatsBalance.GetVitality(level, vitalityValueKoef)
             };
         }
     }

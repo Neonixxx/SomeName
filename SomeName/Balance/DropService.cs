@@ -23,9 +23,9 @@ namespace SomeName.Balance
 
         public Drop Build(int level, long value)
         {
-            var goldValue = Convert.ToInt64(value * BattleDifficulty.Get.GoldMultiplier);
-            var expValue = Convert.ToInt64(value * BattleDifficulty.Get.ExpMultiplier);
-            var dropValue = Convert.ToInt64(value * BattleDifficulty.Get.DropMultiplier);
+            var goldValue = Convert.ToInt64(value * BattleDifficulty.Current.GoldMultiplier);
+            var expValue = Convert.ToInt64(value * BattleDifficulty.Current.ExpMultiplier);
+            var dropValue = Convert.ToInt64(value * BattleDifficulty.Current.DropMultiplier);
 
             return new Drop
             {

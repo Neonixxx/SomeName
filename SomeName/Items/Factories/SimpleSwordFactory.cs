@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SomeName.Balance;
+using SomeName.Balance.ItemStats;
 using SomeName.Domain;
 using SomeName.Items.Bonuses;
 using SomeName.Items.Impl;
@@ -18,13 +19,13 @@ namespace SomeName.Items.Factories
 
         public override Item Build(int level)
         {
-            var damageValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            var damageValueKoef = RollItemDamageKoef();
             var weapon = new SimpleSword()
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
                 GoldValue = GetWeaponGoldValue(level, damageValueKoef),
-                BaseDamage = DamageBalance.GetWeaponDamage(level, damageValueKoef),
+                BaseDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef),
                 Bonuses = CalculateBonuses(level)
             };
             weapon.Damage = weapon.BaseDamage;
@@ -36,14 +37,14 @@ namespace SomeName.Items.Factories
         // TODO : Доделать выпадение разного числа бонусов.
         private WeaponBonuses CalculateBonuses(int level)
         {
-            var powerValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
-            var vitalityValueKoef = DamageBalance.GetItemDamageKoef(Dice.Roll);
+            var powerValueKoef = RollItemDamageKoef();
+            var vitalityValueKoef = RollItemDamageKoef();
             var itemBonusesCount = CalculateItemBonusesCount(level);
 
             return new WeaponBonuses
             {
-                Power = DamageBalance.GetWeaponPower(level, powerValueKoef),
-                Vitality = DamageBalance.GetWeaponVitality(level, vitalityValueKoef)
+                Power = WeaponStatsBalance.GetPower(level, powerValueKoef),
+                Vitality = WeaponStatsBalance.GetVitality(level, vitalityValueKoef)
             };
         }
     }

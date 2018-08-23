@@ -14,6 +14,7 @@ namespace SomeName.Monsters.Impl
         public SimpleMonster(int level)
         {
             DropFactory = DropService.Standard;
+            MonsterStatsBalance = MonsterStatsBalance.Standard;
             Respawn(level); 
         }
     }

@@ -15,6 +15,8 @@ namespace SomeName.Monsters.Interfaces
 
         public DropService DropFactory { get; set; }
 
+        public MonsterStatsBalance MonsterStatsBalance { get; set; }
+
         public int Level { get; private set; }
 
         public long Damage { get; set; }
@@ -39,9 +41,9 @@ namespace SomeName.Monsters.Interfaces
         {
             Attacker = new AutoAttackController(this);
             Level = level;
-            Damage = MonsterBalance.GetDefaultMonsterDPS(level);
+            Damage = MonsterStatsBalance.GetDefaultMonsterDPS(level);
             AttackSpeed = 1.0;
-            MaxHealth = MonsterBalance.GetDefaultMonsterHealth(level);
+            MaxHealth = MonsterStatsBalance.GetDefaultMonsterHealth(level);
             Health = MaxHealth;
             DroppedItems = DropFactory.Build(level, MaxHealth);
             IsDead = false;

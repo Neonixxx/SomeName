@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomeName.Balance.ItemStats;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace SomeName.Items.Factories
 {
     public abstract class ChestFactory : ItemFactory
     {
+        protected readonly ChestStatsBalance ChestStatsBalance = new ChestStatsBalance();
+
         protected const double ChestGoldValueKoef = 0.3;
 
         protected long GetChestGoldValue(int level, double damageValueKoef)

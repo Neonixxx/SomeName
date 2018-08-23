@@ -49,12 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Balance\DamageBalance.cs" />
+    <Compile Include="Balance\ItemStats\ArmorStatsBalance.cs" />
+    <Compile Include="Balance\ItemStats\ChestStatsBalance.cs" />
+    <Compile Include="Balance\ItemStats\ItemStatsBalance.cs" />
+    <Compile Include="Balance\ItemStats\WeaponStatsBalance.cs" />
     <Compile Include="Balance\DropService.cs" />
-    <Compile Include="Balance\MonsterBalance.cs" />
+    <Compile Include="Balance\MonsterStatsBalance.cs" />
+    <Compile Include="Balance\PlayerStatsBalance.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
     <Compile Include="Difficulties\BattleDifficultyEnum.cs" />
+    <Compile Include="Domain\PlayerStatsCalculator.cs" />
     <Compile Include="Items\Bonuses\ArmorBonuses.cs" />
     <Compile Include="Domain\DropInfo.cs" />
     <Compile Include="Domain\EquippedItems.cs" />

@@ -40,6 +40,21 @@ namespace SomeName.Items.Factories
         /// </summary>
         /// <param name="level"></param>
         protected static long GetBaseItemGoldValue(int level)
-            => DamageBalance.GetExp(level);
+            => PlayerStatsBalance.GetExp(level);
+
+        /// <summary>
+        /// Получить случано сгенерированное значение коэффицента урона предмета.
+        /// </summary>
+        /// <returns></returns>
+        protected double RollItemDamageKoef()
+            => GetItemDamageKoef(Dice.Roll);
+
+        /// <summary>
+        /// Получить значение коэффицента урона предмета по значению броска кубика.
+        /// </summary>
+        /// <param name="diceValue">Значение броска кубика (0..1]</param>
+        /// <returns></returns>
+        protected double GetItemDamageKoef(double diceValue)
+            => Math.Pow(diceValue, -0.35);
     }
 }

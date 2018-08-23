@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 namespace SomeName.Difficulties
 {
-    public delegate void BattleDifficultyChangeEventHandler(BattleDifficulty battleDifficulty);
-
     public class BattleDifficulty
     {
         public double ItemDamageKoef { get; private set; }
@@ -34,10 +32,10 @@ namespace SomeName.Difficulties
         }
 
 
-        public static BattleDifficulty Get { get; private set; } = BattleDifficulties[1];
+        public static BattleDifficulty Current { get; private set; } = BattleDifficulties[0];
 
         public static void SetBattleDifficulty(BattleDifficultyEnum battleDifficultyEnum)
-            => Get = BattleDifficulties[(int)battleDifficultyEnum];
+            => Current = BattleDifficulties[(int)battleDifficultyEnum];
 
     }
 }

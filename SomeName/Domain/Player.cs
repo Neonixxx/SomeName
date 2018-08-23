@@ -12,6 +12,8 @@ namespace SomeName.Domain
     // TODO : Сделать конвертер Player -> StatsInfo.
     public class Player : IAttackTarget
     {
+        public PlayerStatsCalculator PlayerStatsCalculator { get; set; } = new PlayerStatsCalculator();
+
         public Player() { }
 
         public int Level { get; set; }
@@ -31,28 +33,32 @@ namespace SomeName.Domain
         public List<Item> Inventory { get; set; }
 
         public long GetDamage()
-            => DamageBalance.CalculateDamage(this);
+            => PlayerStatsCalculator.CalculateDamage(this);
+
+        // HACK : Лезет не в свою зону ответственности.
+        public long GetDamageWithoutCrit()
+            => PlayerStatsCalculator.CalculateDamage(GetPower(), EquippedItems.Weapon.Damage);
 
         public long GetDefence()
-            => DamageBalance.CalculateDefence(this);
+            => PlayerStatsCalculator.CalculateDefence(this);
 
         public double GetDefenceKoef()
-            => DamageBalance.CalculateDefenceKoef(this);
+            => PlayerStatsCalculator.CalculateDefenceKoef(this);
 
         public long GetMaxHealth()
-            => DamageBalance.CalculateMaxHealth(this);
+            => PlayerStatsCalculator.CalculateMaxHealth(this);
 
         public int GetPower()
-            => DamageBalance.CalculatePower(this);
+            => PlayerStatsCalculator.CalculatePower(this);
 
         public int GetVitality()
-            => DamageBalance.CalculateVitality(this);
+            => PlayerStatsCalculator.CalculateVitality(this);
 
         public double GetCritChance()
-            => DamageBalance.CalculateCritChance(this);
+            => PlayerStatsCalculator.CalculateCritChance(this);
 
         public double GetCritDamage()
-            => DamageBalance.CalculateCritDamage(this);
+            => PlayerStatsCalculator.CalculateCritDamage(this);
 
         public long TakeDamage(long damage)
         {
@@ -136,7 +142,7 @@ namespace SomeName.Domain
             {
                 totalExp -= ExpForNextLevel;
                 Level++;
-                ExpForNextLevel = DamageBalance.GetExp(Level);
+                ExpForNextLevel = PlayerStatsBalance.GetExp(Level);
             }
             Exp = totalExp;
         }
