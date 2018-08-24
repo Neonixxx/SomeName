@@ -83,6 +83,15 @@ namespace SomeName.Domain
             IsDead = false;
         }
 
+        public void SellItem(ShopService shopService, Item item)
+        {
+            if (Inventory.Contains(item))
+            {
+                Inventory.Remove(item);
+                shopService.SellItem(item);
+            }
+        }
+
         // TODO : Решить, как можно сделать метод более расширяемым к добавлению новых типов предметов.
         public bool Equip(Item item)
         {

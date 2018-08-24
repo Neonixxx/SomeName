@@ -15,6 +15,8 @@ namespace SomeName
 
         public Player Player { get; set; }
 
+        public ShopService ShopService { get; set; }
+
         public void Start()
             => InventoryForm.Start(Player.Inventory.Count);
 
@@ -24,6 +26,9 @@ namespace SomeName
             InventoryForm.UpdateEquippedItems(Player.EquippedItems);
             InventoryForm.UpdateStatsInfo(GetStatsInfo());
         }
+
+        public void SellItem(int itemNumber)
+            => Player.SellItem(ShopService, Player.Inventory[itemNumber]);
 
         public void EquipItem(int itemNumber)
             => Player.Equip(Player.Inventory[itemNumber]);

@@ -46,6 +46,7 @@
             this.EquippedItems_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.снятьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatsInfo_Label = new System.Windows.Forms.Label();
+            this.ItemInfo_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).BeginInit();
@@ -214,11 +215,21 @@
             this.StatsInfo_Label.TabIndex = 46;
             this.StatsInfo_Label.Text = "StatsInfo";
             // 
+            // ItemInfo_Label
+            // 
+            this.ItemInfo_Label.AutoSize = true;
+            this.ItemInfo_Label.Location = new System.Drawing.Point(394, 430);
+            this.ItemInfo_Label.Name = "ItemInfo_Label";
+            this.ItemInfo_Label.Size = new System.Drawing.Size(45, 13);
+            this.ItemInfo_Label.TabIndex = 47;
+            this.ItemInfo_Label.Text = "ItemInfo";
+            // 
             // Inventory_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 711);
+            this.Controls.Add(this.ItemInfo_Label);
             this.Controls.Add(this.StatsInfo_Label);
             this.Controls.Add(this.GlovesSlot);
             this.Controls.Add(this.OffHandSlot);
@@ -265,5 +276,6 @@
         private System.Windows.Forms.ContextMenuStrip EquippedItems_ContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem снятьToolStripMenuItem;
         private System.Windows.Forms.Label StatsInfo_Label;
+        private System.Windows.Forms.Label ItemInfo_Label;
     }
 }

@@ -13,6 +13,7 @@ using SomeName.Domain;
 
 namespace SomeName.Forms
 {
+    // TODO : Добавить возможность продавать предмет.
     public partial class Inventory_Form : Form
     {
         public InventoryController InventoryController { get; set; }
@@ -62,6 +63,7 @@ namespace SomeName.Forms
         {
             InitializeComponent();
             ToolTip1.InitialDelay = 1;
+            ItemInfo_Label.Text = string.Empty;
 
             _equippedItemsSlots = new Dictionary<PictureBox, ItemType>
             {
@@ -79,7 +81,7 @@ namespace SomeName.Forms
             _firstItemIndex = ItemsPerPage * (CurrentPage - 1);
 
             InventoryController.Update();
-
+            
             ShowDialog();
         }
 
@@ -171,6 +173,8 @@ namespace SomeName.Forms
 
             _selectedPictureBox = pictureBox;
             _selectedPictureBox.BorderStyle = BorderStyle.Fixed3D;
+
+            ItemInfo_Label.Text = ToolTip1.GetToolTip(_selectedPictureBox);
         }
 
         private void PreviousPageButton_Click(object sender, EventArgs e)
