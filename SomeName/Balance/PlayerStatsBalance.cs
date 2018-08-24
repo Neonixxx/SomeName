@@ -20,7 +20,7 @@ namespace SomeName.Balance
 
 
         private double GetDefaultItemDamageKoef()
-            => BattleDifficulty.Current.ItemDamageKoef;
+            => BattleDifficulty.GetCurrent().ItemDamageKoef;
 
 
         public static long GetExp(int level)
@@ -87,6 +87,7 @@ namespace SomeName.Balance
         // TODO : Доработать вычисление критов.
         private double GetBaseCritCoef(int level)
             => GetCritChance(level) * (GetCritDamage(level) - 1) + 1;
+
 
         private double GetCritChance(int level)
             => PlayerStatsCalculator.CalculateCritChance(GetItemsCritChance(level));

@@ -31,6 +31,7 @@
             this.Farm_Button = new System.Windows.Forms.Button();
             this.Save_Button = new System.Windows.Forms.Button();
             this.Inventory_Button = new System.Windows.Forms.Button();
+            this.BattleDifficulty_ComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // Farm_Button
@@ -63,11 +64,20 @@
             this.Inventory_Button.UseVisualStyleBackColor = true;
             this.Inventory_Button.Click += new System.EventHandler(this.Inventory_Button_Click);
             // 
+            // BattleDifficulty_ComboBox
+            // 
+            this.BattleDifficulty_ComboBox.FormattingEnabled = true;
+            this.BattleDifficulty_ComboBox.Location = new System.Drawing.Point(176, 39);
+            this.BattleDifficulty_ComboBox.Name = "BattleDifficulty_ComboBox";
+            this.BattleDifficulty_ComboBox.Size = new System.Drawing.Size(121, 21);
+            this.BattleDifficulty_ComboBox.TabIndex = 3;
+            // 
             // Main_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BattleDifficulty_ComboBox);
             this.Controls.Add(this.Inventory_Button);
             this.Controls.Add(this.Save_Button);
             this.Controls.Add(this.Farm_Button);
@@ -83,6 +93,7 @@
         private System.Windows.Forms.Button Farm_Button;
         private System.Windows.Forms.Button Save_Button;
         private System.Windows.Forms.Button Inventory_Button;
+        private System.Windows.Forms.ComboBox BattleDifficulty_ComboBox;
     }
 }
 

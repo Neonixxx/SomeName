@@ -24,6 +24,8 @@ namespace SomeName.Forms
 
         public InventoryController InventoryController { get; set; }
 
+        public GameController GameController { get; set; } = new GameController();
+
         public Main_Form(Player player)
         {
             InitializeComponent();
@@ -43,8 +45,18 @@ namespace SomeName.Forms
             };
             InventoryForm.InventoryController = InventoryController;
 
+            // HACK
+            BattleDifficulty_ComboBox.Items.Clear();
+            BattleDifficulty_ComboBox.Items.AddRange(GameController.BattleDifficulties);
+            BattleDifficulty_ComboBox.SelectedIndex = GameController.GetCurrentDifficultyIndex();
+            BattleDifficulty_ComboBox.SelectedIndexChanged += BattleDifficulty_ComboBox_SelectedIndexChanged;
+
+
             ShowDialog();
         }
+
+        private void BattleDifficulty_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+            => GameController.SetBattleDifficulty(BattleDifficulty_ComboBox.SelectedIndex);
 
         private void Form1_Load(object sender, EventArgs e)
         {

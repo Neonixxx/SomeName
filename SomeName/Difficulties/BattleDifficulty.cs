@@ -31,11 +31,14 @@ namespace SomeName.Difficulties
             DropMultiplier = dropMultiplier;
         }
 
-
-        public static BattleDifficulty Current { get; private set; } = BattleDifficulties[0];
+        // UNDONE : смена сложности не работает, нужно найти причину.
+        public static BattleDifficulty GetCurrent() 
+            => BattleDifficulties[CurrentIndex];
 
         public static void SetBattleDifficulty(BattleDifficultyEnum battleDifficultyEnum)
-            => Current = BattleDifficulties[(int)battleDifficultyEnum];
+            => CurrentIndex = (int)battleDifficultyEnum;
+
+        public static int CurrentIndex { get; private set; } = 0;
 
     }
 }
