@@ -15,7 +15,7 @@ namespace SomeName.Balance
             => PlayerStatsBalance = playerStatsBalance;
 
         private static double GetTapsForMonster(int level)
-            => Math.Pow(level, 0.6) * 10;
+            => Math.Pow(level, 0.75) * 4 + 20;
 
 
         public long GetDefaultMonsterHealth(int level)

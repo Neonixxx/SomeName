@@ -58,7 +58,6 @@
     <Compile Include="Balance\PlayerStatsBalance.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
-    <Compile Include="Difficulties\BattleDifficultyEnum.cs" />
     <Compile Include="Domain\PlayerStatsCalculator.cs" />
     <Compile Include="GameController.cs" />
     <Compile Include="Items\Bonuses\ArmorBonuses.cs" />

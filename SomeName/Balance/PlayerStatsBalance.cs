@@ -24,26 +24,20 @@ namespace SomeName.Balance
 
 
         public static long GetExp(int level)
-            => ToInt64(Standard.GetDefaultDamage(level) * GetTapsForLevel(level));
+            => ToInt64(Standard.GetDamage(level, GetExpItemDamageKoef(level)) * GetTapsForLevel(level));
+
+        private static double GetExpItemDamageKoef(int level)
+            => 1.0 + level * 0.007;
 
         public static double GetTapsForLevel(int level)
-            => Math.Pow(level, 1.2) * 20;
+            => Math.Pow(level, 1.2) * 10;
 
         public static double GetTapsPerSecond(int level)
             => 2 + 0.03 * level;
 
+
         public long GetDefaultDamage(int level)
-        {
-            var itemDamageKoef = GetDefaultItemDamageKoef();
-            var power = GetPower(level, itemDamageKoef);
-            var weaponDamage = WeaponStatsBalance.GetDamage(level, itemDamageKoef);
-
-            var damageWithoutCritCoef = PlayerStatsCalculator.CalculateDamage(power, weaponDamage);
-            var critCoef = GetBaseCritCoef(level);
-
-
-            return ToInt64(damageWithoutCritCoef * critCoef);
-        }
+            => GetDamage(level, GetDefaultItemDamageKoef());
 
         public long GetDefaultToughness(int level)
             => ToInt64(GetDefaultMaxHealth(level) / (1 - GetDefaultDefenceKoef(level)));
@@ -57,6 +51,17 @@ namespace SomeName.Balance
             return PlayerStatsCalculator.CalculateDefenceKoef(level, defence);
         }
 
+
+        private long GetDamage(int level, double damageValueKoef)
+        {
+            var power = GetPower(level, damageValueKoef);
+            var weaponDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef);
+
+            var damageWithoutCritCoef = PlayerStatsCalculator.CalculateDamage(power, weaponDamage);
+            var critCoef = GetBaseCritCoef(level);
+
+            return ToInt64(damageWithoutCritCoef * critCoef);
+        }
 
         private long GetDefence(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateDefence(level, GetItemsDefence(level, damageValueKoef));

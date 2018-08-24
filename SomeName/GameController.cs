@@ -9,15 +9,12 @@ namespace SomeName
 {
     public class GameController
     {
-        public readonly string[] BattleDifficulties = new string[] { "Very Easy", "Easy", "Normal" };
+        public readonly string[] BattleDifficulties = BattleDifficulty.GetStrings();
 
         public int GetCurrentDifficultyIndex()
             => BattleDifficulty.CurrentIndex;
 
         public void SetBattleDifficulty(int battleDifficultyIndex)
-            => SetBattleDifficulty((BattleDifficultyEnum)battleDifficultyIndex);
-
-        public void SetBattleDifficulty(BattleDifficultyEnum battleDifficultyEnum)
-            => BattleDifficulty.SetBattleDifficulty(battleDifficultyEnum);
+            => BattleDifficulty.SetBattleDifficulty(battleDifficultyIndex);
     }
 }
