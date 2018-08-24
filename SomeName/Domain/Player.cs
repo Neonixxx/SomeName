@@ -88,7 +88,7 @@ namespace SomeName.Domain
             if (Inventory.Contains(item))
             {
                 Inventory.Remove(item);
-                shopService.SellItem(item);
+                Gold += shopService.GetSellItemValue(item);
             }
         }
 

@@ -25,6 +25,7 @@ namespace SomeName
             InventoryForm.UpdateInventory(Player.Inventory);
             InventoryForm.UpdateEquippedItems(Player.EquippedItems);
             InventoryForm.UpdateStatsInfo(GetStatsInfo());
+            InventoryForm.UpdateGold(Player.Gold);
         }
 
         public void SellItem(int itemNumber)
@@ -35,6 +36,9 @@ namespace SomeName
 
         public void UnequipItem(ItemType itemType)
             => Player.Unequip(itemType);
+
+        public long GetGoldValueOfItem(int itemIndex)
+            => ShopService.GetSellItemValue(Player.Inventory[itemIndex]);
 
         private StatsInfo GetStatsInfo()
         {

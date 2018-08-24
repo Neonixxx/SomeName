@@ -18,21 +18,24 @@ namespace SomeName.Difficulties
 
         public double DropMultiplier { get; private set; }
 
+        public double ItemAdditionalKoef { get; private set; }
+
         private static readonly BattleDifficulty[] BattleDifficulties = new BattleDifficulty[]
         {
-            new BattleDifficulty("Very easy", 0.85, 0.85, 0.85, 0.85),
-            new BattleDifficulty("Easy", 1.1, 1.1, 1.1, 1.1),
-            new BattleDifficulty("Normal", 1.3, 1.4, 1.3, 1.3),
-            new BattleDifficulty("Hard", 1.7, 2.0, 1.7, 1.7),
+            new BattleDifficulty("Very easy", 0.85, 0.85, 0.85, 0.85, 1.0),
+            new BattleDifficulty("Easy", 1.1, 1.1, 1.1, 1.1, 1.0),
+            new BattleDifficulty("Normal", 1.3, 1.4, 1.3, 1.3, 1.0),
+            new BattleDifficulty("Hard", 1.7, 2.0, 1.7, 1.7, 1.0),
         };
 
-        public BattleDifficulty(string name, double itemDamageKoef, double expMultiplier, double goldMultiplier, double dropMultiplier)
+        public BattleDifficulty(string name, double itemDamageKoef, double expMultiplier, double goldMultiplier, double dropMultiplier, double itemAdditionalKoef)
         {
             Name = name;
             ItemDamageKoef = itemDamageKoef;
             ExpMultiplier = expMultiplier;
             GoldMultiplier = goldMultiplier;
             DropMultiplier = dropMultiplier;
+            ItemAdditionalKoef = itemAdditionalKoef;
         }
 
         // UNDONE : смена сложности не работает, нужно найти причину.

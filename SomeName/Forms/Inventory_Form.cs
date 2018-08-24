@@ -132,6 +132,9 @@ namespace SomeName.Forms
             StatsInfo_Label.Text = statsInfo.ToString();
         }
 
+        public void UpdateGold(long goldValue)
+            => Gold_Label.Text = $"Золото: {goldValue}";
+
         /// <summary>
         /// Событие нажатия мышки на предмет в инвентаре.
         /// </summary>
@@ -175,6 +178,12 @@ namespace SomeName.Forms
             _selectedPictureBox.BorderStyle = BorderStyle.Fixed3D;
 
             ItemInfo_Label.Text = ToolTip1.GetToolTip(_selectedPictureBox);
+            if (InventoryPanel.Controls.Contains(_selectedPictureBox))
+            {
+                var itemIndex = (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+                Sell_Button.Text = $"Sell for:{Environment.NewLine}{InventoryController.GetGoldValueOfItem(itemIndex)}";
+            }
+            
         }
 
         private void PreviousPageButton_Click(object sender, EventArgs e)
@@ -191,7 +200,7 @@ namespace SomeName.Forms
         {
             if (InventoryPanel.Controls.Contains(_selectedPictureBox))
             {
-                var itemIndex = InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+                var itemIndex = (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
                 InventoryController.EquipItem(itemIndex);
                 InventoryController.Update();
             }
@@ -204,6 +213,26 @@ namespace SomeName.Forms
                 var itemType = _equippedItemsSlots[_selectedPictureBox];
                 InventoryController.UnequipItem(itemType);
                 InventoryController.Update();
+            }
+        }
+
+        private void Inventory_Form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Sell_Button_Click(object sender, EventArgs e)
+        {
+            if (InventoryPanel.Controls.Contains(_selectedPictureBox))
+            {
+                var itemIndex = (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+                InventoryController.SellItem(itemIndex);
+                InventoryController.Update();
+                if (InventoryPanel.Controls.Count <= itemIndex)
+                    itemIndex--;
+
+                if (InventoryPanel.Controls.Count > 0)
+                    SetSelectedPictureBox(InventoryPanel.Controls[itemIndex] as PictureBox);
             }
         }
     }

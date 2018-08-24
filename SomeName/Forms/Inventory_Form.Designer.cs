@@ -47,6 +47,8 @@
             this.снятьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatsInfo_Label = new System.Windows.Forms.Label();
             this.ItemInfo_Label = new System.Windows.Forms.Label();
+            this.Gold_Label = new System.Windows.Forms.Label();
+            this.Sell_Button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).BeginInit();
@@ -224,11 +226,32 @@
             this.ItemInfo_Label.TabIndex = 47;
             this.ItemInfo_Label.Text = "ItemInfo";
             // 
+            // Gold_Label
+            // 
+            this.Gold_Label.AutoSize = true;
+            this.Gold_Label.Location = new System.Drawing.Point(575, 682);
+            this.Gold_Label.Name = "Gold_Label";
+            this.Gold_Label.Size = new System.Drawing.Size(29, 13);
+            this.Gold_Label.TabIndex = 48;
+            this.Gold_Label.Text = "Gold";
+            // 
+            // Sell_Button
+            // 
+            this.Sell_Button.Location = new System.Drawing.Point(286, 395);
+            this.Sell_Button.Name = "Sell_Button";
+            this.Sell_Button.Size = new System.Drawing.Size(102, 48);
+            this.Sell_Button.TabIndex = 49;
+            this.Sell_Button.Text = "Sell";
+            this.Sell_Button.UseVisualStyleBackColor = true;
+            this.Sell_Button.Click += new System.EventHandler(this.Sell_Button_Click);
+            // 
             // Inventory_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 711);
+            this.Controls.Add(this.Sell_Button);
+            this.Controls.Add(this.Gold_Label);
             this.Controls.Add(this.ItemInfo_Label);
             this.Controls.Add(this.StatsInfo_Label);
             this.Controls.Add(this.GlovesSlot);
@@ -244,6 +267,7 @@
             this.Controls.Add(this.PreviousPageButton);
             this.Name = "Inventory_Form";
             this.Text = "InventoryForm";
+            this.Load += new System.EventHandler(this.Inventory_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ChestSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PantsSlot)).EndInit();
@@ -277,5 +301,7 @@
         private System.Windows.Forms.ToolStripMenuItem снятьToolStripMenuItem;
         private System.Windows.Forms.Label StatsInfo_Label;
         private System.Windows.Forms.Label ItemInfo_Label;
+        private System.Windows.Forms.Label Gold_Label;
+        private System.Windows.Forms.Button Sell_Button;
     }
 }

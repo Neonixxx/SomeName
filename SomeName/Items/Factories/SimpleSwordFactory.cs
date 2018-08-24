@@ -17,16 +17,16 @@ namespace SomeName.Items.Factories
         public override long GetItemGoldValue(int level)
             => GetBaseWeaponGoldValue(level);
 
-        public override Item Build(int level)
+        public override Item Build(int level, double additionalKoef = 1.0)
         {
-            var damageValueKoef = RollItemDamageKoef();
+            var damageValueKoef = RollItemDamageKoef() * additionalKoef;
             var weapon = new SimpleSword()
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
                 GoldValue = GetWeaponGoldValue(level, damageValueKoef),
                 BaseDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef),
-                Bonuses = CalculateBonuses(level)
+                Bonuses = CalculateBonuses(level, additionalKoef)
             };
             weapon.Damage = weapon.BaseDamage;
             return weapon;
@@ -35,10 +35,10 @@ namespace SomeName.Items.Factories
         // TODO : Реализовать возможность выпадения бонусов шанса и силы крита.
         // TODO : Реализовать шанс выпадения бонусов.
         // TODO : Доделать выпадение разного числа бонусов.
-        private WeaponBonuses CalculateBonuses(int level)
+        private WeaponBonuses CalculateBonuses(int level, double additionalKoef)
         {
-            var powerValueKoef = RollItemDamageKoef();
-            var vitalityValueKoef = RollItemDamageKoef();
+            var powerValueKoef = RollItemDamageKoef() * additionalKoef;
+            var vitalityValueKoef = RollItemDamageKoef() * additionalKoef;
             var itemBonusesCount = CalculateItemBonusesCount(level);
 
             return new WeaponBonuses

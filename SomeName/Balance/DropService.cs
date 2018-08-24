@@ -53,7 +53,7 @@ namespace SomeName.Balance
                 var currentItemDropValue = itemDropValue * itemFactory.Item2;
                 var dropChance = currentItemDropValue / itemFactory.Item1.GetItemGoldValue(level);
                 if (Dice.TryGetChance(dropChance))
-                    items.Add(itemFactory.Item1.Build(level));
+                    items.Add(itemFactory.Item1.Build(level, BattleDifficulty.GetCurrent().ItemAdditionalKoef));
             }
             return items;
         }
@@ -62,7 +62,7 @@ namespace SomeName.Balance
         (
             Tuple.Create<ItemFactory, int>(new SimpleSwordFactory(), 100),
             Tuple.Create<ItemFactory, int>(new SimpleChestFactory(), 100),
-            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 30)
+            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 12)
         );
     }
 }

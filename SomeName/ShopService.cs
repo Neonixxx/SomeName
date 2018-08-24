@@ -9,7 +9,7 @@ namespace SomeName
 {
     public class ShopService
     {
-        public long SellItem(Item item)
+        public long GetSellItemValue(Item item)
             => Convert.ToInt64(item.GoldValue * 0.7);
     }
 }

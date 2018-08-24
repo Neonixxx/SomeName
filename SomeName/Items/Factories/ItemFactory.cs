@@ -22,7 +22,7 @@ namespace SomeName.Items.Factories
         /// </summary>
         /// <param name="level"></param>
         /// <returns></returns>
-        public abstract Item Build(int level);
+        public abstract Item Build(int level, double additionalKoef = 1.0);
 
         protected int CalculateItemBonusesCount(int level)
             => Dice.GetRange(GetMinItemBonusesCount(level), GetMaxItemBonusesCount(level));

@@ -19,6 +19,6 @@ namespace SomeName.Balance.ItemStats
             => ToInt64(GetBaseDamage(level) * damageValueKoef);
 
         private long GetBaseDamage(int level)
-            => ToInt64(100 * Pow(E, 0.04 * level) - 100);
+            => ToInt64(20 * Pow(E, 0.04 * level) - 15);
     }
 }

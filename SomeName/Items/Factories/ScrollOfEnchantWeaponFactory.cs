@@ -17,9 +17,9 @@ namespace SomeName.Items.Factories
         private long GetScrollOfEnchantWeaponGoldValue(int level, double damageValueKoef)
             => Convert.ToInt64(GetItemGoldValue(level) * damageValueKoef);
 
-        public override Item Build(int level)
+        public override Item Build(int level, double additionalKoef = 1.0)
         {
-            var damageValueKoef = RollItemDamageKoef();
+            var damageValueKoef = RollItemDamageKoef() * additionalKoef;
             var item = new ScrollOfEnchantWeapon()
             {
                 Level = level,
