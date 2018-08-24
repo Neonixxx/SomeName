@@ -87,6 +87,7 @@
     <Compile Include="InventoryController.cs" />
     <Compile Include="Items\Factories\ChestFactory.cs" />
     <Compile Include="Items\Factories\ItemFactory.cs" />
+    <Compile Include="Items\Factories\ScrollOfEnchantWeaponFactory.cs" />
     <Compile Include="Items\Factories\SimpleChestFactory.cs" />
     <Compile Include="Items\Factories\SimpleSwordFactory.cs" />
     <Compile Include="Items\Factories\WeaponFactory.cs" />
@@ -101,7 +102,9 @@
     <Compile Include="Items\Impl\SimpleSword.cs" />
     <Compile Include="Items\Interfaces\Armor.cs" />
     <Compile Include="Items\Interfaces\Chest.cs" />
+    <Compile Include="Items\Interfaces\Equippment.cs" />
     <Compile Include="Items\Interfaces\Item.cs" />
+    <Compile Include="Items\Impl\ScrollOfEnchantWeapon.cs" />
     <Compile Include="Items\Interfaces\Weapon.cs" />
     <Compile Include="Forms\Menu_Form.cs">
       <SubType>Form</SubType>
@@ -177,6 +180,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Items\Resources\ScrollOfEnchantWeapon.jpg" />
     <Content Include="Items\Resources\SimpleArmor.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

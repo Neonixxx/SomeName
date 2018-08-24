@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SomeName.Balance.ItemStats;
+using SomeName.Items.Impl;
+using SomeName.Items.Interfaces;
+
+namespace SomeName.Items.Factories
+{
+    public class ScrollOfEnchantWeaponFactory : WeaponFactory
+    {
+        public override long GetItemGoldValue(int level)
+            => Convert.ToInt64(GetBaseWeaponGoldValue(level) * 0.15);
+
+        private long GetScrollOfEnchantWeaponGoldValue(int level, double damageValueKoef)
+            => Convert.ToInt64(GetItemGoldValue(level) * damageValueKoef);
+
+        public override Item Build(int level)
+        {
+            var damageValueKoef = RollItemDamageKoef();
+            var item = new ScrollOfEnchantWeapon()
+            {
+                Level = level,
+                GoldValue = GetScrollOfEnchantWeaponGoldValue(level, damageValueKoef),
+                Value = WeaponStatsBalance.GetDamage(level, damageValueKoef)
+            };
+            return item;
+        }
+    }
+}

@@ -16,8 +16,6 @@ namespace SomeName.Items.Interfaces
 
         public long GoldValue { get; set; }
 
-        public double DamageValueKoef { get; set; }
-
         public string Description { get; set; }
 
         [JsonIgnore]

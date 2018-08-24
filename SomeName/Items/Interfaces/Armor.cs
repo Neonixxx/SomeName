@@ -8,7 +8,7 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public class Armor : Item
+    public class Armor : Equippment
     {
         public long BaseDefence { get; set; }
 

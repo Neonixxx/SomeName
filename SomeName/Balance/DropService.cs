@@ -12,13 +12,13 @@ namespace SomeName.Balance
 {
     public class DropService
     {
-        public ItemFactory[] ItemFactories { get; }
+        public Tuple<ItemFactory, int>[] ItemFactories { get; }
 
         public static readonly double DropGoldValueKoef = 0.3;
 
         public static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
 
-        public DropService(params ItemFactory[] itemFactories)
+        public DropService(params Tuple<ItemFactory, int>[] itemFactories)
             => ItemFactories = itemFactories;
 
         public Drop Build(int level, long value)
@@ -46,17 +46,23 @@ namespace SomeName.Balance
 
         protected virtual List<Item> CalculateItemsDrop(int level, long value)
         {
-            var itemDropValue = value * DropItemsValueKoef / ItemFactories.Length;
+            var itemDropValue = value * DropItemsValueKoef / ItemFactories.Sum(s => s.Item2);
             var items = new List<Item>();
             foreach (var itemFactory in ItemFactories)
             {
-                var dropChance = itemDropValue / itemFactory.GetItemGoldValue(level);
+                var currentItemDropValue = itemDropValue * itemFactory.Item2;
+                var dropChance = currentItemDropValue / itemFactory.Item1.GetItemGoldValue(level);
                 if (Dice.TryGetChance(dropChance))
-                    items.Add(itemFactory.Build(level));
+                    items.Add(itemFactory.Item1.Build(level));
             }
             return items;
         }
 
-        public static readonly DropService Standard = new DropService(new SimpleSwordFactory(), new SimpleChestFactory());
+        public static readonly DropService Standard = new DropService
+        (
+            Tuple.Create<ItemFactory, int>(new SimpleSwordFactory(), 100),
+            Tuple.Create<ItemFactory, int>(new SimpleChestFactory(), 100),
+            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 30)
+        );
     }
 }

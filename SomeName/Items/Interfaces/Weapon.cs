@@ -9,7 +9,7 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Weapon : Item
+    public abstract class Weapon : Equippment
     {
         public long BaseDamage { get; set; }
 
