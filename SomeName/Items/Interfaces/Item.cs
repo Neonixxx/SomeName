@@ -22,7 +22,7 @@ namespace SomeName.Items.Interfaces
         public Image Image { get; set; }
 
         public override string ToString()
-            => $"Level: {Level}" +
-                $"{NewLine}{Description}";
+            => $"{Description}" +
+                $"{NewLine}Level: {Level}";
     }
 }

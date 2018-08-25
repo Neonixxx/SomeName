@@ -24,7 +24,10 @@ namespace SomeName.Items.Interfaces
 
         public override string ToString()
         {
-            var result = new StringBuilder($"{base.ToString()}{NewLine}Damage: {Damage}");
+            var result = new StringBuilder();
+            if (EnchantmentLevel > 0)
+                result.Append($"+{EnchantmentLevel} ");
+            result.Append($"{base.ToString()}{NewLine}Damage: {Damage}");
             var bonusesString = Bonuses.ToString();
             if (bonusesString != string.Empty)
                 result.Append($"{NewLine}{bonusesString}");
@@ -35,7 +38,7 @@ namespace SomeName.Items.Interfaces
 
         protected readonly double EnchantmentValueEnc = 0.02;
 
-        protected readonly double EnchantmentChanceKoef = 0.97;
+        protected readonly double EnchantmentChanceKoef = 0.92;
 
         // TODO : Надо бы сделать все методы заточки более удобным способом.
         public bool TryEnchant(ScrollOfEnchantWeapon scrollOfEnchant)
@@ -47,10 +50,7 @@ namespace SomeName.Items.Interfaces
                 return true;
             }
             else
-            {
-                SetEnchantmentLevel(0);
                 return false;
-            }
         }
 
         public double GetEnchantChance(ScrollOfEnchantWeapon scrollOfEnchant)

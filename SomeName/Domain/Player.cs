@@ -38,7 +38,7 @@ namespace SomeName.Domain
 
         // HACK : Лезет не в свою зону ответственности.
         public long GetDamageWithoutCrit()
-            => PlayerStatsCalculator.CalculateDamage(GetPower(), EquippedItems.Weapon.Damage);
+            => PlayerStatsCalculator.CalculateDamage(GetPower(), EquippedItems.Weapon?.Damage ?? 1);
 
         public long GetDefence()
             => PlayerStatsCalculator.CalculateDefence(this);

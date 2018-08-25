@@ -32,6 +32,7 @@
             this.Save_Button = new System.Windows.Forms.Button();
             this.Inventory_Button = new System.Windows.Forms.Button();
             this.BattleDifficulty_ComboBox = new System.Windows.Forms.ComboBox();
+            this.BattleDifficultyLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Farm_Button
@@ -72,19 +73,30 @@
             this.BattleDifficulty_ComboBox.Size = new System.Drawing.Size(121, 21);
             this.BattleDifficulty_ComboBox.TabIndex = 3;
             // 
-            // Main_Form
+            // BattleDifficultyLabel
+            // 
+            this.BattleDifficultyLabel.AutoSize = true;
+            this.BattleDifficultyLabel.Location = new System.Drawing.Point(193, 21);
+            this.BattleDifficultyLabel.Name = "BattleDifficultyLabel";
+            this.BattleDifficultyLabel.Size = new System.Drawing.Size(84, 13);
+            this.BattleDifficultyLabel.TabIndex = 4;
+            this.BattleDifficultyLabel.Text = "Сложность боя";
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BattleDifficultyLabel);
             this.Controls.Add(this.BattleDifficulty_ComboBox);
             this.Controls.Add(this.Inventory_Button);
             this.Controls.Add(this.Save_Button);
             this.Controls.Add(this.Farm_Button);
-            this.Name = "Main_Form";
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -94,6 +106,7 @@
         private System.Windows.Forms.Button Save_Button;
         private System.Windows.Forms.Button Inventory_Button;
         private System.Windows.Forms.ComboBox BattleDifficulty_ComboBox;
+        private System.Windows.Forms.Label BattleDifficultyLabel;
     }
 }
 
