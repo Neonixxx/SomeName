@@ -1,6 +1,6 @@
 ﻿namespace SomeName.Forms
 {
-    partial class Farm_Form
+    partial class FarmForm
     {
         /// <summary>
         /// Required designer variable.

@@ -24,11 +24,12 @@ namespace SomeName.Items.Factories
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
-                GoldValue = GetWeaponGoldValue(level, damageValueKoef),
+                BaseGoldValue = GetWeaponGoldValue(level, damageValueKoef),
                 BaseDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef),
                 Bonuses = CalculateBonuses(level, additionalKoef)
             };
             weapon.Damage = weapon.BaseDamage;
+            weapon.GoldValue = weapon.BaseGoldValue;
             return weapon;
         }
 

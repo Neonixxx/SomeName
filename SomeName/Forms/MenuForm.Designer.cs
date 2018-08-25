@@ -1,6 +1,6 @@
 ﻿namespace SomeName.Forms
 {
-    partial class Menu_Form
+    partial class MenuForm
     {
         /// <summary>
         /// Required designer variable.

@@ -10,11 +10,12 @@ using System.Windows.Forms;
 using SomeName.Items.Interfaces;
 using System.Windows.Input;
 using SomeName.Domain;
+using SomeName.Items.Impl;
 
 namespace SomeName.Forms
 {
     // TODO : Добавить возможность продавать предмет.
-    public partial class Inventory_Form : Form
+    public partial class InventoryForm : Form
     {
         public InventoryController InventoryController { get; set; }
 
@@ -59,11 +60,14 @@ namespace SomeName.Forms
             }
         }
 
-        public Inventory_Form()
+        private EquippedItems _equippedItems;
+
+        public InventoryForm()
         {
             InitializeComponent();
             ToolTip1.InitialDelay = 1;
             ItemInfo_Label.Text = string.Empty;
+            EnchantChanceLabel.Text = string.Empty;
 
             _equippedItemsSlots = new Dictionary<PictureBox, ItemType>
             {
@@ -116,14 +120,14 @@ namespace SomeName.Forms
 
         public void UpdateEquippedItems(EquippedItems equippedItems)
         {
+            _equippedItems = equippedItems;
             SetEquippedSlot(MainHandSlot, equippedItems.Weapon);
             SetEquippedSlot(ChestSlot, equippedItems.Armor);
         }
 
         private void SetEquippedSlot(PictureBox pictureBox, Item item)
         {
-            pictureBox.Image = item?.Image;
-            ToolTip1.SetToolTip(pictureBox, item?.ToString());
+            SetPictureBox(pictureBox, item);
             pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
         }
 
@@ -200,7 +204,7 @@ namespace SomeName.Forms
         {
             if (InventoryPanel.Controls.Contains(_selectedPictureBox))
             {
-                var itemIndex = (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+                var itemIndex = GetSelectedItemIndex();
                 InventoryController.EquipItem(itemIndex);
                 InventoryController.Update();
             }
@@ -225,7 +229,7 @@ namespace SomeName.Forms
         {
             if (InventoryPanel.Controls.Contains(_selectedPictureBox))
             {
-                var itemIndex = (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+                var itemIndex = GetSelectedItemIndex();
                 InventoryController.SellItem(itemIndex);
                 InventoryController.Update();
                 if (InventoryPanel.Controls.Count <= itemIndex)
@@ -233,6 +237,82 @@ namespace SomeName.Forms
 
                 if (InventoryPanel.Controls.Count > 0)
                     SetSelectedPictureBox(InventoryPanel.Controls[itemIndex] as PictureBox);
+            }
+        }
+
+        private int GetSelectedItemIndex()
+            => (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
+
+        private Weapon _weaponToEnchant;
+
+        private ScrollOfEnchantWeapon _scrollOfEnchantWeapon;
+
+        private void улучшитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var item = GetSelectedItem();
+            if (item == null)
+                return;
+                
+            if (item is Weapon weapon)
+            {
+                _weaponToEnchant = weapon;
+                UpdateItemToEnchantSlot();
+            }
+            else if (item is ScrollOfEnchantWeapon scrollOfEnchantWeapon)
+            {
+                _scrollOfEnchantWeapon = scrollOfEnchantWeapon;
+                SetPictureBox(ScrollOfEnchantSlot, scrollOfEnchantWeapon);
+            }
+
+            if (_weaponToEnchant != null && _scrollOfEnchantWeapon != null)
+            {
+                var enchantChance = _weaponToEnchant.GetEnchantChance(_scrollOfEnchantWeapon);
+                if (enchantChance > 1.0)
+                    enchantChance = 1.0;
+                EnchantChanceLabel.Text = enchantChance.ToPercentString(2);
+            }
+        }
+
+        private void UpdateItemToEnchantSlot()
+        {
+            SetPictureBox(ItemToEnchantSlot, _weaponToEnchant);
+            EnchantButton.Text = $"Улучшить на +{_weaponToEnchant.EnchantmentLevel + 1}";
+        }
+
+        private void SetPictureBox(PictureBox pictureBox, Item item)
+        {
+            pictureBox.Image = item?.Image;
+            ToolTip1.SetToolTip(pictureBox, item?.ToString());
+        }
+
+        private Item GetSelectedItem()
+        {
+            Item item = null;
+            if (InventoryPanel.Controls.Contains(_selectedPictureBox))
+            {
+                var itemIndex = GetSelectedItemIndex();
+                item = InventoryController.GetItem(itemIndex);
+            }
+            if (_equippedItemsSlots.ContainsKey(_selectedPictureBox) && _equippedItemsSlots[_selectedPictureBox] == ItemType.Weapon)
+            {
+                item = _equippedItems.Weapon;
+            }
+            return item;
+        }
+
+        private void EnchantButton_Click(object sender, EventArgs e)
+        {
+            if (_weaponToEnchant != null && _scrollOfEnchantWeapon != null)
+            {
+                var isEnchantSuccesful = InventoryController.EnchantWeapon(_weaponToEnchant, _scrollOfEnchantWeapon);
+                InventoryController.Update();
+
+                UpdateItemToEnchantSlot();
+                _scrollOfEnchantWeapon = null;
+                SetPictureBox(ScrollOfEnchantSlot, null);
+                EnchantChanceLabel.Text = isEnchantSuccesful
+                    ? "Успешно"
+                    : "Неуспешно";
             }
         }
     }

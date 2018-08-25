@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SomeName.Items.Interfaces
+namespace SomeName
 {
-    public abstract class Equippment : Item
+    public class ForgeController
     {
-        public double DamageValueKoef { get; set; }
+
     }
 }

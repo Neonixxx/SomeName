@@ -1,6 +1,6 @@
 ﻿namespace SomeName.Forms
 {
-    partial class Main_Form
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.

@@ -17,7 +17,7 @@ namespace SomeName
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu_Form());
+            Application.Run(new MenuForm());
         }
     }
 }

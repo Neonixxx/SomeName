@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SomeName.Items.Interfaces;
 using SomeName.Balance;
 using SomeName.Domain;
+using SomeName.Items.Impl;
 
 namespace SomeName.Domain
 {
@@ -90,6 +91,15 @@ namespace SomeName.Domain
                 Inventory.Remove(item);
                 Gold += shopService.GetSellItemValue(item);
             }
+        }
+
+        // TODO : Перенести все методы заточки в более подходящее место.
+        public bool EnchantWeapon(Weapon item, ScrollOfEnchantWeapon scrollOfEnchant)
+        {
+            if (Inventory.Remove(scrollOfEnchant))
+                return item.TryEnchant(scrollOfEnchant);
+
+            throw new InvalidOperationException($"{nameof(scrollOfEnchant)} не содержится в {nameof(Inventory)}");
         }
 
         // TODO : Решить, как можно сделать метод более расширяемым к добавлению новых типов предметов.

@@ -12,13 +12,13 @@ using System.Windows.Forms;
 namespace SomeName.Forms
 {
     // TODO : Сделать меню выбора сложности боя.
-    public partial class Main_Form : Form, ICanStart
+    public partial class MainForm : Form, ICanStart
     {
         public Player Player;
 
-        public  Farm_Form FarmForm = new Farm_Form();
+        public  FarmForm FarmForm = new FarmForm();
 
-        public Inventory_Form InventoryForm { get; set; }
+        public InventoryForm InventoryForm { get; set; }
 
         public FarmController FarmController { get; set; }
 
@@ -26,7 +26,7 @@ namespace SomeName.Forms
 
         public GameController GameController { get; set; } = new GameController();
 
-        public Main_Form(Player player)
+        public MainForm(Player player)
         {
             InitializeComponent();
             Player = player;
@@ -37,7 +37,7 @@ namespace SomeName.Forms
             FarmController = new FarmController(Player, FarmForm);
             FarmForm.FarmController = FarmController;
 
-            InventoryForm = new Inventory_Form();
+            InventoryForm = new InventoryForm();
             InventoryController = new InventoryController
             {
                 InventoryForm = InventoryForm,

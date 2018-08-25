@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using SomeName.Domain;
 using SomeName.Forms;
+using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
 
 namespace SomeName
 {
     public class InventoryController : ICanStart
     {
-        public Inventory_Form InventoryForm { get; set; }
+        public InventoryForm InventoryForm { get; set; }
 
         public Player Player { get; set; }
 
@@ -28,17 +29,23 @@ namespace SomeName
             InventoryForm.UpdateGold(Player.Gold);
         }
 
-        public void SellItem(int itemNumber)
-            => Player.SellItem(ShopService, Player.Inventory[itemNumber]);
+        public bool EnchantWeapon(Weapon weapon, ScrollOfEnchantWeapon scrollOfEnchantWeapon)
+            => Player.EnchantWeapon(weapon, scrollOfEnchantWeapon);
 
-        public void EquipItem(int itemNumber)
-            => Player.Equip(Player.Inventory[itemNumber]);
+        public void SellItem(int itemIndex)
+            => Player.SellItem(ShopService, Player.Inventory[itemIndex]);
+
+        public void EquipItem(int itemIndex)
+            => Player.Equip(Player.Inventory[itemIndex]);
 
         public void UnequipItem(ItemType itemType)
             => Player.Unequip(itemType);
 
         public long GetGoldValueOfItem(int itemIndex)
             => ShopService.GetSellItemValue(Player.Inventory[itemIndex]);
+
+        public Item GetItem(int itemIndex)
+            => Player.Inventory[itemIndex];
 
         private StatsInfo GetStatsInfo()
         {

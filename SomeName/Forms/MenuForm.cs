@@ -11,23 +11,23 @@ using System.Windows.Forms;
 namespace SomeName.Forms
 {
     // TODO : сделать открытие форм по центру от изначальной формы.
-    public partial class Menu_Form : Form
+    public partial class MenuForm : Form
     {
-        public Menu_Form()
+        public MenuForm()
         {
             InitializeComponent();
         }
 
         private void NewGame_Button_Click(object sender, EventArgs e)
         {
-            this.StartForm(new Main_Form(PlayerIO.StartNew()));
+            this.StartForm(new MainForm(PlayerIO.StartNew()));
         }
 
         private void Load_Button_Click(object sender, EventArgs e)
         {
             var isLoaded = PlayerIO.TryLoad(out var player);
             if (isLoaded)
-                this.StartForm(new Main_Form(player));
+                this.StartForm(new MainForm(player));
             else
                 MessageBox.Show("Не удалось загрузить персонажа.");
         }

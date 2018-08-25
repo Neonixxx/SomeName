@@ -59,6 +59,13 @@
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
     <Compile Include="Domain\PlayerStatsCalculator.cs" />
+    <Compile Include="ForgeController.cs" />
+    <Compile Include="Forms\ForgeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ForgeForm.Designer.cs">
+      <DependentUpon>ForgeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameController.cs" />
     <Compile Include="Items\Bonuses\ArmorBonuses.cs" />
     <Compile Include="Domain\DropInfo.cs" />
@@ -71,17 +78,17 @@
     <Compile Include="Items\Bonuses\WeaponBonuses.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
-    <Compile Include="Forms\Farm_Form.cs">
+    <Compile Include="Forms\FarmForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Farm_Form.Designer.cs">
-      <DependentUpon>Farm_Form.cs</DependentUpon>
+    <Compile Include="Forms\FarmForm.Designer.cs">
+      <DependentUpon>FarmForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Inventory_Form.cs">
+    <Compile Include="Forms\InventoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Inventory_Form.Designer.cs">
-      <DependentUpon>Inventory_Form.cs</DependentUpon>
+    <Compile Include="Forms\InventoryForm.Designer.cs">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\ICanStart.cs" />
     <Compile Include="InventoryController.cs" />
@@ -92,11 +99,11 @@
     <Compile Include="Items\Factories\SimpleSwordFactory.cs" />
     <Compile Include="Items\Factories\WeaponFactory.cs" />
     <Compile Include="Items\Impl\BeginnerSword.cs" />
-    <Compile Include="Forms\Main_Form.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main_Form.Designer.cs">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Items\Impl\SimpleChest.cs" />
     <Compile Include="Items\Impl\SimpleSword.cs" />
@@ -105,12 +112,13 @@
     <Compile Include="Items\Interfaces\Equippment.cs" />
     <Compile Include="Items\Interfaces\Item.cs" />
     <Compile Include="Items\Impl\ScrollOfEnchantWeapon.cs" />
+    <Compile Include="Items\Interfaces\ScrollOfEnchant.cs" />
     <Compile Include="Items\Interfaces\Weapon.cs" />
-    <Compile Include="Forms\Menu_Form.cs">
+    <Compile Include="Forms\MenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Menu_Form.Designer.cs">
-      <DependentUpon>Menu_Form.cs</DependentUpon>
+    <Compile Include="Forms\MenuForm.Designer.cs">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Domain\Drop.cs" />
     <Compile Include="Items\Resources\ItemImages.Designer.cs">
@@ -130,17 +138,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\StatsInfo.cs" />
     <Compile Include="ShopService.cs" />
-    <EmbeddedResource Include="Forms\Farm_Form.resx">
-      <DependentUpon>Farm_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FarmForm.resx">
+      <DependentUpon>FarmForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Inventory_Form.resx">
-      <DependentUpon>Inventory_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ForgeForm.resx">
+      <DependentUpon>ForgeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main_Form.resx">
-      <DependentUpon>Main_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\InventoryForm.resx">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Menu_Form.resx">
-      <DependentUpon>Menu_Form.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MenuForm.resx">
+      <DependentUpon>MenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items\Resources\ItemImages.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

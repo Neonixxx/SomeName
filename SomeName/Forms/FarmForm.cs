@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace SomeName.Forms
 {
-    public partial class Farm_Form : Form, ICanStart
+    public partial class FarmForm : Form, ICanStart
     {
         public FarmController FarmController;
 
-        public Farm_Form()
+        public FarmForm()
         {
             InitializeComponent();
             FormClosing += Farm_Form_FormClosing;

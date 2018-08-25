@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Equippment : Item
+    public class ScrollOfEnchant : Item
     {
-        public double DamageValueKoef { get; set; }
+
     }
 }

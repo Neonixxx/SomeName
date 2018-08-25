@@ -19,13 +19,13 @@ namespace SomeName
     {
         public Player Player { get; set; }
 
-        public Farm_Form FarmForm { get; set; }
+        public FarmForm FarmForm { get; set; }
 
         private Monster _monster { get; set; }
 
         private object _syncRoot { get; } = new object();
 
-        public FarmController(Player player, Farm_Form farm_form)
+        public FarmController(Player player, FarmForm farm_form)
         {
             Player = player;
             FarmForm = farm_form;
