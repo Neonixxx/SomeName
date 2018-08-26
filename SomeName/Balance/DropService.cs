@@ -62,6 +62,7 @@ namespace SomeName.Balance
         (
             Tuple.Create<ItemFactory, int>(new SimpleSwordFactory(), 100),
             Tuple.Create<ItemFactory, int>(new SimpleChestFactory(), 100),
+            Tuple.Create<ItemFactory, int>(new SimpleGlovesFactory(), 100),
             Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 12)
         );
     }

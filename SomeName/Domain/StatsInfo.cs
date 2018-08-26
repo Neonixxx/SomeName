@@ -36,8 +36,8 @@ namespace SomeName.Domain
                 $"{NewLine}Vitality: {Vitality}" +
                 $"{NewLine}Defence: {Defence}" +
                 $"{NewLine}Снижение получаемого урона: {DefenceKoef.ToPercentString(2)}" +
-                $"{NewLine}Шанс крита: {CritChance.ToPercentString(0)}" +
-                $"{NewLine}Сила крита: {CritDamage.ToPercentString(0)}";
+                $"{NewLine}Шанс крита: {CritChance.ToPercentString(1)}" +
+                $"{NewLine}Сила крита: {CritDamage.ToPercentString(1)}";
         }
     }
 }

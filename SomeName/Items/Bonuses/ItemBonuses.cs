@@ -28,10 +28,10 @@ namespace SomeName.Items.Bonuses
                 result.Append($"{NewLine}Vitality: {Vitality}");
 
             if (CritChance != 0)
-                result.Append($"{NewLine}Шанс крита: {CritChance.ToPercentString(0)}");
+                result.Append($"{NewLine}Шанс крита: {CritChance.ToPercentString(1)}");
 
             if (CritDamage != 0)
-                result.Append($"{NewLine}Сила крита: {CritDamage.ToPercentString(0)}");
+                result.Append($"{NewLine}Сила крита: {CritDamage.ToPercentString(1)}");
 
             return result.ToString();
         }

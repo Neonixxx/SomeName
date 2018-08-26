@@ -114,11 +114,18 @@ namespace SomeName.Domain
                     EquippedItems.Weapon = weapon;
                     return true;
 
-                case Chest armor:
+                case Chest chest:
                     if (EquippedItems.Armor != null)
                         Inventory.Add(EquippedItems.Armor);
                     Inventory.Remove(item);
-                    EquippedItems.Armor = armor;
+                    EquippedItems.Armor = chest;
+                    return true;
+
+                case Gloves gloves:
+                    if (EquippedItems.Gloves != null)
+                        Inventory.Add(EquippedItems.Gloves);
+                    Inventory.Remove(item);
+                    EquippedItems.Gloves = gloves;
                     return true;
             }
 
@@ -137,11 +144,19 @@ namespace SomeName.Domain
                     }
                     break;
 
-                case ItemType.Armor:
+                case ItemType.Chest:
                     if (EquippedItems.Armor != null)
                     {
                         Inventory.Add(EquippedItems.Armor);
                         EquippedItems.Armor = null;
+                    }
+                    break;
+
+                case ItemType.Gloves:
+                    if (EquippedItems.Gloves != null)
+                    {
+                        Inventory.Add(EquippedItems.Gloves);
+                        EquippedItems.Gloves = null;
                     }
                     break;
             }

@@ -14,13 +14,20 @@ namespace SomeName.Domain
 
         public Chest Armor { get; set; }
 
+        public Gloves Gloves { get; set; }
+
         public long GetDefence()
-            => Armor?.Defence ?? 0;
+        {
+            var result = Armor?.Defence ?? 0;
+            result += Gloves?.Defence ?? 0;
+            return result;
+        }
 
         public int GetPower()
         {
             var result = Weapon?.Bonuses.Power ?? 0;
             result += Armor?.Bonuses.Power ?? 0;
+            result += Gloves?.Bonuses.Power ?? 0;
             return result;
         }
 
@@ -28,6 +35,7 @@ namespace SomeName.Domain
         {
             var result =  Weapon?.Bonuses.Vitality ?? 0;
             result += Armor?.Bonuses.Vitality ?? 0;
+            result += Gloves?.Bonuses.Vitality ?? 0;
             return result;
         }
 
@@ -35,6 +43,7 @@ namespace SomeName.Domain
         {
             var result = Weapon?.Bonuses.CritChance ?? 0;
             result += Armor?.Bonuses.CritChance ?? 0;
+            result += Gloves?.Bonuses.CritChance ?? 0;
             return result;
         }
 
@@ -42,6 +51,7 @@ namespace SomeName.Domain
         {
             var result = Weapon?.Bonuses.CritDamage ?? 0;
             result += Armor?.Bonuses.CritDamage ?? 0;
+            result += Gloves?.Bonuses.CritDamage ?? 0;
             return result;
         }
     }

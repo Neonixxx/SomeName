@@ -93,6 +93,16 @@ namespace SomeName.Items.Resources {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap SimpleGloves {
+            get {
+                object obj = ResourceManager.GetObject("SimpleGloves", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap SimpleSword {
             get {
                 object obj = ResourceManager.GetObject("SimpleSword", resourceCulture);

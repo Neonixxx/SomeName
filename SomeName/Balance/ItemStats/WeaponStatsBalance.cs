@@ -14,6 +14,7 @@ namespace SomeName.Balance.ItemStats
 
         protected override double VitalityKoef => 1.0;
 
+        protected override double CritChanceKoef => 0.0;
 
         public long GetDamage(int level, double damageValueKoef)
             => ToInt64(GetBaseDamage(level) * damageValueKoef);

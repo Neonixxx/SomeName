@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Balance\ItemStats\ArmorStatsBalance.cs" />
     <Compile Include="Balance\ItemStats\ChestStatsBalance.cs" />
+    <Compile Include="Balance\ItemStats\GlovesStatsBalance.cs" />
     <Compile Include="Balance\ItemStats\ItemStatsBalance.cs" />
     <Compile Include="Balance\ItemStats\WeaponStatsBalance.cs" />
     <Compile Include="Balance\DropService.cs" />
@@ -93,9 +94,11 @@
     <Compile Include="Domain\ICanStart.cs" />
     <Compile Include="InventoryController.cs" />
     <Compile Include="Items\Factories\ChestFactory.cs" />
+    <Compile Include="Items\Factories\GlovesFactory.cs" />
     <Compile Include="Items\Factories\ItemFactory.cs" />
     <Compile Include="Items\Factories\ScrollOfEnchantWeaponFactory.cs" />
     <Compile Include="Items\Factories\SimpleChestFactory.cs" />
+    <Compile Include="Items\Factories\SimpleGlovesFactory.cs" />
     <Compile Include="Items\Factories\SimpleSwordFactory.cs" />
     <Compile Include="Items\Factories\WeaponFactory.cs" />
     <Compile Include="Items\Impl\BeginnerSword.cs" />
@@ -106,10 +109,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Items\Impl\SimpleChest.cs" />
+    <Compile Include="Items\Impl\SimpleGloves.cs" />
     <Compile Include="Items\Impl\SimpleSword.cs" />
     <Compile Include="Items\Interfaces\Armor.cs" />
     <Compile Include="Items\Interfaces\Chest.cs" />
     <Compile Include="Items\Interfaces\Equippment.cs" />
+    <Compile Include="Items\Interfaces\Gloves.cs" />
     <Compile Include="Items\Interfaces\Item.cs" />
     <Compile Include="Items\Impl\ScrollOfEnchantWeapon.cs" />
     <Compile Include="Items\Interfaces\ScrollOfEnchant.cs" />
@@ -191,6 +196,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Items\Resources\SimpleGloves.jpg" />
     <Content Include="Items\Resources\ScrollOfEnchantWeapon.jpg" />
     <Content Include="Items\Resources\SimpleArmor.jpg" />
   </ItemGroup>

@@ -14,6 +14,8 @@ namespace SomeName.Balance.ItemStats
 
         protected abstract double VitalityKoef { get; }
 
+        protected abstract double CritChanceKoef { get; }
+
 
         public int GetPower(int level, double damageValueKoef)
             => ToInt32(GetBasePower(level) * damageValueKoef);
@@ -31,6 +33,21 @@ namespace SomeName.Balance.ItemStats
         private int GetBaseStat(int level)
             => ToInt32(Pow(level, 1.3));
 
-        
+
+        public double GetCritChance(int level, double damageValueKoef)
+        {
+            var baseCritCoef = Sqrt(damageValueKoef);
+            var critKoef = baseCritCoef > 2.0
+                ? 2.0
+                : baseCritCoef;
+            return Round(GetBaseCritChance(level) * critKoef, 3);
+        }
+
+        private double GetBaseCritChance(int level)
+            => CritChanceKoef * level / 2000;
+
+        // UNDONE : Недоделано вычисление критического урона предметов.
+        public double GetCritDamage(int level, double damageValueKoef)
+            => 0.0;
     }
 }
