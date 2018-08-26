@@ -38,7 +38,7 @@ namespace SomeName.Items.Interfaces
 
         protected readonly double EnchantmentValueEnc = 0.02;
 
-        protected readonly double EnchantmentChanceKoef = 0.92;
+        protected readonly double EnchantmentChanceKoef = 0.9;
 
         // TODO : Надо бы сделать все методы заточки более удобным способом.
         public bool TryEnchant(ScrollOfEnchantWeapon scrollOfEnchant)

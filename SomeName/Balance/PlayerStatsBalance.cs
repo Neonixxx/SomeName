@@ -21,8 +21,11 @@ namespace SomeName.Balance
         public GlovesStatsBalance GlovesStatsBalance { get; set; }
 
 
-        private double GetDefaultItemDamageKoef()
-            => BattleDifficulty.GetCurrent().ItemDamageKoef;
+        private double GetDefaultItemDamageKoef(int level)
+            => BattleDifficulty.GetCurrent().ItemDamageKoef * GetBaseItemDamageKoef(level);
+
+        private double GetBaseItemDamageKoef(int level)
+            => 1 + level * 0.01;
 
 
         public static long GetExp(int level)
@@ -39,17 +42,17 @@ namespace SomeName.Balance
 
 
         public long GetDefaultDamage(int level)
-            => GetDamage(level, GetDefaultItemDamageKoef());
+            => GetDamage(level, GetDefaultItemDamageKoef(level));
 
         public long GetDefaultToughness(int level)
             => ToInt64(GetDefaultMaxHealth(level) / (1 - GetDefaultDefenceKoef(level)));
 
         public long GetDefaultMaxHealth(int level)
-            => GetMaxHealth(level, GetDefaultItemDamageKoef());
+            => GetMaxHealth(level, GetDefaultItemDamageKoef(level));
 
         public double GetDefaultDefenceKoef(int level)
         {
-            var defence = GetDefence(level, GetDefaultItemDamageKoef());
+            var defence = GetDefence(level, GetDefaultItemDamageKoef(level));
             return PlayerStatsCalculator.CalculateDefenceKoef(level, defence);
         }
 

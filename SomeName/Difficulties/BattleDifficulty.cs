@@ -22,10 +22,10 @@ namespace SomeName.Difficulties
 
         private static readonly BattleDifficulty[] BattleDifficulties = new BattleDifficulty[]
         {
-            new BattleDifficulty("Very easy", 0.8, 0.95, 0.95, 0.95, 1.0),
-            new BattleDifficulty("Easy", 1.0, 1.0, 1.0, 1.0, 1.0),
-            new BattleDifficulty("Normal", 1.3, 1.2, 1.05, 1.05, 1.0),
-            new BattleDifficulty("Hard", 1.7, 1.4, 1.1, 1.1, 1.0),
+            new BattleDifficulty("Very easy", 0.65, 0.8, 0.8, 0.8, 0.8),
+            new BattleDifficulty("Easy", 0.8, 0.9, 0.9, 0.9, 0.9),
+            new BattleDifficulty("Normal", 1.0, 1.0, 1.0, 1.0, 1.0),
+            new BattleDifficulty("Hard", 1.3, 1.15, 1.1, 1.1, 1.0),
         };
 
         public BattleDifficulty(string name, double itemDamageKoef, double expMultiplier, double goldMultiplier, double dropMultiplier, double itemAdditionalKoef)
