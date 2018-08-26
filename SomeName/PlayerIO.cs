@@ -31,7 +31,7 @@ namespace SomeName
             };
         }
 
-        // TODO : добавить зашифровку данных.
+        // TODO : Добавить зашифровку данных.
         public static bool TrySave(Player player)
         {
             var data = JsonConvert.SerializeObject(player, Formatting.None, new JsonSerializerSettings()

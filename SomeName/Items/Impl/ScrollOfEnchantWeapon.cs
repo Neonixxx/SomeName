@@ -9,7 +9,6 @@ using static System.Environment;
 
 namespace SomeName.Items.Impl
 {
-    // UNDONE : Реализовать возможность заточки оружия.
     public class ScrollOfEnchantWeapon : ScrollOfEnchant
     {
         public long Value { get; set; }

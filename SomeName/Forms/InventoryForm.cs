@@ -14,7 +14,6 @@ using SomeName.Items.Impl;
 
 namespace SomeName.Forms
 {
-    // TODO : Добавить возможность продавать предмет.
     public partial class InventoryForm : Form
     {
         public InventoryController InventoryController { get; set; }

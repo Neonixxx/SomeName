@@ -38,7 +38,6 @@ namespace SomeName.Difficulties
             ItemAdditionalKoef = itemAdditionalKoef;
         }
 
-        // UNDONE : смена сложности не работает, нужно найти причину.
         public static BattleDifficulty GetCurrent() 
             => BattleDifficulties[CurrentIndex];
 

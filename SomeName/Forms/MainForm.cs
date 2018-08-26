@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace SomeName.Forms
 {
-    // TODO : Сделать меню выбора сложности боя.
     public partial class MainForm : Form, ICanStart
     {
         public Player Player;

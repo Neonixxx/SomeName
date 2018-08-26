@@ -8,7 +8,6 @@ using SomeName.Items.Interfaces;
 
 namespace SomeName.Items.Factories
 {
-    // TODO : возможно реализовать другие виды оружия.
     public abstract class WeaponFactory : ItemFactory
     {
         protected readonly WeaponStatsBalance WeaponStatsBalance = new WeaponStatsBalance();

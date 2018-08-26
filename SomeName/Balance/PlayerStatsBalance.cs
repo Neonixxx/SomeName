@@ -91,7 +91,6 @@ namespace SomeName.Balance
             + ChestStatsBalance.GetVitality(level, damageValueKoef);
 
 
-        // TODO : Доработать вычисление критов.
         private double GetBaseCritCoef(int level, double damageValueKoef)
             => GetCritChance(level, damageValueKoef) * (GetCritDamage(level, damageValueKoef) - 1) + 1;
 
