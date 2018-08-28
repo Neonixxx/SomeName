@@ -26,6 +26,8 @@ namespace SomeName.Difficulties
             new BattleDifficulty("Easy", 0.8, 0.9, 0.9, 0.9, 0.9),
             new BattleDifficulty("Normal", 1.0, 1.0, 1.0, 1.0, 1.0),
             new BattleDifficulty("Hard", 1.3, 1.15, 1.1, 1.1, 1.0),
+            new BattleDifficulty("Super hard", 2.0, 1.5, 1.3, 1.3, 1.1),            // Временно.
+            new BattleDifficulty("SUPER ULTRA MEGA HARD", 4, 2.5, 2.0, 2.0, 1.4),   // Временно.
         };
 
         public BattleDifficulty(string name, double itemDamageKoef, double expMultiplier, double goldMultiplier, double dropMultiplier, double itemAdditionalKoef)

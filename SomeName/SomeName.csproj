@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Balance\DropBalance.cs" />
     <Compile Include="Balance\ItemStats\ArmorStatsBalance.cs" />
     <Compile Include="Balance\ItemStats\ChestStatsBalance.cs" />
     <Compile Include="Balance\ItemStats\GlovesStatsBalance.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="InventoryController.cs" />
     <Compile Include="Items\Factories\ChestFactory.cs" />
     <Compile Include="Items\Factories\GlovesFactory.cs" />
+    <Compile Include="Items\Factories\ItemBonusesBuilder.cs" />
     <Compile Include="Items\Factories\ItemFactory.cs" />
     <Compile Include="Items\Factories\ScrollOfEnchantWeaponFactory.cs" />
     <Compile Include="Items\Factories\SimpleChestFactory.cs" />
@@ -132,7 +134,7 @@
       <DependentUpon>ItemImages.resx</DependentUpon>
     </Compile>
     <Compile Include="ItemType.cs" />
-    <Compile Include="Monsters\Impl\MonsterFacture.cs" />
+    <Compile Include="Monsters\Impl\MonsterFactory.cs" />
     <Compile Include="Monsters\Impl\SimpleMonster.cs" />
     <Compile Include="AutoAttackController.cs" />
     <Compile Include="Monsters\Interfaces\Monster.cs" />

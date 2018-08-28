@@ -14,7 +14,7 @@ namespace SomeName.Items.Interfaces
 
         public long Defence { get; set; }
 
-        public ArmorBonuses Bonuses { get; set; } = new ArmorBonuses();
+        public ItemBonuses Bonuses { get; set; }
 
         public override string ToString()
         {

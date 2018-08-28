@@ -19,7 +19,7 @@ namespace SomeName.Items.Factories
 
         public override Item Build(int level, double additionalKoef = 1.0)
         {
-            var damageValueKoef = RollItemDamageKoef() * additionalKoef;
+            var damageValueKoef = RollItemDamageKoef(additionalKoef);
             var weapon = new SimpleSword()
             {
                 Level = level,
@@ -36,17 +36,14 @@ namespace SomeName.Items.Factories
         // TODO : Реализовать возможность выпадения бонусов шанса и силы крита.
         // TODO : Реализовать шанс выпадения бонусов.
         // TODO : Доделать выпадение разного числа бонусов.
-        private WeaponBonuses CalculateBonuses(int level, double additionalKoef)
+        private ItemBonuses CalculateBonuses(int level, double additionalKoef)
         {
-            var powerValueKoef = RollItemDamageKoef() * additionalKoef;
-            var vitalityValueKoef = RollItemDamageKoef() * additionalKoef;
             var itemBonusesCount = CalculateItemBonusesCount(level);
 
-            return new WeaponBonuses
-            {
-                Power = WeaponStatsBalance.GetPower(level, powerValueKoef),
-                Vitality = WeaponStatsBalance.GetVitality(level, vitalityValueKoef)
-            };
+            return new ItemBonusesBuilder(level, WeaponStatsBalance)
+                .CalculatePower(RollItemDamageKoef(additionalKoef))
+                .CalculateVitality(RollItemDamageKoef(additionalKoef))
+                .Build();
         }
     }
 }

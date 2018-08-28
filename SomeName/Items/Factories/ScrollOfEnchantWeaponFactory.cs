@@ -19,7 +19,7 @@ namespace SomeName.Items.Factories
 
         public override Item Build(int level, double additionalKoef = 1.0)
         {
-            var damageValueKoef = RollItemDamageKoef() * additionalKoef;
+            var damageValueKoef = RollItemDamageKoef(additionalKoef);
             var item = new ScrollOfEnchantWeapon()
             {
                 Level = level,

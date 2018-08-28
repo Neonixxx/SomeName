@@ -46,8 +46,8 @@ namespace SomeName.Items.Factories
         /// Получить случано сгенерированное значение коэффицента урона предмета.
         /// </summary>
         /// <returns></returns>
-        protected double RollItemDamageKoef()
-            => GetItemDamageKoef(Dice.Roll);
+        protected double RollItemDamageKoef(double additionalKoef = 1.0)
+            => GetItemDamageKoef(Dice.Roll) * additionalKoef;
 
         /// <summary>
         /// Получить значение коэффицента урона предмета по значению броска кубика.

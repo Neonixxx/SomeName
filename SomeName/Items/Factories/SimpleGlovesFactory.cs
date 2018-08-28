@@ -16,7 +16,7 @@ namespace SomeName.Items.Factories
 
         public override Item Build(int level, double additionalKoef = 1.0)
         {
-            var damageValueKoef = RollItemDamageKoef() * additionalKoef;
+            var damageValueKoef = RollItemDamageKoef(additionalKoef);
             var item = new SimpleGloves()
             {
                 Level = level,
@@ -32,19 +32,16 @@ namespace SomeName.Items.Factories
         // TODO : Реализовать возможность выпадения бонусов шанса и силы крита.
         // TODO : Реализовать шанс выпадения бонусов.
         // TODO : Доделать выпадение разного числа бонусов.
-        private ArmorBonuses CalculateBonuses(int level, double additionalKoef)
+        private ItemBonuses CalculateBonuses(int level, double additionalKoef)
         {
-            var powerValueKoef = RollItemDamageKoef() * additionalKoef;
-            var vitalityValueKoef = RollItemDamageKoef() * additionalKoef;
-            var critChanceValueKoef = RollItemDamageKoef() * additionalKoef;
             var itemBonusesCount = CalculateItemBonusesCount(level);
 
-            return new ArmorBonuses
-            {
-                Power = GlovesStatsBalance.GetPower(level, powerValueKoef),
-                Vitality = GlovesStatsBalance.GetVitality(level, vitalityValueKoef),
-                CritChance = GlovesStatsBalance.GetCritChance(level, critChanceValueKoef)
-            };
+            return new ItemBonusesBuilder(level, GlovesStatsBalance)
+                .CalculatePower(RollItemDamageKoef(additionalKoef))
+                .CalculateVitality(RollItemDamageKoef(additionalKoef))
+                .CalculateCritChance(RollItemDamageKoef(additionalKoef))
+                .CalculateCritDamage(RollItemDamageKoef(additionalKoef))
+                .Build();
         }
     }
 }

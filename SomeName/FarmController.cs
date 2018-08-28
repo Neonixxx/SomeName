@@ -65,7 +65,7 @@ namespace SomeName
 
         private void NewMonster()
         {
-            _monster = MonsterFacture.GetRandomMonster(Player.Level);
+            _monster = MonsterFactory.GetRandomMonster(Player.Level);
             StartAttackingByMonster();
         }
 

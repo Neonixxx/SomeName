@@ -18,7 +18,7 @@ namespace SomeName.Items.Interfaces
 
         public int EnchantmentLevel { get; set; }
 
-        public WeaponBonuses Bonuses { get; set; } = new WeaponBonuses();
+        public ItemBonuses Bonuses { get; set; }
 
         public long BaseGoldValue { get; set; }
 

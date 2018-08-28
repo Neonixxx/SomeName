@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SomeName.Monsters.Impl
 {
-    public static class MonsterFacture
+    public static class MonsterFactory
     {
         /// <summary>
         /// Не доделано.
