@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SomeName.Balance.ItemStats;
 using SomeName.Items.Interfaces;
 
-namespace SomeName.Items.Factories
+namespace SomeName.Items.ItemFactories
 {
     public abstract class WeaponFactory : ItemFactory
     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomeName.Items.Bonuses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,16 @@ namespace SomeName.Balance.ItemStats
         protected abstract double VitalityKoef { get; }
 
         protected abstract double CritChanceKoef { get; }
+
+        public abstract ItemBonusesEnum PossibleItemBonuses { get; }
+
+        // TODO : Сделать формулу.
+        public virtual int GetMinItemBonusesCount(int level)
+            => 1;
+
+        // TODO : Сделать формулу.
+        public virtual int GetMaxItemBonusesCount(int level)
+            => 2;
 
 
         public int GetPower(int level, double damageValueKoef)
@@ -48,6 +59,6 @@ namespace SomeName.Balance.ItemStats
 
         // UNDONE : Недоделано вычисление критического урона предметов.
         public double GetCritDamage(int level, double damageValueKoef)
-            => 0.0;
+            => 0.10;
     }
 }

@@ -23,15 +23,24 @@ namespace SomeName.Items.Bonuses
 
             if (Power != 0)
                 result.Append($"Power: {Power}");
-
             if (Vitality != 0)
-                result.Append($"{NewLine}Vitality: {Vitality}");
-
+            {
+                if (result.Length != 0)
+                    result.Append($"{NewLine}");
+                result.Append($"Vitality: {Vitality}");
+            }
             if (CritChance != 0)
-                result.Append($"{NewLine}Шанс крита: {CritChance.ToPercentString(1)}");
-
+            {
+                if (result.Length != 0)
+                    result.Append($"{NewLine}");
+                result.Append($"Шанс крита: {CritChance.ToPercentString(1)}");
+            }
             if (CritDamage != 0)
-                result.Append($"{NewLine}Сила крита: {CritDamage.ToPercentString(1)}");
+            {
+                if (result.Length != 0)
+                    result.Append($"{NewLine}");
+                result.Append($"Сила крита: {CritDamage.ToPercentString(1)}");
+            }
 
             return result.ToString();
         }

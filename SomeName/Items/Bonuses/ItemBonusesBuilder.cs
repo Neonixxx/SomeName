@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SomeName.Items.Factories
+namespace SomeName.Items.Bonuses
 {
     public class ItemBonusesBuilder
     {
@@ -16,7 +16,7 @@ namespace SomeName.Items.Factories
 
         private readonly ItemBonuses _itemBonuses;
         
-        public ItemBonusesBuilder(int level, ItemStatsBalance itemStatsBalance)
+        public ItemBonusesBuilder(ItemStatsBalance itemStatsBalance, int level)
         {
             Level = level;
             _itemStatsBalance = itemStatsBalance;

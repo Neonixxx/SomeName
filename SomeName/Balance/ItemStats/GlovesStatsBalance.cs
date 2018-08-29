@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomeName.Items.Bonuses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace SomeName.Balance.ItemStats
 {
     public class GlovesStatsBalance : ArmorStatsBalance
     {
+        public override ItemBonusesEnum PossibleItemBonuses => ItemBonusesEnum.Power | ItemBonusesEnum.Vitality | ItemBonusesEnum.CritChance | ItemBonusesEnum.CritDamage;
+
         protected override double DefenceKoef => 0.8;
 
         protected override double PowerKoef => 1.0;

@@ -1,6 +1,6 @@
 ﻿using SomeName.Balance;
 using SomeName.Monsters.Interfaces;
-using SomeName.Items.Factories;
+using SomeName.Items.ItemFactories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

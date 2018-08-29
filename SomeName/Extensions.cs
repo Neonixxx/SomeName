@@ -37,5 +37,17 @@ namespace SomeName
             objectToStart.Start();
             thisForm.Show();
         }
+
+        public static List<T> TakeRandom<T>(this List<T> list, int count)
+        {
+            var result = new List<T>(list);
+            var resultCount = result.Count;
+            for (int i = 0; i < list.Count - count; i++)
+            {
+                resultCount--;
+                result.RemoveAt(Dice.GetRange(0, resultCount));
+            }
+            return result;
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using SomeName.Difficulties;
 using SomeName.Domain;
-using SomeName.Items.Factories;
+using SomeName.Items.ItemFactories;
 using SomeName.Items.Interfaces;
 using System;
 using System.Collections.Generic;

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SomeName.Items.Factories
+namespace SomeName.Items.ItemFactories
 {
     public abstract class ChestFactory : ItemFactory
     {

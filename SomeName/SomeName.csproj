@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -72,14 +74,12 @@
       <DependentUpon>ForgeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GameController.cs" />
-    <Compile Include="Items\Bonuses\ArmorBonuses.cs" />
     <Compile Include="Domain\DropInfo.cs" />
     <Compile Include="Domain\EquippedItems.cs" />
     <Compile Include="Domain\IAttackTarget.cs" />
     <Compile Include="Domain\ICanDie.cs" />
     <Compile Include="Domain\IUpdater.cs" />
     <Compile Include="Items\Bonuses\ItemBonuses.cs" />
-    <Compile Include="Items\Bonuses\WeaponBonuses.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FarmController.cs" />
     <Compile Include="Forms\FarmForm.cs">
@@ -96,15 +96,17 @@
     </Compile>
     <Compile Include="Domain\ICanStart.cs" />
     <Compile Include="InventoryController.cs" />
-    <Compile Include="Items\Factories\ChestFactory.cs" />
-    <Compile Include="Items\Factories\GlovesFactory.cs" />
-    <Compile Include="Items\Factories\ItemBonusesBuilder.cs" />
-    <Compile Include="Items\Factories\ItemFactory.cs" />
-    <Compile Include="Items\Factories\ScrollOfEnchantWeaponFactory.cs" />
-    <Compile Include="Items\Factories\SimpleChestFactory.cs" />
-    <Compile Include="Items\Factories\SimpleGlovesFactory.cs" />
-    <Compile Include="Items\Factories\SimpleSwordFactory.cs" />
-    <Compile Include="Items\Factories\WeaponFactory.cs" />
+    <Compile Include="Items\Bonuses\ItemBonusesEnum.cs" />
+    <Compile Include="Items\ItemFactories\ChestFactory.cs" />
+    <Compile Include="Items\ItemFactories\GlovesFactory.cs" />
+    <Compile Include="Items\Bonuses\ItemBonusesBuilder.cs" />
+    <Compile Include="Items\Bonuses\ItemBonusesFactory.cs" />
+    <Compile Include="Items\ItemFactories\ItemFactory.cs" />
+    <Compile Include="Items\ItemFactories\ScrollOfEnchantWeaponFactory.cs" />
+    <Compile Include="Items\ItemFactories\SimpleChestFactory.cs" />
+    <Compile Include="Items\ItemFactories\SimpleGlovesFactory.cs" />
+    <Compile Include="Items\ItemFactories\SimpleSwordFactory.cs" />
+    <Compile Include="Items\ItemFactories\WeaponFactory.cs" />
     <Compile Include="Items\Impl\BeginnerSword.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>

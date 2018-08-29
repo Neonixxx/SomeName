@@ -7,7 +7,7 @@ using SomeName.Balance.ItemStats;
 using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
 
-namespace SomeName.Items.Factories
+namespace SomeName.Items.ItemFactories
 {
     public class ScrollOfEnchantWeaponFactory : WeaponFactory
     {

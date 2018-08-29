@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SomeName.Balance;
+using SomeName.Items.Bonuses;
 using SomeName.Items.Interfaces;
 
-namespace SomeName.Items.Factories
+namespace SomeName.Items.ItemFactories
 {
     public abstract class ItemFactory
     {
@@ -24,16 +25,8 @@ namespace SomeName.Items.Factories
         /// <returns></returns>
         public abstract Item Build(int level, double additionalKoef = 1.0);
 
-        protected int CalculateItemBonusesCount(int level)
-            => Dice.GetRange(GetMinItemBonusesCount(level), GetMaxItemBonusesCount(level));
 
-        // TODO : Сделать формулу.
-        protected virtual int GetMinItemBonusesCount(int level)
-            => 1;
-
-        // TODO : Сделать формулу.
-        protected virtual int GetMaxItemBonusesCount(int level)
-            => 2;
+        protected readonly ItemBonusesFactory ItemBonusesFactory = new ItemBonusesFactory();
 
         /// <summary>
         /// Получить стандартный коэффициент ценности предмета определенного уровня.
@@ -46,7 +39,7 @@ namespace SomeName.Items.Factories
         /// Получить случано сгенерированное значение коэффицента урона предмета.
         /// </summary>
         /// <returns></returns>
-        protected double RollItemDamageKoef(double additionalKoef = 1.0)
+        public static double RollItemDamageKoef(double additionalKoef = 1.0)
             => GetItemDamageKoef(Dice.Roll) * additionalKoef;
 
         /// <summary>
@@ -54,7 +47,7 @@ namespace SomeName.Items.Factories
         /// </summary>
         /// <param name="diceValue">Значение броска кубика (0..1]</param>
         /// <returns></returns>
-        protected double GetItemDamageKoef(double diceValue)
+        public static double GetItemDamageKoef(double diceValue)
             => Math.Pow(diceValue, -0.35);
     }
 }
