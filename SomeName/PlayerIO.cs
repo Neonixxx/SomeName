@@ -24,7 +24,7 @@ namespace SomeName
             {
                 Level = 1,
                 Exp = 0,
-                ExpForNextLevel = PlayerStatsBalance.GetExp(1),
+                ExpForNextLevel = DropBalance.Standard.GetExp(1),
                 Gold = 0,
                 EquippedItems = new EquippedItems { Weapon = new BeginnerSword() },
                 Inventory = new List<Item>()

@@ -14,31 +14,24 @@ namespace SomeName.Balance
     {
         public Tuple<ItemFactory, int>[] ItemFactories { get; }
 
-        public static readonly double DropGoldValueKoef = 0.3;
-
-        public static readonly double DropItemsValueKoef = 1 - DropGoldValueKoef;
 
         public DropService(params Tuple<ItemFactory, int>[] itemFactories)
             => ItemFactories = itemFactories;
 
-        public Drop Build(int level, long value)
+        public Drop Build(int level, DropValue dropValue)
         {
-            var goldValue = Convert.ToInt64(value * BattleDifficulty.GetCurrent().GoldMultiplier);
-            var expValue = Convert.ToInt64(value * BattleDifficulty.GetCurrent().ExpMultiplier);
-            var dropValue = Convert.ToInt64(value * BattleDifficulty.GetCurrent().DropMultiplier);
-
             return new Drop
             {
-                Gold = CalculateGoldDrop(goldValue),
-                Exp = expValue,
-                Items = CalculateItemsDrop(level, dropValue)
+                Gold = CalculateGoldDrop(dropValue.Gold),
+                Exp = dropValue.Exp,
+                Items = CalculateItemsDrop(level, dropValue.Items)
             };
         }
 
         protected virtual long CalculateGoldDrop(long value)
         {
             var randomKoef = Dice.GetRange(0.5, 1.5);
-            return Convert.ToInt64(value * DropGoldValueKoef * randomKoef);
+            return Convert.ToInt64(value * randomKoef);
         }
 
         protected virtual long CalculateExpDrop(long value)
@@ -46,14 +39,15 @@ namespace SomeName.Balance
 
         protected virtual List<Item> CalculateItemsDrop(int level, long value)
         {
-            var itemDropValue = value * DropItemsValueKoef / ItemFactories.Sum(s => s.Item2);
+            var itemDropValue = Convert.ToDouble(value) / ItemFactories.Sum(s => s.Item2);
             var items = new List<Item>();
+            var itemAdditionalKoef = BattleDifficulty.GetCurrent().ItemAdditionalKoef;
             foreach (var itemFactory in ItemFactories)
             {
                 var currentItemDropValue = itemDropValue * itemFactory.Item2;
                 var dropChance = currentItemDropValue / itemFactory.Item1.GetItemGoldValue(level);
                 if (Dice.TryGetChance(dropChance))
-                    items.Add(itemFactory.Item1.Build(level, BattleDifficulty.GetCurrent().ItemAdditionalKoef));
+                    items.Add(itemFactory.Item1.Build(level, itemAdditionalKoef));
             }
             return items;
         }

@@ -60,6 +60,7 @@
     <Compile Include="Balance\PlayerStatsBalance.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
+    <Compile Include="Domain\DropValue.cs" />
     <Compile Include="Domain\PlayerStatsCalculator.cs" />
     <Compile Include="ForgeController.cs" />
     <Compile Include="Forms\ForgeForm.cs">

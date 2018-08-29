@@ -40,7 +40,7 @@ namespace SomeName.Items.Factories
         /// </summary>
         /// <param name="level"></param>
         protected static long GetBaseItemGoldValue(int level)
-            => PlayerStatsBalance.GetExp(level);
+            => DropBalance.Standard.GetBaseItemValue(level);
 
         /// <summary>
         /// Получить случано сгенерированное значение коэффицента урона предмета.

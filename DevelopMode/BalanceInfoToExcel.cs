@@ -37,9 +37,8 @@ namespace DevelopMode
         {
             for (int i = 1; i <= 100; i++)
             {
-                workSheet.Cells[i + 3, "E"] = PlayerStatsBalance.GetTapsForLevel(i);
                 workSheet.Cells[i + 3, "F"] = PlayerStatsBalance.Standard.GetDefaultDamage(i);
-                workSheet.Cells[i + 3, "G"] = MonsterStatsBalance.Standard.GetDefaultMonsterHealth(i);
+                workSheet.Cells[i + 3, "G"] = MonsterStatsBalance.Standard.GetDefaultHealth(i);
             }
         }
     }

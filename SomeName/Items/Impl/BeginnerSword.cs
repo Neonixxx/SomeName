@@ -15,9 +15,9 @@ namespace SomeName.Items.Impl
             Level = 1;
             GoldValue = 0;
             Description = "Меч ученика";
-            Bonuses.Power = 0;
             BaseDamage = 5;
             Damage = 5;
+            Bonuses = new Bonuses.ItemBonuses();
             Image = ItemImages.BeginnerSword;
         }
     }

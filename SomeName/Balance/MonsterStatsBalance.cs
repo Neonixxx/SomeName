@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SomeName.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +12,30 @@ namespace SomeName.Balance
     {
         public PlayerStatsBalance PlayerStatsBalance { get; set; }
 
-        public MonsterStatsBalance(PlayerStatsBalance playerStatsBalance)
-            => PlayerStatsBalance = playerStatsBalance;
-
-        private static double GetTapsForMonster(int level)
-            => Math.Pow(level, 0.75) * 4 + 20;
+        public DropBalance DropBalance { get; set; }
 
 
-        public long GetDefaultMonsterHealth(int level)
-            => ToInt64(PlayerStatsBalance.GetDefaultDamage(level) * GetTapsForMonster(level));
+        public DropValue GetDefaultDropValue(int level)
+            => DropBalance.GetDropValue(level, GetDefaultBattleLength(level));
 
-        public long GetDefaultMonsterDPS(int level)
+        public long GetDefaultHealth(int level)
+            => ToInt64(PlayerStatsBalance.GetDefaultDPS(level) * GetDefaultBattleLength(level));
+
+        public long GetDefaultDPS(int level)
             => PlayerStatsBalance.GetDefaultToughness(level) / GetDefaultBattleLength(level);
 
         public long GetDefaultBattleLength(int level)
-            => ToInt64(GetTapsForMonster(level) / PlayerStatsBalance.GetTapsPerSecond(level));
+            => ToInt64(ToDouble(DropBalance.GetSecondsForLevel(level)) / GetMonstersForLevel(level));
 
 
-        public static readonly MonsterStatsBalance Standard = new MonsterStatsBalance(PlayerStatsBalance.Standard);
+        private static int GetMonstersForLevel(int level)
+            => ToInt32(level / 2.0 + 1);
+
+
+        public static readonly MonsterStatsBalance Standard = new MonsterStatsBalance
+        {
+            PlayerStatsBalance = PlayerStatsBalance.Standard,
+            DropBalance = DropBalance.Standard
+        };
     }
 }

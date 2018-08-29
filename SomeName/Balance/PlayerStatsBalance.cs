@@ -28,18 +28,12 @@ namespace SomeName.Balance
             => 1 + level * 0.01;
 
 
-        public static long GetExp(int level)
-            => ToInt64(Standard.GetDamage(level, GetExpItemDamageKoef(level)) * GetTapsForLevel(level));
-
-        private static double GetExpItemDamageKoef(int level)
-            => 1.0 + level * 0.007;
-
-        public static double GetTapsForLevel(int level)
-            => Math.Pow(level, 1.2) * 10;
-
         public static double GetTapsPerSecond(int level)
             => 2 + 0.03 * level;
 
+
+        public long GetDefaultDPS(int level)
+            => ToInt64(GetDefaultDamage(level) * GetTapsPerSecond(level));
 
         public long GetDefaultDamage(int level)
             => GetDamage(level, GetDefaultItemDamageKoef(level));

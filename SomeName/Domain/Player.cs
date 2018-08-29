@@ -176,7 +176,7 @@ namespace SomeName.Domain
             {
                 totalExp -= ExpForNextLevel;
                 Level++;
-                ExpForNextLevel = PlayerStatsBalance.GetExp(Level);
+                ExpForNextLevel = DropBalance.Standard.GetExp(Level);
             }
             Exp = totalExp;
         }

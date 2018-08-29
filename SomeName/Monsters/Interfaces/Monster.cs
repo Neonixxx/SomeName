@@ -41,11 +41,11 @@ namespace SomeName.Monsters.Interfaces
         {
             Attacker = new AutoAttackController(this);
             Level = level;
-            Damage = MonsterStatsBalance.GetDefaultMonsterDPS(level);
+            Damage = MonsterStatsBalance.GetDefaultDPS(level);
             AttackSpeed = 1.0;
-            MaxHealth = MonsterStatsBalance.GetDefaultMonsterHealth(level);
+            MaxHealth = MonsterStatsBalance.GetDefaultHealth(level);
             Health = MaxHealth;
-            DroppedItems = DropFactory.Build(level, MaxHealth);
+            DroppedItems = DropFactory.Build(level, MonsterStatsBalance.GetDefaultDropValue(level));
             IsDead = false;
             IsDropTaken = false;
         }
