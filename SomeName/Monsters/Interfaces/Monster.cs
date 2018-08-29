@@ -9,9 +9,9 @@ using SomeName.Domain;
 
 namespace SomeName.Monsters.Interfaces
 {
-    public abstract class Monster : IAutoAttack
+    public abstract class Monster : IAttacker
     {
-        public AutoAttackController Attacker { get; set; }
+        public MonsterAttackController Attacker { get; set; }
 
         public DropService DropFactory { get; set; }
 
@@ -39,7 +39,7 @@ namespace SomeName.Monsters.Interfaces
         // TODO : Сделать разную скорость атаки монстров.
         public virtual void Respawn(int level)
         {
-            Attacker = new AutoAttackController(this);
+            Attacker = new MonsterAttackController(this);
             Level = level;
             Damage = MonsterStatsBalance.GetDefaultDPS(level);
             AttackSpeed = 1.0;
@@ -53,8 +53,8 @@ namespace SomeName.Monsters.Interfaces
         public void StartAttacking(IAttackTarget target, object locker)
             => Attacker.StartAttacking(target, locker);
 
-        public bool StopAttacking()
-            => Attacker.IsAttacking = false;
+        public void StopAttacking()
+            => Attacker.StopAttacking();
 
         public long TakeDamage(long damage)
         {
@@ -82,5 +82,15 @@ namespace SomeName.Monsters.Interfaces
 
         public override string ToString()
             => $"Level {Level} {Description}";
+
+        public long GetDamage()
+            => Damage;
+
+        // TODO : Сделать шанс крита и силу крита монстрам.
+        public double GetCritChance()
+            => 0.0;
+
+        public double GetCritDamage()
+            => 0.0;
     }
 }

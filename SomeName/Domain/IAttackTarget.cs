@@ -8,8 +8,8 @@ namespace SomeName.Domain
 {
     public interface IAttackTarget : ICanDie
     {
-        long TakeDamage(long damage);
+        long Health { get; set; }
 
-        long GetTakenDamage(long damage);
+        double GetDefenceKoef();
     }
 }

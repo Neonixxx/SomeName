@@ -7,15 +7,24 @@ using SomeName.Items.Interfaces;
 using SomeName.Balance;
 using SomeName.Domain;
 using SomeName.Items.Impl;
+using Newtonsoft.Json;
 
 namespace SomeName.Domain
 {
     // TODO : Сделать конвертер Player -> StatsInfo.
-    public class Player : IAttackTarget
+    public class Player : IAttacker, IAttackTarget
     {
-        public PlayerStatsCalculator PlayerStatsCalculator { get; set; } = new PlayerStatsCalculator();
+        [JsonIgnore]
+        public PlayerStatsCalculator PlayerStatsCalculator { get; set; }
 
-        public Player() { }
+        [JsonIgnore]
+        public AttackManager AttackManager { get; set; }
+
+        public Player()
+        {
+            PlayerStatsCalculator = new PlayerStatsCalculator();
+            AttackManager = new AttackManager(this);
+        }
 
         public int Level { get; set; }
 
@@ -27,7 +36,7 @@ namespace SomeName.Domain
 
         public long Health { get; set; }
 
-        public bool IsDead { get; private set; }
+        public bool IsDead { get; set; }
 
         public EquippedItems EquippedItems { get; set; }
 
@@ -35,10 +44,6 @@ namespace SomeName.Domain
 
         public long GetDamage()
             => PlayerStatsCalculator.CalculateDamage(this);
-
-        // HACK : Лезет не в свою зону ответственности.
-        public long GetDamageWithoutCrit()
-            => PlayerStatsCalculator.CalculateDamage(GetPower(), EquippedItems.Weapon?.Damage ?? 1);
 
         public long GetDefence()
             => PlayerStatsCalculator.CalculateDefence(this);
@@ -60,23 +65,6 @@ namespace SomeName.Domain
 
         public double GetCritDamage()
             => PlayerStatsCalculator.CalculateCritDamage(this);
-
-        public long TakeDamage(long damage)
-        {
-            var dealtDamage = GetTakenDamage(damage);
-            Health -= dealtDamage;
-            if (Health == 0)
-                IsDead = true;
-            return dealtDamage;
-        }
-
-        public long GetTakenDamage(long damage)
-        {
-            var dealtDamage = Convert.ToInt64(damage * (1 - GetDefenceKoef()));
-            return Health - dealtDamage >= 0
-                ? dealtDamage
-                : Health;
-        }
 
         public void Respawn()
         {
@@ -101,6 +89,9 @@ namespace SomeName.Domain
 
             throw new InvalidOperationException($"{nameof(scrollOfEnchant)} не содержится в {nameof(Inventory)}");
         }
+
+        public long Attack(IAttackTarget attackTarget)
+            => AttackManager.Attack(attackTarget);
 
         // TODO : Решить, как можно сделать метод более расширяемым к добавлению новых типов предметов.
         public bool Equip(Item item)

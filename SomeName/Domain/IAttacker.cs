@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace SomeName.Domain
 {
-    public interface IAutoAttack : ICanDie
+    public interface IAttacker
     {
-        long Damage { get; }
+        long GetDamage();
 
-        double AttackSpeed { get; }
+        double GetCritChance();
+
+        double GetCritDamage();
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ICanDie
     {
-        bool IsDead { get; }
+        bool IsDead { get; set; }
     }
 }

@@ -36,18 +36,13 @@ namespace SomeName.Domain
 
 
         public long CalculateDamage(Player player)
-            => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon, player.GetCritChance(), player.GetCritDamage());
+            => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon);
 
-        public long CalculateDamage(int power, Weapon weapon, double critChance, double critDamage)
-            => CalculateDamage(power, weapon?.Damage ?? 1, critChance, critDamage);
+        public long CalculateDamage(int power, Weapon weapon)
+            => CalculateDamage(power, weapon?.Damage ?? 1);
 
-        public long CalculateDamage(int power, long weaponDamage, double critChance = 0, double critDamage = 0)
-        {
-            var damageWithoutCrit = ToInt64((1 + ToDouble(power) / 100) * weaponDamage);
-            if (Dice.TryGetChance(critChance))
-                damageWithoutCrit = ToInt64(damageWithoutCrit * critDamage);
-            return damageWithoutCrit;
-        }
+        public long CalculateDamage(int power, long weaponDamage)
+            => ToInt64((1 + ToDouble(power) / 100) * weaponDamage);
 
 
         public double CalculateDefenceKoef(Player player)

@@ -60,7 +60,9 @@
     <Compile Include="Balance\PlayerStatsBalance.cs" />
     <Compile Include="Dice.cs" />
     <Compile Include="Difficulties\BattleDifficulty.cs" />
+    <Compile Include="Domain\AttackManager.cs" />
     <Compile Include="Domain\DropValue.cs" />
+    <Compile Include="Domain\IAttacker.cs" />
     <Compile Include="Domain\PlayerStatsCalculator.cs" />
     <Compile Include="ForgeController.cs" />
     <Compile Include="Forms\ForgeForm.cs">
@@ -74,7 +76,6 @@
     <Compile Include="Domain\DropInfo.cs" />
     <Compile Include="Domain\EquippedItems.cs" />
     <Compile Include="Domain\IAttackTarget.cs" />
-    <Compile Include="Domain\IAutoAttack.cs" />
     <Compile Include="Domain\ICanDie.cs" />
     <Compile Include="Domain\IUpdater.cs" />
     <Compile Include="Items\Bonuses\ItemBonuses.cs" />
@@ -137,7 +138,7 @@
     <Compile Include="ItemType.cs" />
     <Compile Include="Monsters\Impl\MonsterFactory.cs" />
     <Compile Include="Monsters\Impl\SimpleMonster.cs" />
-    <Compile Include="AutoAttackController.cs" />
+    <Compile Include="MonsterAttackController.cs" />
     <Compile Include="Monsters\Interfaces\Monster.cs" />
     <Compile Include="Exceptions\MonsterNotDeadException.cs" />
     <Compile Include="Domain\Player.cs" />
