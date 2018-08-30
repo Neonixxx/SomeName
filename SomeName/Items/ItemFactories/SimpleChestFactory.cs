@@ -23,11 +23,12 @@ namespace SomeName.Items.ItemFactories
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
-                GoldValue = GetChestGoldValue(level, damageValueKoef),
+                BaseGoldValue = GetChestGoldValue(level, damageValueKoef),
                 BaseDefence = ChestStatsBalance.GetDefence(level, damageValueKoef),
                 Bonuses = ItemBonusesFactory.Build(ChestStatsBalance, level, additionalKoef)
-        };
+            };
             item.Defence = item.BaseDefence;
+            item.GoldValue = item.BaseGoldValue;
             return item;
         }
     }

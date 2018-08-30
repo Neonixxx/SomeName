@@ -16,12 +16,6 @@ namespace SomeName.Items.Interfaces
 
         public long Damage { get; set; }
 
-        public int EnchantmentLevel { get; set; }
-
-        public ItemBonuses Bonuses { get; set; }
-
-        public long BaseGoldValue { get; set; }
-
         public override string ToString()
         {
             var result = new StringBuilder();

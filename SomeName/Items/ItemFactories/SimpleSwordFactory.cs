@@ -20,7 +20,7 @@ namespace SomeName.Items.ItemFactories
         public override Item Build(int level, double additionalKoef = 1.0)
         {
             var damageValueKoef = RollItemDamageKoef(additionalKoef);
-            var weapon = new SimpleSword()
+            var item = new SimpleSword()
             {
                 Level = level,
                 DamageValueKoef = damageValueKoef,
@@ -28,9 +28,9 @@ namespace SomeName.Items.ItemFactories
                 BaseDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef),
                 Bonuses = ItemBonusesFactory.Build(WeaponStatsBalance, level, additionalKoef)
             };
-            weapon.Damage = weapon.BaseDamage;
-            weapon.GoldValue = weapon.BaseGoldValue;
-            return weapon;
+            item.Damage = item.BaseDamage;
+            item.GoldValue = item.BaseGoldValue;
+            return item;
         }
     }
 }

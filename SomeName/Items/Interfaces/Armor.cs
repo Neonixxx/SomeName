@@ -14,8 +14,6 @@ namespace SomeName.Items.Interfaces
 
         public long Defence { get; set; }
 
-        public ItemBonuses Bonuses { get; set; }
-
         public override string ToString()
         {
             var result = new StringBuilder($"{base.ToString()}{NewLine}Defence: {Defence}");
