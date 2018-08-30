@@ -11,11 +11,13 @@ namespace SomeName.Balance.ItemStats
 {
     public abstract class ItemStatsBalance
     {
-        protected abstract double PowerKoef { get; }
+        protected virtual double PowerKoef => 0.0;
 
-        protected abstract double VitalityKoef { get; }
+        protected virtual double VitalityKoef => 0.0;
 
-        protected abstract double CritChanceKoef { get; }
+        protected virtual double CritChanceKoef => 0.0;
+
+        protected virtual double CritDamageKoef => 0.0;
 
         public abstract ItemBonusesEnum PossibleItemBonuses { get; }
 
@@ -55,10 +57,13 @@ namespace SomeName.Balance.ItemStats
         }
 
         private double GetBaseCritChance(int level)
-            => CritChanceKoef * level / 2000;
+            => CritChanceKoef * level / 2500 + 0.01;
 
         // UNDONE : Недоделано вычисление критического урона предметов.
         public double GetCritDamage(int level, double damageValueKoef)
-            => 0.10;
+            => Round(GetBaseCritChance(level) * damageValueKoef, 3);
+
+        private double GetBaseCritDamage(int level)
+            => CritDamageKoef * level / 3 + 0.05;
     }
 }
