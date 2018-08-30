@@ -1,4 +1,6 @@
-﻿using SomeName.Items.Bonuses;
+﻿using SomeName.Domain;
+using SomeName.Items.Bonuses;
+using SomeName.Items.Impl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,11 +10,15 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public class Armor : Equippment
+    public abstract class Armor : Equippment, ICanBeEnchanted<ScrollOfEnchantArmor>
     {
         public long BaseDefence { get; set; }
 
         public long Defence { get; set; }
+
+        public override long BaseStatToEnchant { get => BaseDefence; set => BaseDefence = value; }
+
+        public override long StatToEnchant { get => Defence; set => Defence = value; }
 
         public override string ToString()
         {

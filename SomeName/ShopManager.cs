@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SomeName
 {
-    public class ShopService
+    public class ShopManager
     {
-        public long GetSellItemValue(Item item)
+        public long GetSellItemValue(IItem item)
             => Convert.ToInt64(item.GoldValue * 0.7);
     }
 }

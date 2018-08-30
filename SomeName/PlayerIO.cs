@@ -27,7 +27,7 @@ namespace SomeName
                 ExpForNextLevel = DropBalance.Standard.GetExp(1),
                 Gold = 0,
                 EquippedItems = new EquippedItems { Weapon = new BeginnerSword() },
-                Inventory = new List<Item>()
+                Inventory = new List<IItem>()
             };
         }
 

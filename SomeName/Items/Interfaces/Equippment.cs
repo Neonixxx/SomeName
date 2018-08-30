@@ -8,16 +8,18 @@ using System.Threading.Tasks;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Equippment : Item, ICanBeEnchanced
+    public abstract class Equippment : Item, IEquippment
     {
         public ItemBonuses Bonuses { get; set; }
 
         public double DamageValueKoef { get; set; }
 
-        public abstract long StatForEnchant { get; set; }
-
-        public int EnchantmentLevel { get; set; }
-
         public long BaseGoldValue { get; set; }
+
+        public abstract long BaseStatToEnchant { get; set; }
+
+        public abstract long StatToEnchant { get; set; }
+
+        public int EnchantmentLevel { get; set; }  
     }
 }

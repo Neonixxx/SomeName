@@ -124,7 +124,7 @@
             this.улучшитьToolStripMenuItem1.Name = "улучшитьToolStripMenuItem1";
             this.улучшитьToolStripMenuItem1.Size = new System.Drawing.Size(130, 22);
             this.улучшитьToolStripMenuItem1.Text = "Улучшить";
-            this.улучшитьToolStripMenuItem1.Click += new System.EventHandler(this.улучшитьToolStripMenuItem_Click);
+            this.улучшитьToolStripMenuItem1.Click += new System.EventHandler(this.УлучшитьToolStripMenuItem_Click);
             // 
             // EquippedItems_ContextMenuStrip
             // 
@@ -146,7 +146,7 @@
             this.улучшитьToolStripMenuItem.Name = "улучшитьToolStripMenuItem";
             this.улучшитьToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.улучшитьToolStripMenuItem.Text = "Улучшить";
-            this.улучшитьToolStripMenuItem.Click += new System.EventHandler(this.улучшитьToolStripMenuItem_Click);
+            this.улучшитьToolStripMenuItem.Click += new System.EventHandler(this.УлучшитьToolStripMenuItem_Click);
             // 
             // StatsInfo_Label
             // 

@@ -16,7 +16,9 @@ namespace SomeName
 
         public Player Player { get; set; }
 
-        public ShopService ShopService { get; set; }
+        public ShopManager ShopManager { get; set; }
+
+        public ForgeService ForgeService { get; set; }
 
         public void Start()
             => InventoryForm.Start(Player.Inventory.Count);
@@ -29,11 +31,15 @@ namespace SomeName
             InventoryForm.UpdateGold(Player.Gold);
         }
 
+        // TODO : Обобщить для интерфейса ICanBeEnchanted<TScrollOfEnchant>.
         public bool EnchantWeapon(Weapon weapon, ScrollOfEnchantWeapon scrollOfEnchantWeapon)
-            => Player.EnchantWeapon(weapon, scrollOfEnchantWeapon);
+            => ForgeService.EnchantItem(weapon, scrollOfEnchantWeapon);
+
+        public double GetWeaponEnchantChance(Weapon weapon, ScrollOfEnchantWeapon scrollOfEnchantWeapon)
+            => ForgeService.EnchantManager.GetEnchantChance(weapon, scrollOfEnchantWeapon);
 
         public void SellItem(int itemIndex)
-            => Player.SellItem(ShopService, Player.Inventory[itemIndex]);
+            => Player.SellItem(ShopManager, Player.Inventory[itemIndex]);
 
         public void EquipItem(int itemIndex)
             => Player.Equip(Player.Inventory[itemIndex]);
@@ -42,9 +48,9 @@ namespace SomeName
             => Player.Unequip(itemType);
 
         public long GetGoldValueOfItem(int itemIndex)
-            => ShopService.GetSellItemValue(Player.Inventory[itemIndex]);
+            => ShopManager.GetSellItemValue(Player.Inventory[itemIndex]);
 
-        public Item GetItem(int itemIndex)
+        public IItem GetItem(int itemIndex)
             => Player.Inventory[itemIndex];
 
         private StatsInfo GetStatsInfo()

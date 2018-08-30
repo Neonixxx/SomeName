@@ -10,7 +10,7 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Item
+    public abstract class Item : IItem
     {
         public int Level { get; set; }
 

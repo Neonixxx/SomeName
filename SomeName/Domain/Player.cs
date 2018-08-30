@@ -40,7 +40,7 @@ namespace SomeName.Domain
 
         public EquippedItems EquippedItems { get; set; }
 
-        public List<Item> Inventory { get; set; }
+        public List<IItem> Inventory { get; set; }
 
         public long GetDamage()
             => PlayerStatsCalculator.CalculateDamage(this);
@@ -72,7 +72,7 @@ namespace SomeName.Domain
             IsDead = false;
         }
 
-        public void SellItem(ShopService shopService, Item item)
+        public void SellItem(ShopManager shopService, IItem item)
         {
             if (Inventory.Contains(item))
             {
@@ -81,20 +81,11 @@ namespace SomeName.Domain
             }
         }
 
-        // TODO : Перенести все методы заточки в более подходящее место.
-        public bool EnchantWeapon(Weapon item, ScrollOfEnchantWeapon scrollOfEnchant)
-        {
-            if (Inventory.Remove(scrollOfEnchant))
-                return item.TryEnchant(scrollOfEnchant);
-
-            throw new InvalidOperationException($"{nameof(scrollOfEnchant)} не содержится в {nameof(Inventory)}");
-        }
-
         public long Attack(IAttackTarget attackTarget)
             => AttackManager.Attack(attackTarget);
 
         // TODO : Решить, как можно сделать метод более расширяемым к добавлению новых типов предметов.
-        public bool Equip(Item item)
+        public bool Equip(IItem item)
         {
             switch (item)
             {
@@ -106,10 +97,10 @@ namespace SomeName.Domain
                     return true;
 
                 case Chest chest:
-                    if (EquippedItems.Armor != null)
-                        Inventory.Add(EquippedItems.Armor);
+                    if (EquippedItems.Chest != null)
+                        Inventory.Add(EquippedItems.Chest);
                     Inventory.Remove(item);
-                    EquippedItems.Armor = chest;
+                    EquippedItems.Chest = chest;
                     return true;
 
                 case Gloves gloves:
@@ -136,10 +127,10 @@ namespace SomeName.Domain
                     break;
 
                 case ItemType.Chest:
-                    if (EquippedItems.Armor != null)
+                    if (EquippedItems.Chest != null)
                     {
-                        Inventory.Add(EquippedItems.Armor);
-                        EquippedItems.Armor = null;
+                        Inventory.Add(EquippedItems.Chest);
+                        EquippedItems.Chest = null;
                     }
                     break;
 

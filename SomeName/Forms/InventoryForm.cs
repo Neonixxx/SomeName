@@ -92,7 +92,7 @@ namespace SomeName.Forms
         /// <summary>
         /// Прорисовка инвентаря
         /// </summary>
-        public void UpdateInventory(List<Item> items)
+        public void UpdateInventory(List<IItem> items)
         {
             int itemsOnPage;
             if (items.Count <= ItemsPerPage * CurrentPage)
@@ -122,7 +122,7 @@ namespace SomeName.Forms
         {
             _equippedItems = equippedItems;
             SetEquippedSlot(MainHandSlot, equippedItems.Weapon);
-            SetEquippedSlot(ChestSlot, equippedItems.Armor);
+            SetEquippedSlot(ChestSlot, equippedItems.Chest);
             SetEquippedSlot(GlovesSlot, equippedItems.Gloves);
         }
 
@@ -248,7 +248,7 @@ namespace SomeName.Forms
 
         private ScrollOfEnchantWeapon _scrollOfEnchantWeapon;
 
-        private void улучшитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void УлучшитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var item = GetSelectedItem();
             if (item == null)
@@ -257,7 +257,7 @@ namespace SomeName.Forms
             if (item is Weapon weapon)
             {
                 _weaponToEnchant = weapon;
-                UpdateItemToEnchantSlot();
+                UpdateItemToEnchantSlot(_weaponToEnchant);
             }
             else if (item is ScrollOfEnchantWeapon scrollOfEnchantWeapon)
             {
@@ -267,17 +267,17 @@ namespace SomeName.Forms
 
             if (_weaponToEnchant != null && _scrollOfEnchantWeapon != null)
             {
-                var enchantChance = _weaponToEnchant.GetEnchantChance(_scrollOfEnchantWeapon);
-                if (enchantChance > 1.0)
-                    enchantChance = 1.0;
-                EnchantChanceLabel.Text = enchantChance.ToPercentString(2);
+                EnchantChanceLabel.Text = InventoryController.GetWeaponEnchantChance(_weaponToEnchant, _scrollOfEnchantWeapon)
+                    .ToPercentString(2);
             }
         }
 
-        private void UpdateItemToEnchantSlot()
+        private void UpdateItemToEnchantSlot(Weapon weapon)
         {
-            SetPictureBox(ItemToEnchantSlot, _weaponToEnchant);
-            EnchantButton.Text = $"Улучшить на +{_weaponToEnchant.EnchantmentLevel + 1}";
+            SetPictureBox(ItemToEnchantSlot, weapon);
+            EnchantButton.Text = weapon == null
+                ? ""
+                : $"Улучшить на +{_weaponToEnchant.EnchantmentLevel + 1}";
         }
 
         private void SetPictureBox(PictureBox pictureBox, Item item)
@@ -286,9 +286,9 @@ namespace SomeName.Forms
             ToolTip1.SetToolTip(pictureBox, item?.ToString());
         }
 
-        private Item GetSelectedItem()
+        private IItem GetSelectedItem()
         {
-            Item item = null;
+            IItem item = null;
             if (InventoryPanel.Controls.Contains(_selectedPictureBox))
             {
                 var itemIndex = GetSelectedItemIndex();
@@ -308,12 +308,19 @@ namespace SomeName.Forms
                 var isEnchantSuccesful = InventoryController.EnchantWeapon(_weaponToEnchant, _scrollOfEnchantWeapon);
                 InventoryController.Update();
 
-                UpdateItemToEnchantSlot();
                 _scrollOfEnchantWeapon = null;
                 SetPictureBox(ScrollOfEnchantSlot, null);
-                EnchantChanceLabel.Text = isEnchantSuccesful
-                    ? "Успешно"
-                    : "Неуспешно";
+
+                if (isEnchantSuccesful)
+                {
+                    UpdateItemToEnchantSlot(_weaponToEnchant);
+                    EnchantChanceLabel.Text = "Успешно";
+                }
+                else
+                {
+                    UpdateItemToEnchantSlot(null);
+                    EnchantChanceLabel.Text = "Неуспешно";
+                }
             }
         }
     }

@@ -10,11 +10,15 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Weapon : Equippment
+    public abstract class Weapon : Equippment, ICanBeEnchanted<ScrollOfEnchantWeapon>
     {
         public long BaseDamage { get; set; }
 
         public long Damage { get; set; }
+
+        public override long BaseStatToEnchant { get => BaseDamage; set => BaseDamage = value; }
+
+        public override long StatToEnchant { get => Damage; set => Damage = value; }
 
         public override string ToString()
         {
@@ -26,43 +30,6 @@ namespace SomeName.Items.Interfaces
             if (bonusesString != string.Empty)
                 result.Append($"{NewLine}{bonusesString}");
             return result.ToString();
-        }
-
-        protected readonly double BaseEnchantmentValue = 0.08;
-
-        protected readonly double EnchantmentValueEnc = 0.02;
-
-        protected readonly double EnchantmentChanceKoef = 0.9;
-
-        // TODO : Надо бы сделать все методы заточки более удобным способом.
-        public bool TryEnchant(ScrollOfEnchantWeapon scrollOfEnchant)
-        {
-            var enchantResult = Dice.TryGetChance(GetEnchantChance(scrollOfEnchant));
-            if (enchantResult)
-            {
-                SetEnchantmentLevel(EnchantmentLevel + 1);
-                return true;
-            }
-            else
-                return false;
-        }
-
-        public double GetEnchantChance(ScrollOfEnchantWeapon scrollOfEnchant)
-        {
-            var baseEnchantChance = Convert.ToDouble(scrollOfEnchant.Value) / BaseDamage;
-            return baseEnchantChance * Math.Pow(EnchantmentChanceKoef, EnchantmentLevel);
-        }
-
-        public void SetEnchantmentLevel(int newEnchantmentLevel)
-        {
-            EnchantmentLevel = newEnchantmentLevel;
-            CalculateDamage();
-        }
-
-        protected void CalculateDamage()
-        {
-            var enchantmentDamageKoef = 1 + EnchantmentLevel * (BaseEnchantmentValue + EnchantmentValueEnc / 2 * (1 + EnchantmentLevel));
-            Damage = Convert.ToInt64(BaseDamage * enchantmentDamageKoef);
         }
     }
 }
