@@ -27,33 +27,33 @@ namespace SomeName.Domain
 
         public int GetPower()
         {
-            var result = Weapon?.Bonuses.Power ?? 0;
-            result += Chest?.Bonuses.Power ?? 0;
-            result += Gloves?.Bonuses.Power ?? 0;
+            var result = 0;
+            foreach (var item in this)
+                result += item?.Bonuses.Power ?? 0;
             return result;
         }
 
         public int GetVitality()
         {
-            var result =  Weapon?.Bonuses.Vitality ?? 0;
-            result += Chest?.Bonuses.Vitality ?? 0;
-            result += Gloves?.Bonuses.Vitality ?? 0;
+            var result = 0;
+            foreach (var item in this)
+                result += item?.Bonuses.Vitality ?? 0;
             return result;
         }
 
         public double GetCritChance()
         {
-            var result = Weapon?.Bonuses.CritChance ?? 0;
-            result += Chest?.Bonuses.CritChance ?? 0;
-            result += Gloves?.Bonuses.CritChance ?? 0;
+            var result = 0.0;
+            foreach (var item in this)
+                result += item?.Bonuses.CritChance ?? 0;
             return result;
         }
 
         public double GetCritDamage()
         {
-            var result = Weapon?.Bonuses.CritDamage ?? 0;
-            result += Chest?.Bonuses.CritDamage ?? 0;
-            result += Gloves?.Bonuses.CritDamage ?? 0;
+            var result = 0.0;
+            foreach (var item in this)
+                result += item?.Bonuses.CritDamage ?? 0;
             return result;
         }
 

@@ -14,11 +14,7 @@ namespace SomeName.Balance
     {
         public PlayerStatsCalculator PlayerStatsCalculator { get; set; }
 
-        public WeaponStatsBalance WeaponStatsBalance { get; set; }
-
-        public ChestStatsBalance ChestStatsBalance { get; set; }
-
-        public GlovesStatsBalance GlovesStatsBalance { get; set; }
+        public ItemStatsBalance[] ItemStatsBalances { get; set; }
 
 
         private double GetDefaultItemDamageKoef(int level)
@@ -54,7 +50,7 @@ namespace SomeName.Balance
         private long GetDamage(int level, double damageValueKoef)
         {
             var power = GetPower(level, damageValueKoef);
-            var weaponDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef);
+            var weaponDamage = GetItemsDamage(level, damageValueKoef);
 
             var damageWithoutCritCoef = PlayerStatsCalculator.CalculateDamage(power, weaponDamage);
             var critCoef = GetBaseCritCoef(level, damageValueKoef);
@@ -62,19 +58,36 @@ namespace SomeName.Balance
             return ToInt64(damageWithoutCritCoef * critCoef);
         }
 
+        private long GetItemsDamage(int level, double damageValueKoef)
+        {
+            long result = 0;
+            foreach (WeaponStatsBalance item in ItemStatsBalances)
+                result += item.GetDamage(level, damageValueKoef);
+            return result;
+        }
+
         private long GetDefence(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateDefence(level, GetItemsDefence(level, damageValueKoef));
 
         private long GetItemsDefence(int level, double damageValueKoef)
-            => ChestStatsBalance.GetDefence(level, damageValueKoef);
+        {
+            long result = 0;
+            foreach (ArmorStatsBalance item in ItemStatsBalances)
+                result += item.GetDefence(level, damageValueKoef);
+            return result;
+        }
 
 
         private int GetPower(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculatePower(level, GetItemsPower(level, damageValueKoef));
 
         private int GetItemsPower(int level, double damageValueKoef)
-            => WeaponStatsBalance.GetPower(level, damageValueKoef) 
-            + ChestStatsBalance.GetPower(level, damageValueKoef);
+        {
+            int result = 0;
+            foreach (var item in ItemStatsBalances)
+                result += item.GetPower(level, damageValueKoef);
+            return result;
+        }
 
 
         private long GetMaxHealth(int level, double damageValueKoef)
@@ -84,8 +97,12 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculateVitality(level, GetItemsVitality(level, damageValueKoef));
 
         private int GetItemsVitality(int level, double damageValueKoef)
-            => WeaponStatsBalance.GetVitality(level, damageValueKoef)
-            + ChestStatsBalance.GetVitality(level, damageValueKoef);
+        {
+            int result = 0;
+            foreach (var item in ItemStatsBalances)
+                result += item.GetVitality(level, damageValueKoef);
+            return result;
+        }
 
 
         private double GetBaseCritCoef(int level, double damageValueKoef)
@@ -96,22 +113,35 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculateCritChance(GetItemsCritChance(level, damageValueKoef));
 
         private double GetItemsCritChance(int level, double damageValueKoef)
-            => GlovesStatsBalance.GetCritChance(level, damageValueKoef);
+        {
+            double result = 0.0;
+            foreach (var item in ItemStatsBalances)
+                result += item.GetCritChance(level, damageValueKoef);
+            return result;
+        }
 
 
         private double GetCritDamage(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateCritDamage(GetItemsCritDamage(level, damageValueKoef));
 
         private double GetItemsCritDamage(int level, double damageValueKoef)
-            => GlovesStatsBalance.GetCritDamage(level, damageValueKoef);
+        {
+            double result = 0.0;
+            foreach (var item in ItemStatsBalances)
+                result += item.GetCritDamage(level, damageValueKoef);
+            return result;
+        }
 
 
         public static readonly PlayerStatsBalance Standard = new PlayerStatsBalance
         {
             PlayerStatsCalculator = new PlayerStatsCalculator(),
-            WeaponStatsBalance = new WeaponStatsBalance(),
-            ChestStatsBalance = new ChestStatsBalance(),
-            GlovesStatsBalance = new GlovesStatsBalance()
+            ItemStatsBalances = new ItemStatsBalance[]
+            {
+                new WeaponStatsBalance(),
+                new ChestStatsBalance(),
+                new GlovesStatsBalance()
+            }
         };
     }
 }
