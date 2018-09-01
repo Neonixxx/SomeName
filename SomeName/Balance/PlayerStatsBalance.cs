@@ -72,7 +72,7 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculatePower(level, GetItemsPower(level, damageValueKoef));
 
         private int GetItemsPower(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => i.GetPower(level, damageValueKoef));
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetPower(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
 
 
         private long GetMaxHealth(int level, double damageValueKoef)
@@ -82,7 +82,7 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculateVitality(level, GetItemsVitality(level, damageValueKoef));
 
         private int GetItemsVitality(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => i.GetVitality(level, damageValueKoef));
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetVitality(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
 
 
         private double GetBaseCritCoef(int level, double damageValueKoef)
@@ -93,14 +93,14 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculateCritChance(GetItemsCritChance(level, damageValueKoef));
 
         private double GetItemsCritChance(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => i.GetCritChance(level, damageValueKoef));
+            => ItemStatsBalances.Sum(i => i.GetCritChance(level, damageValueKoef) * i.GetItemBonusesCountKoef(level));
 
 
         private double GetCritDamage(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateCritDamage(GetItemsCritDamage(level, damageValueKoef));
 
         private double GetItemsCritDamage(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => i.GetCritDamage(level, damageValueKoef));
+            => ItemStatsBalances.Sum(i => i.GetCritDamage(level, damageValueKoef) * i.GetItemBonusesCountKoef(level));
 
 
         public static readonly PlayerStatsBalance Standard = new PlayerStatsBalance

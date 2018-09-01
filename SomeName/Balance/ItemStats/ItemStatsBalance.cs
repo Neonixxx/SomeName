@@ -29,6 +29,9 @@ namespace SomeName.Balance.ItemStats
         public virtual int GetMaxItemBonusesCount(int level)
             => 2;
 
+        public double GetItemBonusesCountKoef(int level)
+            => ToDouble((GetMaxItemBonusesCount(level) - GetMinItemBonusesCount(level))) / PossibleItemBonuses.Length;
+
 
         public int GetPower(int level, double damageValueKoef)
             => ToInt32(GetBasePower(level) * damageValueKoef);
