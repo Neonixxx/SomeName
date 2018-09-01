@@ -132,6 +132,21 @@ namespace SomeName.Forms
             pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
         }
 
+        /// <summary>
+        /// Событие нажатия мышки на экипированный предмет.
+        /// </summary>
+        /// <param name="sender">PictureBox экипированного предмета.</param>
+        /// <param name="e"></param>
+        private void EquippedItemsSlots_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetSelectedPictureBox((PictureBox)sender);
+
+            if (e.Button == MouseButtons.Right)
+            {
+                EquippedItems_ContextMenuStrip.Show(Cursor.Position);
+            }
+        }
+
         public void UpdateStatsInfo(StatsInfo statsInfo)
         {
             StatsInfo_Label.Text = statsInfo.ToString();
@@ -152,21 +167,6 @@ namespace SomeName.Forms
             if (e.Button == MouseButtons.Right)
             {
                 Inventory_ContextMenuStrip.Show(Cursor.Position);
-            }
-        }
-
-        /// <summary>
-        /// Событие нажатия мышки на экипированный предмет.
-        /// </summary>
-        /// <param name="sender">PictureBox экипированного предмета.</param>
-        /// <param name="e"></param>
-        private void EquippedItemsSlots_MouseDown(object sender, MouseEventArgs e)
-        {
-            SetSelectedPictureBox((PictureBox)sender);
-
-            if (e.Button == MouseButtons.Right)
-            {
-                EquippedItems_ContextMenuStrip.Show(Cursor.Position);
             }
         }
 
@@ -307,9 +307,15 @@ namespace SomeName.Forms
                 var itemIndex = GetSelectedItemIndex();
                 item = InventoryController.GetItem(itemIndex);
             }
-            if (_equippedItemsSlots.ContainsKey(_selectedPictureBox) && _equippedItemsSlots[_selectedPictureBox] == ItemType.Weapon)
+            if (_equippedItemsSlots.ContainsKey(_selectedPictureBox))
             {
-                item = _equippedItems.Weapon;
+                // HACK : Технический долг - нужно убрать зависимость от количества предметов в EquippedItems.
+                switch (_equippedItemsSlots[_selectedPictureBox])
+                {
+                    case ItemType.Weapon: item = _equippedItems.Weapon; break;
+                    case ItemType.Gloves: item = _equippedItems.Gloves; break;
+                    case ItemType.Chest: item = _equippedItems.Chest; break;
+                }
             }
             return item;
         }
