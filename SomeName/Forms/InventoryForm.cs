@@ -334,6 +334,7 @@ namespace SomeName.Forms
                     UpdateItemToEnchantSlot(null);
                     EnchantChanceLabel.Text = "Неуспешно";
                 }
+                EnchantButton.Text = "";
             }
         }
     }

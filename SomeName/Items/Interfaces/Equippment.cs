@@ -20,6 +20,15 @@ namespace SomeName.Items.Interfaces
 
         public abstract long StatToEnchant { get; set; }
 
-        public int EnchantmentLevel { get; set; }  
+        public int EnchantmentLevel { get; set; }
+
+        public override string ToString()
+        {
+            var result = new StringBuilder();
+            if (EnchantmentLevel > 0)
+                result.Append($"+{EnchantmentLevel} ");
+            result.Append(base.ToString());
+            return result.ToString();
+        }
     }
 }

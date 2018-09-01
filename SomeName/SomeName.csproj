@@ -108,6 +108,7 @@
     <Compile Include="Items\Bonuses\ItemBonusesBuilder.cs" />
     <Compile Include="Items\Bonuses\ItemBonusesFactory.cs" />
     <Compile Include="Items\ItemFactories\ItemFactory.cs" />
+    <Compile Include="Items\ItemFactories\ScrollOfEnchantArmorFactory.cs" />
     <Compile Include="Items\ItemFactories\ScrollOfEnchantWeaponFactory.cs" />
     <Compile Include="Items\ItemFactories\SimpleChestFactory.cs" />
     <Compile Include="Items\ItemFactories\SimpleGlovesFactory.cs" />
@@ -208,6 +209,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Items\Resources\ScrollOfEnchantArmor.jpg" />
     <Content Include="Items\Resources\SimpleGloves.jpg" />
     <Content Include="Items\Resources\ScrollOfEnchantWeapon.jpg" />
     <Content Include="Items\Resources\SimpleArmor.jpg" />

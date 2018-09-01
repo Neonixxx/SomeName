@@ -19,43 +19,19 @@ namespace SomeName.Domain
         public Gloves Gloves { get; set; }
 
         public long GetDefence()
-        {
-            var result = Chest?.Defence ?? 0;
-            result += Gloves?.Defence ?? 0;
-            return result;
-        }
+            => this.Sum(i => (i as Armor)?.Defence ?? 0);
 
         public int GetPower()
-        {
-            var result = 0;
-            foreach (var item in this)
-                result += item?.Bonuses.Power ?? 0;
-            return result;
-        }
+            => this.Sum(i => i?.Bonuses.Power ?? 0);
 
         public int GetVitality()
-        {
-            var result = 0;
-            foreach (var item in this)
-                result += item?.Bonuses.Vitality ?? 0;
-            return result;
-        }
+            => this.Sum(i => i?.Bonuses.Vitality ?? 0);
 
         public double GetCritChance()
-        {
-            var result = 0.0;
-            foreach (var item in this)
-                result += item?.Bonuses.CritChance ?? 0;
-            return result;
-        }
+            => this.Sum(i => i?.Bonuses.CritChance ?? 0);
 
         public double GetCritDamage()
-        {
-            var result = 0.0;
-            foreach (var item in this)
-                result += item?.Bonuses.CritDamage ?? 0;
-            return result;
-        }
+            => this.Sum(i => i?.Bonuses.CritDamage ?? 0);
 
         public IEnumerator<IEquippment> GetEnumerator()
         {

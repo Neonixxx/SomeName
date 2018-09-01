@@ -8,8 +8,7 @@ namespace SomeName.Items.Impl
         public ScrollOfEnchantArmor()
         {
             Description = "Свиток заточки брони";
-            // UNDONE : Доделать изображение свитка заточки брони.
-            Image = ItemImages.ScrollOfEnchantWeapon;
+            Image = ItemImages.ScrollOfEnchantArmor;
         }
     }
 }

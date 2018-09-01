@@ -22,10 +22,7 @@ namespace SomeName.Items.Interfaces
 
         public override string ToString()
         {
-            var result = new StringBuilder();
-            if (EnchantmentLevel > 0)
-                result.Append($"+{EnchantmentLevel} ");
-            result.Append($"{base.ToString()}{NewLine}Damage: {Damage}");
+            var result = new StringBuilder($"{base.ToString()}{NewLine}Damage: {Damage}");
             var bonusesString = Bonuses.ToString();
             if (bonusesString != string.Empty)
                 result.Append($"{NewLine}{bonusesString}");

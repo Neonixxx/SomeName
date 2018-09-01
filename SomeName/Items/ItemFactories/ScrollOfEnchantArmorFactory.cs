@@ -9,24 +9,24 @@ using SomeName.Items.Interfaces;
 
 namespace SomeName.Items.ItemFactories
 {
-    public class ScrollOfEnchantWeaponFactory : WeaponFactory
+    public class ScrollOfEnchantArmorFactory : ChestFactory
     {
         public override long GetItemGoldValue(int level)
-            => Convert.ToInt64(GetBaseWeaponGoldValue(level) * 0.15);
+            => Convert.ToInt64(GetBaseChestGoldValue(level) * 0.07);
 
         public override Item Build(int level, double additionalKoef = 1.0)
         {
             var damageValueKoef = RollItemDamageKoef(additionalKoef);
-            var item = new ScrollOfEnchantWeapon()
+            var item = new ScrollOfEnchantArmor()
             {
                 Level = level,
-                GoldValue = GetScrollOfEnchantWeaponGoldValue(level, damageValueKoef),
-                Value = WeaponStatsBalance.GetDamage(level, damageValueKoef)
+                GoldValue = GetScrollOfEnchantArmorGoldValue(level, damageValueKoef),
+                Value = ChestStatsBalance.GetDefence(level, damageValueKoef)
             };
             return item;
         }
 
-        private long GetScrollOfEnchantWeaponGoldValue(int level, double damageValueKoef)
+        private long GetScrollOfEnchantArmorGoldValue(int level, double damageValueKoef)
             => Convert.ToInt64(GetItemGoldValue(level) * damageValueKoef);
     }
 }
