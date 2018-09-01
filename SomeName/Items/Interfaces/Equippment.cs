@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Equippment : Item, IEquippment
+    public abstract class Equippment : Item, ICanBeEnchanted, IEquippment
     {
         public ItemBonuses Bonuses { get; set; }
 

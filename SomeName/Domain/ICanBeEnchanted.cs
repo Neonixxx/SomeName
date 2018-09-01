@@ -2,8 +2,7 @@
 
 namespace SomeName.Domain
 {
-    public interface ICanBeEnchanted<TScrollOfEnchant> : IEquippment
-        where TScrollOfEnchant : ScrollOfEnchant
+    public interface ICanBeEnchanted : IEquippment
     {
         long BaseStatToEnchant { get; set; }
 

@@ -10,7 +10,7 @@ using static System.Environment;
 
 namespace SomeName.Items.Interfaces
 {
-    public abstract class Armor : Equippment, ICanBeEnchanted<ScrollOfEnchantArmor>
+    public abstract class Armor : Equippment
     {
         public long BaseDefence { get; set; }
 

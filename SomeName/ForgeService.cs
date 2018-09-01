@@ -1,4 +1,5 @@
 ﻿using SomeName.Domain;
+using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,11 @@ namespace SomeName
         public ForgeService(Player player)
             => Player = player;
 
-        public bool EnchantItem<TScrollOfEnchant>(ICanBeEnchanted<TScrollOfEnchant> itemToEnchant, TScrollOfEnchant scrollOfEnchant)
-            where TScrollOfEnchant : ScrollOfEnchant
+        public bool EnchantItem(ICanBeEnchanted itemToEnchant, ScrollOfEnchant scrollOfEnchant)
         {
+            if (!CanBeEnchantedWith(itemToEnchant, scrollOfEnchant))
+                throw new ArgumentException($"Предмет типа {itemToEnchant.GetType()} нельзя улучшить с помощью {scrollOfEnchant.GetType()}");
+
             if (!Player.Inventory.Contains(scrollOfEnchant))
                 throw new InvalidOperationException($"{nameof(scrollOfEnchant)} не содержится в {nameof(Player.Inventory)}");
 
@@ -41,6 +44,15 @@ namespace SomeName
             }
 
             return enchantResult;
+        }
+
+        public bool CanBeEnchantedWith(ICanBeEnchanted itemToEnchant, ScrollOfEnchant scrollOfEnchant)
+        {
+            if (scrollOfEnchant is ScrollOfEnchantWeapon && itemToEnchant is Weapon
+                || scrollOfEnchant is ScrollOfEnchantArmor && itemToEnchant is Armor)
+                return true;
+
+            return false;
         }
     }
 }

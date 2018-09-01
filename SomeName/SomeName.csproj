@@ -65,7 +65,7 @@
     <Compile Include="Domain\AttackManager.cs" />
     <Compile Include="Domain\DropValue.cs" />
     <Compile Include="Domain\IAttacker.cs" />
-    <Compile Include="Domain\ICanBeEnhanted.cs" />
+    <Compile Include="Domain\ICanBeEnchanted.cs" />
     <Compile Include="Items\Impl\ScrollOfEnchantArmor.cs" />
     <Compile Include="Items\Interfaces\IEquippment.cs" />
     <Compile Include="Items\Interfaces\IItem.cs" />

@@ -32,11 +32,14 @@ namespace SomeName
         }
 
         // TODO : Обобщить для интерфейса ICanBeEnchanted<TScrollOfEnchant>.
-        public bool EnchantWeapon(Weapon weapon, ScrollOfEnchantWeapon scrollOfEnchantWeapon)
-            => ForgeService.EnchantItem(weapon, scrollOfEnchantWeapon);
+        public bool EnchantWeapon(ICanBeEnchanted itemToEnchant, ScrollOfEnchant scrollOfEnchant)
+            => ForgeService.EnchantItem(itemToEnchant, scrollOfEnchant);
 
-        public double GetWeaponEnchantChance(Weapon weapon, ScrollOfEnchantWeapon scrollOfEnchantWeapon)
-            => ForgeService.EnchantManager.GetEnchantChance(weapon, scrollOfEnchantWeapon);
+        public double GetItemEnchantChance(ICanBeEnchanted itemToEnchant, ScrollOfEnchant scrollOfEnchant)
+            => ForgeService.EnchantManager.GetEnchantChance(itemToEnchant, scrollOfEnchant);
+
+        public bool CanBeEnchantedWith(ICanBeEnchanted itemToEnchant, ScrollOfEnchant scrollOfEnchant)
+            => ForgeService.CanBeEnchantedWith(itemToEnchant, scrollOfEnchant);
 
         public void SellItem(int itemIndex)
             => Player.SellItem(ShopManager, Player.Inventory[itemIndex]);

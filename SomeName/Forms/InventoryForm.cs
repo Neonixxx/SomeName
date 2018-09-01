@@ -244,9 +244,9 @@ namespace SomeName.Forms
         private int GetSelectedItemIndex()
             => (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
 
-        private Weapon _weaponToEnchant;
+        private ICanBeEnchanted _itemToEnchant;
 
-        private ScrollOfEnchantWeapon _scrollOfEnchantWeapon;
+        private ScrollOfEnchant _scrollOfEnchant;
 
         private void УлучшитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -254,33 +254,46 @@ namespace SomeName.Forms
             if (item == null)
                 return;
                 
-            if (item is Weapon weapon)
+            if (item is ICanBeEnchanted itemToEnchant)
             {
-                _weaponToEnchant = weapon;
-                UpdateItemToEnchantSlot(_weaponToEnchant);
+                _itemToEnchant = itemToEnchant;
+                UpdateItemToEnchantSlot(_itemToEnchant);
+
+                if (_scrollOfEnchant != null && !InventoryController.CanBeEnchantedWith(_itemToEnchant, _scrollOfEnchant))
+                {
+                    _scrollOfEnchant = null;
+                    SetPictureBox(ScrollOfEnchantSlot, null);
+                }
             }
-            else if (item is ScrollOfEnchantWeapon scrollOfEnchantWeapon)
+            else if (item is ScrollOfEnchant scrollOfEnchant)
             {
-                _scrollOfEnchantWeapon = scrollOfEnchantWeapon;
-                SetPictureBox(ScrollOfEnchantSlot, scrollOfEnchantWeapon);
+                if (_itemToEnchant == null || InventoryController.CanBeEnchantedWith(_itemToEnchant, scrollOfEnchant))
+                {
+                    _scrollOfEnchant = scrollOfEnchant;
+                    SetPictureBox(ScrollOfEnchantSlot, scrollOfEnchant);
+                }
             }
 
-            if (_weaponToEnchant != null && _scrollOfEnchantWeapon != null)
+            if (_itemToEnchant != null && _scrollOfEnchant != null)
             {
-                EnchantChanceLabel.Text = InventoryController.GetWeaponEnchantChance(_weaponToEnchant, _scrollOfEnchantWeapon)
+                EnchantChanceLabel.Text = InventoryController.GetItemEnchantChance(_itemToEnchant, _scrollOfEnchant)
                     .ToPercentString(2);
+
+                EnchantButton.Text = $"Улучшить на +{_itemToEnchant.EnchantmentLevel + 1}";
+            }
+            else
+            {
+                EnchantChanceLabel.Text = "";
+                EnchantButton.Text = "";
             }
         }
 
-        private void UpdateItemToEnchantSlot(Weapon weapon)
+        private void UpdateItemToEnchantSlot(ICanBeEnchanted itemToEnchant)
         {
-            SetPictureBox(ItemToEnchantSlot, weapon);
-            EnchantButton.Text = weapon == null
-                ? ""
-                : $"Улучшить на +{_weaponToEnchant.EnchantmentLevel + 1}";
+            SetPictureBox(ItemToEnchantSlot, itemToEnchant);
         }
 
-        private void SetPictureBox(PictureBox pictureBox, Item item)
+        private void SetPictureBox(PictureBox pictureBox, IItem item)
         {
             pictureBox.Image = item?.Image;
             ToolTip1.SetToolTip(pictureBox, item?.ToString());
@@ -303,17 +316,17 @@ namespace SomeName.Forms
 
         private void EnchantButton_Click(object sender, EventArgs e)
         {
-            if (_weaponToEnchant != null && _scrollOfEnchantWeapon != null)
+            if (_itemToEnchant != null && _scrollOfEnchant != null)
             {
-                var isEnchantSuccesful = InventoryController.EnchantWeapon(_weaponToEnchant, _scrollOfEnchantWeapon);
+                var isEnchantSuccesful = InventoryController.EnchantWeapon(_itemToEnchant, _scrollOfEnchant);
                 InventoryController.Update();
 
-                _scrollOfEnchantWeapon = null;
+                _scrollOfEnchant = null;
                 SetPictureBox(ScrollOfEnchantSlot, null);
 
                 if (isEnchantSuccesful)
                 {
-                    UpdateItemToEnchantSlot(_weaponToEnchant);
+                    UpdateItemToEnchantSlot(_itemToEnchant);
                     EnchantChanceLabel.Text = "Успешно";
                 }
                 else
