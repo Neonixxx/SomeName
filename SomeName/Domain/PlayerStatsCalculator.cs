@@ -11,16 +11,21 @@ namespace SomeName.Domain
     public class PlayerStatsCalculator
     {
         private static readonly long StartDefence = 0;
-
         private static readonly long DefencePerLevel = 10;
 
         private static readonly int StartPower = 20;
-
         private static readonly int PowerPerLevel = 10;
 
         private static readonly int StartVitality = 20;
-
         private static readonly int VitalityPerLevel = 10;
+
+        private static readonly double HitChanceKoef = 0.7;
+
+        private static readonly int StartAccuracy = 20;
+        private static readonly int AccuracyPerLevel = 10;
+
+        private static readonly int StartEvasion = 20;
+        private static readonly int EvasionPerLevel = 10;
 
         private static readonly double StartCritChance = 0.05;
 
@@ -89,6 +94,35 @@ namespace SomeName.Domain
             => StartVitality + level * VitalityPerLevel + itemsVitality;
 
 
+        public double CalculateHitChance(int accuracy, int evasion)
+        {
+            if (accuracy <= evasion)
+                return HitChanceKoef * accuracy / evasion;
+            else
+                return 1 - (1 - HitChanceKoef) * evasion / accuracy;
+        }
+
+
+        public int CalculateAccuracy(Player player)
+            => CalculateAccuracy(player.Level, player.EquippedItems);
+
+        public int CalculateAccuracy(int level, EquippedItems equippedItems)
+            => CalculateAccuracy(level, equippedItems.GetAccuracy());
+
+        public int CalculateAccuracy(int level, int itemsAccuracy)
+            => StartAccuracy + level * AccuracyPerLevel + itemsAccuracy;
+
+
+        public int CalculateEvasion(Player player)
+            => CalculateEvasion(player.Level, player.EquippedItems);
+
+        public int CalculateEvasion(int level, EquippedItems equippedItems)
+            => CalculateEvasion(level, equippedItems.GetEvasion());
+
+        public int CalculateEvasion(int level, int itemsEvasion)
+            => StartEvasion + level * EvasionPerLevel + itemsEvasion;
+
+
         public double CalculateCritChance(Player player)
             => CalculateCritChance(player.EquippedItems);
 
@@ -107,5 +141,7 @@ namespace SomeName.Domain
 
         public double CalculateCritDamage(double itemsCritDamage)
             => StartCritDamage + itemsCritDamage;
+
+        public static readonly PlayerStatsCalculator Standard = new PlayerStatsCalculator();
     }
 }

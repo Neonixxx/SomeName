@@ -26,6 +26,20 @@ namespace SomeName.Items.Bonuses
         public ItemBonuses Build()
             => _itemBonuses;
 
+        private static readonly Dictionary<ItemBonusesEnum, Func<ItemBonusesBuilder, double, ItemBonusesBuilder>> _itemBonusesCalculators
+            = new Dictionary<ItemBonusesEnum, Func<ItemBonusesBuilder, double, ItemBonusesBuilder>>
+            {
+                { ItemBonusesEnum.Power, (builder, damageValueKoef) => builder.CalculatePower(damageValueKoef) },
+                { ItemBonusesEnum.Vitality, (builder, damageValueKoef) => builder.CalculateVitality(damageValueKoef) },
+                { ItemBonusesEnum.Accuracy, (builder, damageValueKoef) => builder.CalculateAccuracy(damageValueKoef) },
+                { ItemBonusesEnum.Evasion, (builder, damageValueKoef) => builder.CalculateEvasion(damageValueKoef) },
+                { ItemBonusesEnum.CritChance, (builder, damageValueKoef) => builder.CalculateCritChance(damageValueKoef) },
+                { ItemBonusesEnum.CritDamage, (builder, damageValueKoef) => builder.CalculateCritDamage(damageValueKoef) },
+            };
+
+        public ItemBonusesBuilder Calculate(ItemBonusesEnum itemBonusesEnum, double damageValueKoef)
+            => _itemBonusesCalculators[itemBonusesEnum].Invoke(this, damageValueKoef);
+
         public ItemBonusesBuilder CalculatePower(double damageValueKoef)
         {
             _itemBonuses.Power = _itemStatsBalance.GetPower(Level, damageValueKoef);
@@ -35,6 +49,18 @@ namespace SomeName.Items.Bonuses
         public ItemBonusesBuilder CalculateVitality(double damageValueKoef)
         {
             _itemBonuses.Vitality = _itemStatsBalance.GetVitality(Level, damageValueKoef);
+            return this;
+        }
+
+        public ItemBonusesBuilder CalculateAccuracy(double damageValueKoef)
+        {
+            _itemBonuses.Accuracy = _itemStatsBalance.GetAccuracy(Level, damageValueKoef);
+            return this;
+        }
+
+        public ItemBonusesBuilder CalculateEvasion(double damageValueKoef)
+        {
+            _itemBonuses.Evasion = _itemStatsBalance.GetEvasion(Level, damageValueKoef);
             return this;
         }
 

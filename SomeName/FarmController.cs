@@ -39,8 +39,8 @@ namespace SomeName
                 if (Player.IsDead)
                     return;
 
-                var damage = Player.GetDamage();
-                var dealtDamage = _monster.TakeDamage(damage);
+                Player.Attack(_monster);
+
                 if (_monster.IsDead)
                 {
                     var drop = _monster.GetDrop();

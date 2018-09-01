@@ -27,6 +27,12 @@ namespace SomeName.Domain
         public int GetVitality()
             => this.Sum(i => i?.Bonuses.Vitality ?? 0);
 
+        public int GetAccuracy()
+            => this.Sum(i => i?.Bonuses.Accuracy ?? 0);
+
+        public int GetEvasion()
+            => this.Sum(i => i?.Bonuses.Evasion ?? 0);
+
         public double GetCritChance()
             => this.Sum(i => i?.Bonuses.CritChance ?? 0);
 

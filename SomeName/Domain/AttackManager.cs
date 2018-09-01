@@ -10,18 +10,30 @@ namespace SomeName.Domain
     {
         public IAttacker Attacker { get; set; }
 
+        public PlayerStatsCalculator PlayerStatsCalculator = PlayerStatsCalculator.Standard;
+
         public AttackManager(IAttacker attacker)
             => Attacker = attacker;
 
         public long Attack(IAttackTarget attackTarget)
         {
             var damage = Attacker.GetDamage();
+
+            if (!IsHitSuccesful(Attacker.GetAccuracy(), attackTarget.GetEvasion()))
+                return 0;
+
             var critChance = Attacker.GetCritChance();
             if (Dice.TryGetChance(critChance))
                 damage = Convert.ToInt64(damage * Attacker.GetCritDamage());
 
             var damageDealt = TakeDamage(attackTarget, damage);
             return damageDealt;
+        }
+
+        private bool IsHitSuccesful(int accuracy, int evasion)
+        {
+            var hitChance = PlayerStatsCalculator.CalculateHitChance(accuracy, evasion);
+            return Dice.TryGetChance(hitChance);
         }
 
         private long TakeDamage(IAttackTarget attackTarget, long damage)

@@ -15,6 +15,10 @@ namespace SomeName.Balance.ItemStats
 
         protected virtual double VitalityKoef => 0.0;
 
+        protected virtual double AccuracyKoef => 0.0;
+
+        protected virtual double EvasionKoef => 0.0;
+
         protected virtual double CritChanceKoef => 0.0;
 
         protected virtual double CritDamageKoef => 0.0;
@@ -27,7 +31,7 @@ namespace SomeName.Balance.ItemStats
 
         // TODO : Сделать формулу.
         public virtual int GetMaxItemBonusesCount(int level)
-            => 2;
+            => 3;
 
         public double GetItemBonusesCountKoef(int level)
             => ToDouble((GetMaxItemBonusesCount(level) - GetMinItemBonusesCount(level))) / PossibleItemBonuses.Length;
@@ -48,6 +52,23 @@ namespace SomeName.Balance.ItemStats
 
         private int GetBaseStat(int level)
             => ToInt32(Pow(level, 1.3));
+
+
+        public int GetAccuracy(int level, double damageValueKoef)
+            => ToInt32(GetBaseAccuracy(level) * damageValueKoef);
+
+        private int GetBaseAccuracy(int level)
+            => ToInt32(GetBaseAccuracyEvasion(level) * AccuracyKoef);
+
+
+        public int GetEvasion(int level, double damageValueKoef)
+            => ToInt32(GetBaseEvasion(level) * damageValueKoef);
+
+        private int GetBaseEvasion(int level)
+            => ToInt32(GetBaseAccuracyEvasion(level) * EvasionKoef);
+
+        private int GetBaseAccuracyEvasion(int level)
+            => ToInt32(Pow(level, 1.4));
 
 
         public double GetCritChance(int level, double damageValueKoef)

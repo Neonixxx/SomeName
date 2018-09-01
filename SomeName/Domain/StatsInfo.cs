@@ -15,6 +15,10 @@ namespace SomeName.Domain
 
         public int Vitality { get; set; }
 
+        public int Accuracy { get; set; }
+
+        public int Evasion { get; set; }
+
         public long Damage { get; set; }
 
         public long Defence { get; set; }
@@ -34,6 +38,8 @@ namespace SomeName.Domain
                 $"{NewLine}Health: {MaxHealth}" +
                 $"{NewLine}Power: {Power}" +
                 $"{NewLine}Vitality: {Vitality}" +
+                $"{NewLine}Accuracy: {Accuracy}" +
+                $"{NewLine}Evasion: {Evasion}" +
                 $"{NewLine}Defence: {Defence}" +
                 $"{NewLine}Снижение получаемого урона: {DefenceKoef.ToPercentString(2)}" +
                 $"{NewLine}Шанс крита: {CritChance.ToPercentString(1)}" +

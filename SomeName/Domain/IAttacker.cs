@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SomeName.Domain
+﻿namespace SomeName.Domain
 {
     public interface IAttacker
     {
         long GetDamage();
+
+        int GetAccuracy();
 
         double GetCritChance();
 

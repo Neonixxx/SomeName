@@ -11,15 +11,6 @@ namespace SomeName.Items.Bonuses
 {
     public class ItemBonusesFactory
     {
-        private static readonly Dictionary<ItemBonusesEnum, Func<ItemBonusesBuilder, double, ItemBonusesBuilder>> _itemBonusesCalculators
-            = new Dictionary < ItemBonusesEnum, Func<ItemBonusesBuilder, double, ItemBonusesBuilder>>
-            {
-                { ItemBonusesEnum.Power, (builder, damageValueKoef) => builder.CalculatePower(damageValueKoef) },
-                { ItemBonusesEnum.Vitality, (builder, damageValueKoef) => builder.CalculateVitality(damageValueKoef) },
-                { ItemBonusesEnum.CritChance, (builder, damageValueKoef) => builder.CalculateCritChance(damageValueKoef) },
-                { ItemBonusesEnum.CritDamage, (builder, damageValueKoef) => builder.CalculateCritDamage(damageValueKoef) }
-            };
-
         public ItemBonuses Build(ItemStatsBalance itemStatsBalance, int level, double additionalKoef)
         {
             var minBonusesCount = itemStatsBalance.GetMinItemBonusesCount(level);
@@ -28,7 +19,7 @@ namespace SomeName.Items.Bonuses
 
             var itemBonusesBuilder = new ItemBonusesBuilder(itemStatsBalance, level);
             foreach (var itemBonuseEnum in itemStatsBalance.PossibleItemBonuses.TakeRandom(bonusesCount))
-                _itemBonusesCalculators[itemBonuseEnum].Invoke(itemBonusesBuilder, ItemFactory.RollItemDamageKoef(additionalKoef));
+                itemBonusesBuilder.Calculate(itemBonuseEnum, ItemFactory.RollItemDamageKoef(additionalKoef));
 
             return itemBonusesBuilder.Build();
         }

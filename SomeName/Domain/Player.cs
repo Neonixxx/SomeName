@@ -22,7 +22,7 @@ namespace SomeName.Domain
 
         public Player()
         {
-            PlayerStatsCalculator = new PlayerStatsCalculator();
+            PlayerStatsCalculator = PlayerStatsCalculator.Standard;
             AttackManager = new AttackManager(this);
         }
 
@@ -59,6 +59,12 @@ namespace SomeName.Domain
 
         public int GetVitality()
             => PlayerStatsCalculator.CalculateVitality(this);
+
+        public int GetAccuracy()
+            => PlayerStatsCalculator.CalculateAccuracy(this);
+
+        public int GetEvasion()
+            => PlayerStatsCalculator.CalculateEvasion(this);
 
         public double GetCritChance()
             => PlayerStatsCalculator.CalculateCritChance(this);

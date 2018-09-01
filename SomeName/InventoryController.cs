@@ -65,6 +65,8 @@ namespace SomeName
                 MaxHealth = Player.GetMaxHealth(),
                 Power = Player.GetPower(),
                 Vitality = Player.GetVitality(),
+                Accuracy = Player.GetAccuracy(),
+                Evasion = Player.GetEvasion(),
                 Defence = Player.GetDefence(),
                 DefenceKoef = Player.GetDefenceKoef(),
                 CritChance = Player.GetCritChance(),

@@ -8,8 +8,12 @@ namespace SomeName.Items.Bonuses
 
         Vitality = 2,
 
-        CritChance = 3,
+        Accuracy = 3,
 
-        CritDamage = 4
+        Evasion = 4,
+
+        CritChance = 5,
+
+        CritDamage = 6
     }
 }

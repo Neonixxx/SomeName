@@ -34,6 +34,12 @@ namespace SomeName.Balance
         public long GetDefaultDamage(int level)
             => GetDamage(level, GetDefaultItemDamageKoef(level));
 
+        public int GetDefaultAccuracy(int level)
+            => GetAccuracy(level, GetDefaultItemDamageKoef(level));
+
+        public int GetDefaultEvasion(int level)
+            => GetEvasion(level, GetDefaultItemDamageKoef(level));
+
         public long GetDefaultToughness(int level)
             => ToInt64(GetDefaultMaxHealth(level) / (1 - GetDefaultDefenceKoef(level)));
 
@@ -61,6 +67,7 @@ namespace SomeName.Balance
         private long GetItemsDamage(int level, double damageValueKoef)
             => ItemStatsBalances.Sum(i => (i as WeaponStatsBalance)?.GetDamage(level, damageValueKoef) ?? 0);
 
+
         private long GetDefence(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateDefence(level, GetItemsDefence(level, damageValueKoef));
 
@@ -85,6 +92,20 @@ namespace SomeName.Balance
             => ItemStatsBalances.Sum(i => ToInt32(i.GetVitality(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
 
 
+        private int GetAccuracy(int level, double damageValueKoef)
+            => PlayerStatsCalculator.CalculateAccuracy(level, GetItemsAccuracy(level, damageValueKoef));
+
+        private int GetItemsAccuracy(int level, double damageValueKoef)
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetAccuracy(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+
+
+        private int GetEvasion(int level, double damageValueKoef)
+            => PlayerStatsCalculator.CalculateEvasion(level, GetItemsEvasion(level, damageValueKoef));
+
+        private int GetItemsEvasion(int level, double damageValueKoef)
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetEvasion(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+
+
         private double GetBaseCritCoef(int level, double damageValueKoef)
             => GetCritChance(level, damageValueKoef) * (GetCritDamage(level, damageValueKoef) - 1) + 1;
 
@@ -105,7 +126,7 @@ namespace SomeName.Balance
 
         public static readonly PlayerStatsBalance Standard = new PlayerStatsBalance
         {
-            PlayerStatsCalculator = new PlayerStatsCalculator(),
+            PlayerStatsCalculator = PlayerStatsCalculator.Standard,
             ItemStatsBalances = new ItemStatsBalance[]
             {
                 new WeaponStatsBalance(),
