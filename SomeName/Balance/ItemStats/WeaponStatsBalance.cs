@@ -11,7 +11,11 @@ namespace SomeName.Balance.ItemStats
 {
     public class WeaponStatsBalance : ItemStatsBalance
     {
-        public override ItemBonusesEnum PossibleItemBonuses => ItemBonusesEnum.Power | ItemBonusesEnum.Vitality;
+        public override ItemBonusesEnum[] PossibleItemBonuses => new ItemBonusesEnum[] 
+        {
+            ItemBonusesEnum.Power,
+            ItemBonusesEnum.Vitality
+        };
 
         protected override double PowerKoef => 1.0;
 

@@ -9,7 +9,13 @@ namespace SomeName.Balance.ItemStats
 {
     public class GlovesStatsBalance : ArmorStatsBalance
     {
-        public override ItemBonusesEnum PossibleItemBonuses => ItemBonusesEnum.Power | ItemBonusesEnum.Vitality | ItemBonusesEnum.CritChance | ItemBonusesEnum.CritDamage;
+        public override ItemBonusesEnum[] PossibleItemBonuses => new ItemBonusesEnum[] 
+        {
+            ItemBonusesEnum.Power,
+            ItemBonusesEnum.Vitality,
+            ItemBonusesEnum.CritChance,
+            ItemBonusesEnum.CritDamage
+        };
 
         protected override double DefenceKoef => 0.8;
 

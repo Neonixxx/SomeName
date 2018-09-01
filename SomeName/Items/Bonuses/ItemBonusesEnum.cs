@@ -2,15 +2,14 @@
 
 namespace SomeName.Items.Bonuses
 {
-    [Flags]
     public enum ItemBonusesEnum
     {
-        Power = 0x1,
+        Power = 1,
 
-        Vitality = 0x2,
+        Vitality = 2,
 
-        CritChance = 0x4,
+        CritChance = 3,
 
-        CritDamage = 0x8
+        CritDamage = 4
     }
 }

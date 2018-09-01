@@ -19,7 +19,7 @@ namespace SomeName.Balance.ItemStats
 
         protected virtual double CritDamageKoef => 0.0;
 
-        public abstract ItemBonusesEnum PossibleItemBonuses { get; }
+        public abstract ItemBonusesEnum[] PossibleItemBonuses { get; }
 
         // TODO : Сделать формулу.
         public virtual int GetMinItemBonusesCount(int level)
@@ -59,7 +59,7 @@ namespace SomeName.Balance.ItemStats
         private double GetBaseCritChance(int level)
             => CritChanceKoef * level / 2500 + 0.01;
 
-        // UNDONE : Недоделано вычисление критического урона предметов.
+
         public double GetCritDamage(int level, double damageValueKoef)
             => Round(GetBaseCritChance(level) * damageValueKoef, 3);
 
