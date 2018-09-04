@@ -20,8 +20,13 @@ namespace SomeName
 
         public ForgeService ForgeService { get; set; }
 
+        public ShopService ShopService { get; set; }
+
         public void Start()
-            => InventoryForm.Start(Player.Inventory.Count);
+        {
+            ShopService.RefreshSellingItems(Player.Level);
+            InventoryForm.Start(Player.Inventory.Count);
+        }
 
         public void Update()
         {
@@ -29,6 +34,7 @@ namespace SomeName
             InventoryForm.UpdateEquippedItems(Player.EquippedItems);
             InventoryForm.UpdateStatsInfo(GetStatsInfo());
             InventoryForm.UpdateGold(Player.Gold);
+            InventoryForm.UpdateSellingItems(ShopService.GetSellingItems());
         }
 
         // TODO : Обобщить для интерфейса ICanBeEnchanted<TScrollOfEnchant>.
@@ -50,7 +56,13 @@ namespace SomeName
         public void UnequipItem(ItemType itemType)
             => Player.Unequip(itemType);
 
-        public long GetGoldValueOfItem(int itemIndex)
+        public bool CanBuyItem(IItem item)
+            => ShopService.CanBuy(item);
+
+        public void BuyItem(IItem item)
+            => ShopService.Buy(item);
+
+        public long GetSellGoldValueOfItem(int itemIndex)
             => ShopManager.GetSellItemValue(Player.Inventory[itemIndex]);
 
         public IItem GetItem(int itemIndex)

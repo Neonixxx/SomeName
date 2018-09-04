@@ -14,7 +14,7 @@ namespace SomeName.Domain
 
         public long Exp { get; set; }
 
-        public List<Item> Items { get; set; }
+        public List<IItem> Items { get; set; }
 
         public override string ToString()
         {

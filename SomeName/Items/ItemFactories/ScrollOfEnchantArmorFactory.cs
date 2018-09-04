@@ -12,7 +12,7 @@ namespace SomeName.Items.ItemFactories
     public class ScrollOfEnchantArmorFactory : ChestFactory
     {
         public override long GetItemGoldValue(int level)
-            => Convert.ToInt64(GetBaseChestGoldValue(level) * 0.07);
+            => Convert.ToInt64(GetBaseChestGoldValue(level) * 0.2);
 
         public override Item Build(int level, double additionalKoef = 1.0)
         {

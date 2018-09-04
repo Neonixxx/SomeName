@@ -113,9 +113,33 @@ namespace SomeName.Forms
                 };
                 InventoryPanel.Controls.Add(pb[i]);
                 ToolTip1.SetToolTip(InventoryPanel.Controls[i], items[i + _firstItemIndex].ToString());
-                InventoryPanel.Controls[i].AllowDrop = true;
                 InventoryPanel.Controls[i].MouseDown += InventoryPanelControls_MouseDown;
             }
+        }
+
+        private List<IItem> _sellingItems;
+
+        public void UpdateSellingItems(List<IItem> items)
+        {
+            _sellingItems = items;
+            SellingItemsPanel.Controls.Clear();
+            for (int i = 0; i < items.Count; i++)
+            {
+                var pictureBox = new PictureBox
+                {
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Image = items[i + _firstItemIndex].Image,
+                    Size = new Size(45, 45)
+                };
+                SellingItemsPanel.Controls.Add(pictureBox);
+                ToolTip1.SetToolTip(SellingItemsPanel.Controls[i], items[i + _firstItemIndex].ToString());
+                SellingItemsPanel.Controls[i].MouseDown += SellingItemsPanelControls_MouseDown;
+            }
+        }
+
+        private void SellingItemsPanelControls_MouseDown(object sender, MouseEventArgs e)
+        {
+            SetSelectedPictureBox((PictureBox)sender);
         }
 
         public void UpdateEquippedItems(EquippedItems equippedItems)
@@ -183,10 +207,17 @@ namespace SomeName.Forms
             _selectedPictureBox.BorderStyle = BorderStyle.Fixed3D;
 
             ItemInfo_Label.Text = ToolTip1.GetToolTip(_selectedPictureBox);
+
             if (InventoryPanel.Controls.Contains(_selectedPictureBox))
             {
-                var itemIndex = (_currentPage - 1) * ItemsPerPage + InventoryPanel.Controls.IndexOf(_selectedPictureBox);
-                Sell_Button.Text = $"Sell for:{Environment.NewLine}{InventoryController.GetGoldValueOfItem(itemIndex)}";
+                var itemIndex = GetSelectedItemIndex();
+                Sell_Button.Text = $"Sell for:{Environment.NewLine}{InventoryController.GetSellGoldValueOfItem(itemIndex)}";
+            }
+            else if (SellingItemsPanel.Controls.Contains(_selectedPictureBox))
+            {
+                var index = SellingItemsPanel.Controls.IndexOf(_selectedPictureBox);
+                var sellingItem = _sellingItems[index];
+                BuyButton.Text = $"Buy for: {Environment.NewLine}{sellingItem.GoldValue}";
             }
             
         }
@@ -307,7 +338,7 @@ namespace SomeName.Forms
                 var itemIndex = GetSelectedItemIndex();
                 item = InventoryController.GetItem(itemIndex);
             }
-            if (_equippedItemsSlots.ContainsKey(_selectedPictureBox))
+            else if (_equippedItemsSlots.ContainsKey(_selectedPictureBox))
             {
                 // HACK : Технический долг - нужно убрать зависимость от количества предметов в EquippedItems.
                 switch (_equippedItemsSlots[_selectedPictureBox])
@@ -316,6 +347,11 @@ namespace SomeName.Forms
                     case ItemType.Gloves: item = _equippedItems.Gloves; break;
                     case ItemType.Chest: item = _equippedItems.Chest; break;
                 }
+            }
+            else if (SellingItemsPanel.Controls.Contains(_selectedPictureBox))
+            {
+                var index = SellingItemsPanel.Controls.IndexOf(_selectedPictureBox);
+                item = _sellingItems[index];
             }
             return item;
         }
@@ -342,6 +378,13 @@ namespace SomeName.Forms
                 }
                 EnchantButton.Text = "";
             }
+        }
+
+        private void BuyButton_Click(object sender, EventArgs e)
+        {
+            var selectedItem = GetSelectedItem();
+            if (InventoryController.CanBuyItem(selectedItem))
+                InventoryController.BuyItem(selectedItem);
         }
     }
 }

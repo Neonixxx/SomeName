@@ -42,7 +42,8 @@ namespace SomeName.Forms
                 InventoryForm = InventoryForm,
                 Player = Player,
                 ShopManager = new ShopManager(),
-                ForgeService = new ForgeService(Player)
+                ForgeService = new ForgeService(Player),
+                ShopService = new ShopService(Player)
             };
             InventoryForm.InventoryController = InventoryController;
 

@@ -55,6 +55,11 @@
             this.ScrollOfEnchantSlot = new System.Windows.Forms.PictureBox();
             this.ItemToEnchantSlot = new System.Windows.Forms.PictureBox();
             this.EnchantChanceLabel = new System.Windows.Forms.Label();
+            this.SellingItemsPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.Shop_Label = new System.Windows.Forms.Label();
+            this.SellingItems_ContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.купитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BuyButton = new System.Windows.Forms.Button();
             this.Inventory_ContextMenuStrip.SuspendLayout();
             this.EquippedItems_ContextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.GlovesSlot)).BeginInit();
@@ -66,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScrollOfEnchantSlot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemToEnchantSlot)).BeginInit();
+            this.SellingItems_ContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // PreviousPageButton
@@ -151,7 +157,7 @@
             // StatsInfo_Label
             // 
             this.StatsInfo_Label.AutoSize = true;
-            this.StatsInfo_Label.Location = new System.Drawing.Point(478, 58);
+            this.StatsInfo_Label.Location = new System.Drawing.Point(445, 59);
             this.StatsInfo_Label.Name = "StatsInfo_Label";
             this.StatsInfo_Label.Size = new System.Drawing.Size(49, 13);
             this.StatsInfo_Label.TabIndex = 46;
@@ -312,11 +318,53 @@
             this.EnchantChanceLabel.TabIndex = 52;
             this.EnchantChanceLabel.Text = "EnchantmentChance";
             // 
+            // SellingItemsPanel
+            // 
+            this.SellingItemsPanel.Location = new System.Drawing.Point(12, 41);
+            this.SellingItemsPanel.Name = "SellingItemsPanel";
+            this.SellingItemsPanel.Size = new System.Drawing.Size(306, 260);
+            this.SellingItemsPanel.TabIndex = 39;
+            // 
+            // Shop_Label
+            // 
+            this.Shop_Label.AutoSize = true;
+            this.Shop_Label.Location = new System.Drawing.Point(139, 25);
+            this.Shop_Label.Name = "Shop_Label";
+            this.Shop_Label.Size = new System.Drawing.Size(51, 13);
+            this.Shop_Label.TabIndex = 53;
+            this.Shop_Label.Text = "Магазин";
+            // 
+            // SellingItems_ContextMenuStrip
+            // 
+            this.SellingItems_ContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.купитьToolStripMenuItem});
+            this.SellingItems_ContextMenuStrip.Name = "SellingItems_ContextMenuStrip";
+            this.SellingItems_ContextMenuStrip.Size = new System.Drawing.Size(113, 26);
+            // 
+            // купитьToolStripMenuItem
+            // 
+            this.купитьToolStripMenuItem.Name = "купитьToolStripMenuItem";
+            this.купитьToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.купитьToolStripMenuItem.Text = "Купить";
+            // 
+            // BuyButton
+            // 
+            this.BuyButton.Location = new System.Drawing.Point(324, 41);
+            this.BuyButton.Name = "BuyButton";
+            this.BuyButton.Size = new System.Drawing.Size(102, 48);
+            this.BuyButton.TabIndex = 55;
+            this.BuyButton.Text = "Buy";
+            this.BuyButton.UseVisualStyleBackColor = true;
+            this.BuyButton.Click += new System.EventHandler(this.BuyButton_Click);
+            // 
             // InventoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 711);
+            this.Controls.Add(this.BuyButton);
+            this.Controls.Add(this.Shop_Label);
+            this.Controls.Add(this.SellingItemsPanel);
             this.Controls.Add(this.EnchantChanceLabel);
             this.Controls.Add(this.EnchantButton);
             this.Controls.Add(this.ScrollOfEnchantSlot);
@@ -350,6 +398,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.HelmetSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ScrollOfEnchantSlot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemToEnchantSlot)).EndInit();
+            this.SellingItems_ContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,5 +431,10 @@
         private System.Windows.Forms.PictureBox ScrollOfEnchantSlot;
         private System.Windows.Forms.PictureBox ItemToEnchantSlot;
         private System.Windows.Forms.Label EnchantChanceLabel;
+        private System.Windows.Forms.FlowLayoutPanel SellingItemsPanel;
+        private System.Windows.Forms.Label Shop_Label;
+        private System.Windows.Forms.ContextMenuStrip SellingItems_ContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem купитьToolStripMenuItem;
+        private System.Windows.Forms.Button BuyButton;
     }
 }

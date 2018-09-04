@@ -37,10 +37,10 @@ namespace SomeName.Balance
         protected virtual long CalculateExpDrop(long value)
             => value;
 
-        protected virtual List<Item> CalculateItemsDrop(int level, long value)
+        protected virtual List<IItem> CalculateItemsDrop(int level, long value)
         {
             var itemDropValue = Convert.ToDouble(value) / ItemFactories.Sum(s => s.Item2);
-            var items = new List<Item>();
+            var items = new List<IItem>();
             var itemAdditionalKoef = BattleDifficulty.GetCurrent().ItemAdditionalKoef;
             foreach (var itemFactory in ItemFactories)
             {
@@ -57,8 +57,8 @@ namespace SomeName.Balance
             Tuple.Create<ItemFactory, int>(new SimpleSwordFactory(), 100),
             Tuple.Create<ItemFactory, int>(new SimpleChestFactory(), 100),
             Tuple.Create<ItemFactory, int>(new SimpleGlovesFactory(), 100),
-            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 12),
-            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantArmorFactory(), 12)
+            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 30),
+            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantArmorFactory(), 30)
         );
     }
 }

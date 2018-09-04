@@ -169,10 +169,10 @@ namespace SomeName.Domain
             Exp = totalExp;
         }
 
-        public void TakeItem(Item item)
+        public void TakeItem(IItem item)
             => Inventory.Add(item);
 
-        public void TakeItems(List<Item> items)
+        public void TakeItems(List<IItem> items)
             => Inventory.AddRange(items);
     }
 }
