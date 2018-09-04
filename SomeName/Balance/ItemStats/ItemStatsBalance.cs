@@ -85,9 +85,9 @@ namespace SomeName.Balance.ItemStats
 
 
         public double GetCritDamage(int level, double damageValueKoef)
-            => Round(GetBaseCritChance(level) * damageValueKoef, 3);
+            => Round(GetBaseCritDamage(level) * damageValueKoef, 3);
 
         private double GetBaseCritDamage(int level)
-            => CritDamageKoef * level / 3 + 0.05;
+            => CritDamageKoef * level / 300 + 0.05;
     }
 }
