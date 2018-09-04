@@ -13,14 +13,16 @@ namespace SomeName
     {
         public Player Player { get; set; }
 
-        public Tuple<ItemFactory, int>[] SellingItemFactories => new Tuple<ItemFactory, int>[]
+        public Tuple<ItemFactory, double>[] SellingItemFactories => new Tuple<ItemFactory, double>[]
         {
-            Tuple.Create<ItemFactory, int>(new SimpleSwordFactory(), 100),
-            Tuple.Create<ItemFactory, int>(new SimpleChestFactory(), 100),
-            Tuple.Create<ItemFactory, int>(new SimpleGlovesFactory(), 100),
-            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantWeaponFactory(), 30),
-            Tuple.Create<ItemFactory, int>(new ScrollOfEnchantArmorFactory(), 30)
+            Tuple.Create<ItemFactory, double>(new SimpleSwordFactory(), 0.4),
+            Tuple.Create<ItemFactory, double>(new SimpleChestFactory(), 0.4),
+            Tuple.Create<ItemFactory, double>(new SimpleGlovesFactory(), 0.4),
+            Tuple.Create<ItemFactory, double>(new ScrollOfEnchantWeaponFactory(), 0.2),
+            Tuple.Create<ItemFactory, double>(new ScrollOfEnchantArmorFactory(), 0.2)
         };
+
+        private const int SellingItemsRounds = 2;
 
         private List<IItem> _sellingItems = new List<IItem>();
 
@@ -30,13 +32,13 @@ namespace SomeName
         public ShopService(Player player)
             => Player = player;
 
-        // TODO : Сделать рандомную генерацию списка продаваемых предметов.
         public void RefreshSellingItems(int level)
         {
             _sellingItems.Clear();
             foreach (var itemFactory in SellingItemFactories)
-                for (int i = 0; i < 2; i++)
-                    _sellingItems.Add(itemFactory.Item1.Build(level));
+                for (int i = 0; i < SellingItemsRounds; i++)
+                    if (Dice.TryGetChance(itemFactory.Item2))
+                        _sellingItems.Add(itemFactory.Item1.Build(level));
         }
 
         public void Buy(IItem item)
