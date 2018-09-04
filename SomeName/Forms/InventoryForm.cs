@@ -128,11 +128,11 @@ namespace SomeName.Forms
                 var pictureBox = new PictureBox
                 {
                     BorderStyle = BorderStyle.FixedSingle,
-                    Image = items[i + _firstItemIndex].Image,
+                    Image = items[i].Image,
                     Size = new Size(45, 45)
                 };
                 SellingItemsPanel.Controls.Add(pictureBox);
-                ToolTip1.SetToolTip(SellingItemsPanel.Controls[i], items[i + _firstItemIndex].ToString());
+                ToolTip1.SetToolTip(SellingItemsPanel.Controls[i], items[i].ToString());
                 SellingItemsPanel.Controls[i].MouseDown += SellingItemsPanelControls_MouseDown;
             }
         }
@@ -384,7 +384,11 @@ namespace SomeName.Forms
         {
             var selectedItem = GetSelectedItem();
             if (InventoryController.CanBuyItem(selectedItem))
+            {
+                SellingItemsPanel.Controls.Remove(_selectedPictureBox);
                 InventoryController.BuyItem(selectedItem);
+                InventoryController.Update();
+            }
         }
     }
 }
