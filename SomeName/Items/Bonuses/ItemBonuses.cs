@@ -21,6 +21,8 @@ namespace SomeName.Items.Bonuses
 
         public double CritDamage { get; set; }
 
+        public long HealthPerHit { get; set; }
+
         public override string ToString()
         {
             var result = new StringBuilder();
@@ -56,6 +58,12 @@ namespace SomeName.Items.Bonuses
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
                 result.Append($"Сила крита: {CritDamage.ToPercentString(1)}");
+            }
+            if (HealthPerHit != 0)
+            {
+                if (result.Length != 0)
+                    result.Append($"{NewLine}");
+                result.Append($"Health per hit: {HealthPerHit}");
             }
 
             return result.ToString();

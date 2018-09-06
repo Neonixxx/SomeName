@@ -93,5 +93,7 @@ namespace SomeName.Monsters.Interfaces
         public double GetDefenceKoef()
             => 0.0;
 
+        public void OnHit() { }
+
     }
 }

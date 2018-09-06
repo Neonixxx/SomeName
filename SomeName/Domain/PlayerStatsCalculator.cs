@@ -142,6 +142,16 @@ namespace SomeName.Domain
         public double CalculateCritDamage(double itemsCritDamage)
             => StartCritDamage + itemsCritDamage;
 
+
+        public long CalculateHealthPerHit(Player player)
+            => CalculateHealthPerHit(player.EquippedItems);
+
+        public long CalculateHealthPerHit(EquippedItems equippedItems)
+            => CalculateHealthPerHit(equippedItems.GetHealthPerHit());
+
+        public long CalculateHealthPerHit(long itemsHealthPerHit)
+            => itemsHealthPerHit;
+
         public static readonly PlayerStatsCalculator Standard = new PlayerStatsCalculator();
     }
 }

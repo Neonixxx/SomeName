@@ -72,6 +72,20 @@ namespace SomeName.Domain
         public double GetCritDamage()
             => PlayerStatsCalculator.CalculateCritDamage(this);
 
+        public long GetHealthPerHit()
+            => PlayerStatsCalculator.CalculateHealthPerHit(this);
+
+
+        public void OnHit()
+        {
+            var healthResult = Health + GetHealthPerHit();
+            var maxHealth = GetMaxHealth();
+            Health = healthResult > maxHealth
+                ? maxHealth
+                : healthResult;
+        }
+
+
         public void Respawn()
         {
             Health = GetMaxHealth();

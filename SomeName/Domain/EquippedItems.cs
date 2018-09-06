@@ -39,6 +39,9 @@ namespace SomeName.Domain
         public double GetCritDamage()
             => this.Sum(i => i?.Bonuses.CritDamage ?? 0);
 
+        public long GetHealthPerHit()
+            => this.Sum(i => i?.Bonuses.HealthPerHit ?? 0);
+
         public IEnumerator<IEquippment> GetEnumerator()
         {
             yield return Weapon;

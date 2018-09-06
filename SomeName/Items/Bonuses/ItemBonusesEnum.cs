@@ -14,6 +14,8 @@ namespace SomeName.Items.Bonuses
 
         CritChance = 5,
 
-        CritDamage = 6
+        CritDamage = 6,
+
+        HealthPerHit = 7
     }
 }

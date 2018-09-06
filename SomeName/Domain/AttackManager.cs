@@ -27,6 +27,8 @@ namespace SomeName.Domain
                 damage = Convert.ToInt64(damage * Attacker.GetCritDamage());
 
             var damageDealt = TakeDamage(attackTarget, damage);
+            Attacker.OnHit();
+            
             return damageDealt;
         }
 

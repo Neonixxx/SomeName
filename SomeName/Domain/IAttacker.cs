@@ -9,5 +9,7 @@
         double GetCritChance();
 
         double GetCritDamage();
+
+        void OnHit();
     }
 }

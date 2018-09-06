@@ -31,11 +31,14 @@ namespace SomeName.Domain
 
         public double CritDamage { get; set; }
 
+        public long HealthPerHit { get; set; }
+
         public override string ToString()
         {
             return $"Level: {Level}" +
                 $"{NewLine}Damage: {Damage}" +
                 $"{NewLine}Health: {MaxHealth}" +
+                $"{NewLine}HealthPerHit: {HealthPerHit}" +
                 $"{NewLine}Power: {Power}" +
                 $"{NewLine}Vitality: {Vitality}" +
                 $"{NewLine}Accuracy: {Accuracy}" +

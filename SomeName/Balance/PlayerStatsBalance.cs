@@ -52,6 +52,8 @@ namespace SomeName.Balance
             return PlayerStatsCalculator.CalculateDefenceKoef(level, defence);
         }
 
+        public long GetDefaultHealthPerSecond(int level)
+            => ToInt64(GetItemsHealthPerHit(level, GetDefaultItemDamageKoef(level)) * GetTapsPerSecond(level));
 
         private long GetDamage(int level, double damageValueKoef)
         {
@@ -122,6 +124,13 @@ namespace SomeName.Balance
 
         private double GetItemsCritDamage(int level, double damageValueKoef)
             => ItemStatsBalances.Sum(i => i.GetCritDamage(level, damageValueKoef) * i.GetItemBonusesCountKoef(level));
+
+
+        private long GetHealthPerHit(int level, double damageValueKoef)
+            => PlayerStatsCalculator.CalculateHealthPerHit(GetItemsHealthPerHit(level, damageValueKoef));
+
+        private long GetItemsHealthPerHit(int level, double damageValueKoef)
+            => ItemStatsBalances.Sum(i => ToInt64(i.GetHealthPerHit(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
 
 
         public static readonly PlayerStatsBalance Standard = new PlayerStatsBalance

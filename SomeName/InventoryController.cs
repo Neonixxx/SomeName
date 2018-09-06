@@ -82,7 +82,8 @@ namespace SomeName
                 Defence = Player.GetDefence(),
                 DefenceKoef = Player.GetDefenceKoef(),
                 CritChance = Player.GetCritChance(),
-                CritDamage = Player.GetCritDamage()
+                CritDamage = Player.GetCritDamage(),
+                HealthPerHit = Player.GetHealthPerHit()
             };
         }
     }

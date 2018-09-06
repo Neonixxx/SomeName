@@ -35,6 +35,7 @@ namespace SomeName.Items.Bonuses
                 { ItemBonusesEnum.Evasion, (builder, damageValueKoef) => builder.CalculateEvasion(damageValueKoef) },
                 { ItemBonusesEnum.CritChance, (builder, damageValueKoef) => builder.CalculateCritChance(damageValueKoef) },
                 { ItemBonusesEnum.CritDamage, (builder, damageValueKoef) => builder.CalculateCritDamage(damageValueKoef) },
+                { ItemBonusesEnum.HealthPerHit, (builder, damageValueKoef) => builder.CalculateHealthPerHit(damageValueKoef) },
             };
 
         public ItemBonusesBuilder Calculate(ItemBonusesEnum itemBonusesEnum, double damageValueKoef)
@@ -73,6 +74,12 @@ namespace SomeName.Items.Bonuses
         public ItemBonusesBuilder CalculateCritDamage(double damageValueKoef)
         {
             _itemBonuses.CritDamage = _itemStatsBalance.GetCritDamage(Level, damageValueKoef);
+            return this;
+        }
+
+        public ItemBonusesBuilder CalculateHealthPerHit(double damageValueKoef)
+        {
+            _itemBonuses.HealthPerHit = _itemStatsBalance.GetHealthPerHit(Level, damageValueKoef);
             return this;
         }
     }

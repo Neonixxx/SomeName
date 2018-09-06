@@ -23,6 +23,8 @@ namespace SomeName.Balance.ItemStats
 
         protected virtual double CritDamageKoef => 0.0;
 
+        protected virtual double HealthPerSecondKoef => 0.0;
+
         public abstract ItemBonusesEnum[] PossibleItemBonuses { get; }
 
         // TODO : Сделать формулу.
@@ -89,5 +91,12 @@ namespace SomeName.Balance.ItemStats
 
         private double GetBaseCritDamage(int level)
             => CritDamageKoef * level / 300 + 0.05;
+
+
+        public long GetHealthPerHit(int level, double damageValueKoef)
+            => ToInt64(GetBaseHealthPerHit(level) * damageValueKoef);
+
+        private long GetBaseHealthPerHit(int level)
+            => ToInt64(PlayerStatsBalance.Standard.GetDefaultMaxHealth(level) * HealthPerSecondKoef / 350);
     }
 }
