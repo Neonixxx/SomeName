@@ -150,10 +150,17 @@ namespace SomeName.Forms
             SetEquippedSlot(GlovesSlot, equippedItems.Gloves);
         }
 
+        private bool[] _isCreated = new bool[Enum.GetValues(typeof(ItemType)).Length];
+
         private void SetEquippedSlot(PictureBox pictureBox, Item item)
         {
             SetPictureBox(pictureBox, item);
-            pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
+            var intItemType = (int)_equippedItemsSlots[pictureBox];
+            if (!_isCreated[intItemType])
+            {
+                pictureBox.MouseDown += EquippedItemsSlots_MouseDown;
+                _isCreated[intItemType] = true;
+            }
         }
 
         /// <summary>
@@ -264,6 +271,10 @@ namespace SomeName.Forms
                 var itemIndex = GetSelectedItemIndex();
                 InventoryController.SellItem(itemIndex);
                 InventoryController.Update();
+
+                if (itemIndex > ItemsPerPage)
+                    itemIndex %= ItemsPerPage;
+
                 if (InventoryPanel.Controls.Count <= itemIndex)
                     itemIndex--;
 

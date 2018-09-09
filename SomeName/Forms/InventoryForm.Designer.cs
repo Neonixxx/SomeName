@@ -193,7 +193,6 @@
             // 
             // GlovesSlot
             // 
-            this.GlovesSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GlovesSlot.BackColor = System.Drawing.SystemColors.Control;
             this.GlovesSlot.ImageLocation = "";
             this.GlovesSlot.InitialImage = null;
@@ -205,7 +204,6 @@
             // 
             // OffHandSlot
             // 
-            this.OffHandSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.OffHandSlot.BackColor = System.Drawing.SystemColors.Control;
             this.OffHandSlot.ImageLocation = "";
             this.OffHandSlot.InitialImage = null;
@@ -217,7 +215,6 @@
             // 
             // MainHandSlot
             // 
-            this.MainHandSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.MainHandSlot.BackColor = System.Drawing.SystemColors.Control;
             this.MainHandSlot.ImageLocation = "";
             this.MainHandSlot.InitialImage = null;
@@ -229,7 +226,6 @@
             // 
             // BootsSlot
             // 
-            this.BootsSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.BootsSlot.BackColor = System.Drawing.SystemColors.Control;
             this.BootsSlot.ImageLocation = "";
             this.BootsSlot.InitialImage = null;
@@ -241,7 +237,6 @@
             // 
             // PantsSlot
             // 
-            this.PantsSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PantsSlot.BackColor = System.Drawing.SystemColors.Control;
             this.PantsSlot.ImageLocation = "";
             this.PantsSlot.InitialImage = null;
@@ -253,7 +248,6 @@
             // 
             // ChestSlot
             // 
-            this.ChestSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ChestSlot.BackColor = System.Drawing.SystemColors.Control;
             this.ChestSlot.ImageLocation = "";
             this.ChestSlot.InitialImage = null;
@@ -265,7 +259,6 @@
             // 
             // HelmetSlot
             // 
-            this.HelmetSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.HelmetSlot.BackColor = System.Drawing.SystemColors.Control;
             this.HelmetSlot.ImageLocation = "";
             this.HelmetSlot.InitialImage = null;
@@ -287,7 +280,6 @@
             // 
             // ScrollOfEnchantSlot
             // 
-            this.ScrollOfEnchantSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ScrollOfEnchantSlot.BackColor = System.Drawing.SystemColors.Control;
             this.ScrollOfEnchantSlot.ImageLocation = "";
             this.ScrollOfEnchantSlot.InitialImage = null;
@@ -299,7 +291,6 @@
             // 
             // ItemToEnchantSlot
             // 
-            this.ItemToEnchantSlot.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ItemToEnchantSlot.BackColor = System.Drawing.SystemColors.Control;
             this.ItemToEnchantSlot.ImageLocation = "";
             this.ItemToEnchantSlot.InitialImage = null;
