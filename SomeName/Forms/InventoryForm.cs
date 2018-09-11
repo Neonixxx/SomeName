@@ -76,16 +76,9 @@ namespace SomeName.Forms
             };
         }
 
-        public void Start(int itemsCount)
+        public void Start()
         {
-            if (itemsCount % ItemsPerPage == 0 & itemsCount != 0)
-                MaxPages = itemsCount / ItemsPerPage;
-            else
-                MaxPages = itemsCount / ItemsPerPage + 1;
-            _firstItemIndex = ItemsPerPage * (CurrentPage - 1);
-
             InventoryController.Update();
-            
             ShowDialog();
         }
 
@@ -94,11 +87,18 @@ namespace SomeName.Forms
         /// </summary>
         public void UpdateInventory(List<IItem> items)
         {
-            int itemsOnPage;
-            if (items.Count <= ItemsPerPage * CurrentPage)
-                itemsOnPage = items.Count - _firstItemIndex;
-            else
-                itemsOnPage = ItemsPerPage;
+            var itemsCount = items.Count;
+
+            MaxPages = itemsCount % ItemsPerPage == 0 & itemsCount != 0
+                ? itemsCount / ItemsPerPage
+                : itemsCount / ItemsPerPage + 1;
+            if (MaxPages < CurrentPage)
+                CurrentPage = MaxPages;
+            _firstItemIndex = ItemsPerPage * (CurrentPage - 1);
+
+            var itemsOnPage = items.Count <= ItemsPerPage * CurrentPage
+                ? items.Count - _firstItemIndex
+                : ItemsPerPage;
 
             PictureBox[] pb = new PictureBox[itemsOnPage];
             InventoryPanel.Controls.Clear();
@@ -272,7 +272,7 @@ namespace SomeName.Forms
                 InventoryController.SellItem(itemIndex);
                 InventoryController.Update();
 
-                if (itemIndex > ItemsPerPage)
+                if (itemIndex >= ItemsPerPage)
                     itemIndex %= ItemsPerPage;
 
                 if (InventoryPanel.Controls.Count <= itemIndex)

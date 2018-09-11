@@ -29,7 +29,7 @@ namespace SomeName.Balance
 
         public long GetDefaultDPS(int level)
             => ToInt64(PlayerStatsBalance.GetDefaultToughness(level) / GetDefaultBattleLength(level)
-                / GetDefaultHitChance(level)) + PlayerStatsBalance.GetDefaultHealthPerSecond(level);
+                / GetDefaultHitChance(level)) + PlayerStatsBalance.GetDefaultTouchnessPerSecond(level);
 
         public long GetDefaultBattleLength(int level)
             => ToInt64(ToDouble(DropBalance.GetSecondsForLevel(level)) / GetMonstersForLevel(level));

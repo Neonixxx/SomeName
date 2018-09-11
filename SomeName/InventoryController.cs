@@ -25,7 +25,7 @@ namespace SomeName
         public void Start()
         {
             ShopService.RefreshSellingItems(Player.Level);
-            InventoryForm.Start(Player.Inventory.Count);
+            InventoryForm.Start();
         }
 
         public void Update()

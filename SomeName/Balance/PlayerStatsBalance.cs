@@ -52,6 +52,9 @@ namespace SomeName.Balance
             return PlayerStatsCalculator.CalculateDefenceKoef(level, defence);
         }
 
+        public long GetDefaultTouchnessPerSecond(int level)
+            => ToInt64(GetDefaultHealthPerSecond(level) / (1 - GetDefaultDefenceKoef(level)));
+
         public long GetDefaultHealthPerSecond(int level)
             => ToInt64(GetItemsHealthPerHit(level, GetDefaultItemDamageKoef(level)) * GetTapsPerSecond(level));
 
