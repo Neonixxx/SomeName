@@ -19,28 +19,28 @@ namespace SomeName.Domain
         public Gloves Gloves { get; set; }
 
         public long GetDefence()
-            => this.Sum(i => (i as Armor)?.Defence ?? 0);
+            => this.Sum(i => (i as Armor)?.Defence.Value ?? 0);
 
         public int GetPower()
-            => this.Sum(i => i?.Bonuses.Power ?? 0);
+            => this.Sum(i => i?.Bonuses.Power.Value ?? 0);
 
         public int GetVitality()
-            => this.Sum(i => i?.Bonuses.Vitality ?? 0);
+            => this.Sum(i => i?.Bonuses.Vitality.Value ?? 0);
 
         public int GetAccuracy()
-            => this.Sum(i => i?.Bonuses.Accuracy ?? 0);
+            => this.Sum(i => i?.Bonuses.Accuracy.Value ?? 0);
 
         public int GetEvasion()
-            => this.Sum(i => i?.Bonuses.Evasion ?? 0);
+            => this.Sum(i => i?.Bonuses.Evasion.Value ?? 0);
 
         public double GetCritChance()
-            => this.Sum(i => i?.Bonuses.CritChance ?? 0);
+            => this.Sum(i => i?.Bonuses.CritChance.Value ?? 0);
 
         public double GetCritDamage()
-            => this.Sum(i => i?.Bonuses.CritDamage ?? 0);
+            => this.Sum(i => i?.Bonuses.CritDamage.Value ?? 0);
 
         public long GetHealthPerHit()
-            => this.Sum(i => i?.Bonuses.HealthPerHit ?? 0);
+            => this.Sum(i => i?.Bonuses.HealthPerHit.Value ?? 0);
 
         public IEnumerator<IEquippment> GetEnumerator()
         {

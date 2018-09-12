@@ -29,7 +29,7 @@ namespace SomeName.Items.ItemFactories
         protected readonly ItemBonusesFactory ItemBonusesFactory = new ItemBonusesFactory();
 
         /// <summary>
-        /// Получить стандартный коэффициент ценности предмета определенного уровня.
+        /// Получить базовое значение ценности предмета для заданного уровня.
         /// </summary>
         /// <param name="level"></param>
         protected static long GetBaseItemGoldValue(int level)

@@ -12,17 +12,13 @@ namespace SomeName.Items.Interfaces
 {
     public abstract class Armor : Equippment
     {
-        public long BaseDefence { get; set; }
+        public MainStat<long> Defence { get; set; } = new MainStat<long>();
 
-        public long Defence { get; set; }
-
-        public override long BaseStatToEnchant { get => BaseDefence; set => BaseDefence = value; }
-
-        public override long StatToEnchant { get => Defence; set => Defence = value; }
+        public override MainStat<long> MainStat { get => Defence; set => Defence = value; }
 
         public override string ToString()
         {
-            var result = new StringBuilder($"{base.ToString()}{NewLine}Defence: {Defence}");
+            var result = new StringBuilder($"{base.ToString()}{NewLine}Defence: {Defence.Value}");
             var bonusesString = Bonuses.ToString();
             if (bonusesString != string.Empty)
                 result.Append($"{NewLine}{bonusesString}");

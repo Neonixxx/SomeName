@@ -12,13 +12,14 @@ namespace SomeName.Items.Interfaces
     {
         public ItemBonuses Bonuses { get; set; }
 
-        public double DamageValueKoef { get; set; }
+        public abstract MainStat<long> MainStat { get; set; }
 
-        public long BaseGoldValue { get; set; }
-
-        public abstract long BaseStatToEnchant { get; set; }
-
-        public abstract long StatToEnchant { get; set; }
+        public override void UpdateGoldValueKoef()
+        {
+            var mainStatKoef = MainStat.Koef * MainStat.EnchantKoef;
+            var bonusesKoef = Bonuses.GetValueKoef();
+            GoldValue.Koef = mainStatKoef * bonusesKoef;
+        }
 
         public int EnchantmentLevel { get; set; }
 

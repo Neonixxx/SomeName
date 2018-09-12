@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SomeName.Balance.ItemStats;
+using SomeName.Domain;
 using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
 
@@ -20,9 +21,11 @@ namespace SomeName.Items.ItemFactories
             var item = new ScrollOfEnchantWeapon()
             {
                 Level = level,
-                GoldValue = GetScrollOfEnchantWeaponGoldValue(level, damageValueKoef),
-                Value = WeaponStatsBalance.GetDamage(level, damageValueKoef)
+                Value = WeaponStatsBalance.GetDamage(level, damageValueKoef).Value
             };
+            item.GoldValue.Base = GetItemGoldValue(level);
+            item.UpdateGoldValueKoef();
+
             return item;
         }
 

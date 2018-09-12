@@ -224,7 +224,7 @@ namespace SomeName.Forms
             {
                 var index = SellingItemsPanel.Controls.IndexOf(_selectedPictureBox);
                 var sellingItem = _sellingItems[index];
-                BuyButton.Text = $"Buy for: {Environment.NewLine}{sellingItem.GoldValue}";
+                BuyButton.Text = $"Buy for: {Environment.NewLine}{sellingItem.GoldValue.Value}";
             }
             
         }

@@ -44,7 +44,7 @@ namespace SomeName.Domain
             => CalculateDamage(player.GetPower(), player.EquippedItems.Weapon);
 
         public long CalculateDamage(int power, Weapon weapon)
-            => CalculateDamage(power, weapon?.Damage ?? 1);
+            => CalculateDamage(power, weapon?.Damage.Value ?? 1);
 
         public long CalculateDamage(int power, long weaponDamage)
             => ToInt64((1 + ToDouble(power) / 100) * weaponDamage);

@@ -46,14 +46,14 @@ namespace SomeName
             if (!CanBuy(item))
                 throw new ArgumentException("Ошибка при покупке предмета.");
 
-            Player.Gold -= item.GoldValue;
+            Player.Gold -= item.GoldValue.Value;
             _sellingItems.Remove(item);
             Player.TakeItem(item);
         }
 
         public bool CanBuy(IItem item)
         {
-            if (_sellingItems.Contains(item) && Player.Gold >= item.GoldValue)
+            if (_sellingItems.Contains(item) && Player.Gold >= item.GoldValue.Value)
                 return true;
 
             return false;

@@ -32,7 +32,7 @@ namespace SomeName
 
         public double GetEnchantChance(ICanBeEnchanted itemToEnchant, ScrollOfEnchant scrollOfEnchant)
         {
-            var baseEnchantChance = Convert.ToDouble(scrollOfEnchant.Value) / itemToEnchant.BaseStatToEnchant;
+            var baseEnchantChance = Convert.ToDouble(scrollOfEnchant.Value) / itemToEnchant.MainStat.Base;
             var enchantChance = baseEnchantChance * Math.Pow(EnchantmentChanceKoef, itemToEnchant.EnchantmentLevel);
             if (enchantChance > 1.0)
                 enchantChance = 1.0;
@@ -42,13 +42,14 @@ namespace SomeName
         public void SetEnchantmentLevel(ICanBeEnchanted itemToEnchant, int newEnchantmentLevel)
         {
             itemToEnchant.EnchantmentLevel = newEnchantmentLevel;
-            CalculateDamage(itemToEnchant);
+            CalculateKoef(itemToEnchant);
         }
 
-        protected void CalculateDamage(ICanBeEnchanted itemToEnchant)
+        protected void CalculateKoef(ICanBeEnchanted itemToEnchant)
         {
             var enchantmentDamageKoef = 1 + itemToEnchant.EnchantmentLevel * (BaseEnchantmentValue + EnchantmentValueEnc / 2 * (1 + itemToEnchant.EnchantmentLevel));
-            itemToEnchant.StatToEnchant = Convert.ToInt64(itemToEnchant.BaseStatToEnchant * enchantmentDamageKoef);
+            itemToEnchant.MainStat.EnchantKoef = enchantmentDamageKoef;
+            itemToEnchant.UpdateGoldValueKoef();
         }
 
         public static readonly EnchantManager Standard = new EnchantManager();

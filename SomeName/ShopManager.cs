@@ -10,6 +10,6 @@ namespace SomeName
     public class ShopManager
     {
         public long GetSellItemValue(IItem item)
-            => Convert.ToInt64(item.GoldValue * 0.3);
+            => Convert.ToInt64(item.GoldValue.Value * 0.3);
     }
 }

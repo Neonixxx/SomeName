@@ -49,5 +49,10 @@ namespace SomeName
             }
             return result;
         }
+
+        public static double OneIfZero(this double number)
+            => number == 0
+                ? 1.0
+                : number;
     }
 }

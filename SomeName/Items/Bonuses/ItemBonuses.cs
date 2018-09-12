@@ -3,67 +3,74 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SomeName.Domain;
 using static System.Environment;
 
 namespace SomeName.Items.Bonuses
 {
     public class ItemBonuses
     {
-        public int Power { get; set; }
+        public BaseKoefValue<int> Power { get; set; } = new BaseKoefValue<int>();
 
-        public int Vitality { get; set; }
+        public BaseKoefValue<int> Vitality { get; set; } = new BaseKoefValue<int>();
 
-        public int Accuracy { get; set; }
+        public BaseKoefValue<int> Accuracy { get; set; } = new BaseKoefValue<int>();
 
-        public int Evasion { get; set; }
+        public BaseKoefValue<int> Evasion { get; set; } = new BaseKoefValue<int>();
 
-        public double CritChance { get; set; }
+        public BaseKoefValue<double> CritChance { get; set; } = new BaseKoefValue<double>();
 
-        public double CritDamage { get; set; }
+        public BaseKoefValue<double> CritDamage { get; set; } = new BaseKoefValue<double>();
 
-        public long HealthPerHit { get; set; }
+        public BaseKoefValue<long> HealthPerHit { get; set; } = new BaseKoefValue<long>();
+
+        public double GetValueKoef()
+            => Math.Sqrt(Power.Koef.OneIfZero() * Vitality.Koef.OneIfZero()
+                * Accuracy.Koef.OneIfZero() * Evasion.Koef.OneIfZero()
+                * CritChance.Koef.OneIfZero() * CritDamage.Koef.OneIfZero()
+                * HealthPerHit.Koef.OneIfZero());
 
         public override string ToString()
         {
             var result = new StringBuilder();
 
-            if (Power != 0)
-                result.Append($"Power: {Power}");
-            if (Vitality != 0)
+            if (Power.Value != 0)
+                result.Append($"Power: {Power.Value}");
+            if (Vitality.Value != 0)
             {
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
-                result.Append($"Vitality: {Vitality}");
+                result.Append($"Vitality: {Vitality.Value}");
             }
-            if (Accuracy != 0)
+            if (Accuracy.Value != 0)
             {
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
-                result.Append($"Accuracy: {Accuracy}");
+                result.Append($"Accuracy: {Accuracy.Value}");
             }
-            if (Evasion != 0)
+            if (Evasion.Value != 0)
             {
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
-                result.Append($"Evasion: {Evasion}");
+                result.Append($"Evasion: {Evasion.Value}");
             }
-            if (CritChance != 0)
+            if (CritChance.Value != 0)
             {
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
-                result.Append($"Шанс крита: {CritChance.ToPercentString(1)}");
+                result.Append($"Шанс крита: {CritChance.Value.ToPercentString(1)}");
             }
-            if (CritDamage != 0)
+            if (CritDamage.Value != 0)
             {
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
-                result.Append($"Сила крита: {CritDamage.ToPercentString(1)}");
+                result.Append($"Сила крита: {CritDamage.Value.ToPercentString(1)}");
             }
-            if (HealthPerHit != 0)
+            if (HealthPerHit.Value != 0)
             {
                 if (result.Length != 0)
                     result.Append($"{NewLine}");
-                result.Append($"Health per hit: {HealthPerHit}");
+                result.Append($"Health per hit: {HealthPerHit.Value}");
             }
 
             return result.ToString();

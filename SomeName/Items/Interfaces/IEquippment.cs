@@ -10,9 +10,5 @@ namespace SomeName.Items.Interfaces
     public interface IEquippment : IItem
     {
         ItemBonuses Bonuses { get; set; }
-
-        double DamageValueKoef { get; set; }
-
-        long BaseGoldValue { get; set; }
     }
 }

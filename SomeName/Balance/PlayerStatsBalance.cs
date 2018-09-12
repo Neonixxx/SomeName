@@ -70,21 +70,21 @@ namespace SomeName.Balance
         }
 
         private long GetItemsDamage(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => (i as WeaponStatsBalance)?.GetDamage(level, damageValueKoef) ?? 0);
+            => ItemStatsBalances.Sum(i => (i as WeaponStatsBalance)?.GetDamage(level, damageValueKoef).Value ?? 0);
 
 
         private long GetDefence(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateDefence(level, GetItemsDefence(level, damageValueKoef));
 
         private long GetItemsDefence(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => (i as ArmorStatsBalance)?.GetDefence(level, damageValueKoef) ?? 0);
+            => ItemStatsBalances.Sum(i => (i as ArmorStatsBalance)?.GetDefence(level, damageValueKoef).Value ?? 0);
 
 
         private int GetPower(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculatePower(level, GetItemsPower(level, damageValueKoef));
 
         private int GetItemsPower(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => ToInt32(i.GetPower(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetPower(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level)));
 
 
         private long GetMaxHealth(int level, double damageValueKoef)
@@ -94,21 +94,21 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculateVitality(level, GetItemsVitality(level, damageValueKoef));
 
         private int GetItemsVitality(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => ToInt32(i.GetVitality(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetVitality(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level)));
 
 
         private int GetAccuracy(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateAccuracy(level, GetItemsAccuracy(level, damageValueKoef));
 
         private int GetItemsAccuracy(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => ToInt32(i.GetAccuracy(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetAccuracy(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level)));
 
 
         private int GetEvasion(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateEvasion(level, GetItemsEvasion(level, damageValueKoef));
 
         private int GetItemsEvasion(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => ToInt32(i.GetEvasion(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+            => ItemStatsBalances.Sum(i => ToInt32(i.GetEvasion(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level)));
 
 
         private double GetBaseCritCoef(int level, double damageValueKoef)
@@ -119,21 +119,21 @@ namespace SomeName.Balance
             => PlayerStatsCalculator.CalculateCritChance(GetItemsCritChance(level, damageValueKoef));
 
         private double GetItemsCritChance(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => i.GetCritChance(level, damageValueKoef) * i.GetItemBonusesCountKoef(level));
+            => ItemStatsBalances.Sum(i => i.GetCritChance(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level));
 
 
         private double GetCritDamage(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateCritDamage(GetItemsCritDamage(level, damageValueKoef));
 
         private double GetItemsCritDamage(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => i.GetCritDamage(level, damageValueKoef) * i.GetItemBonusesCountKoef(level));
+            => ItemStatsBalances.Sum(i => i.GetCritDamage(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level));
 
 
         private long GetHealthPerHit(int level, double damageValueKoef)
             => PlayerStatsCalculator.CalculateHealthPerHit(GetItemsHealthPerHit(level, damageValueKoef));
 
         private long GetItemsHealthPerHit(int level, double damageValueKoef)
-            => ItemStatsBalances.Sum(i => ToInt64(i.GetHealthPerHit(level, damageValueKoef) * i.GetItemBonusesCountKoef(level)));
+            => ItemStatsBalances.Sum(i => ToInt64(i.GetHealthPerHit(level, damageValueKoef).Value * i.GetItemBonusesCountKoef(level)));
 
 
         public static readonly PlayerStatsBalance Standard = new PlayerStatsBalance

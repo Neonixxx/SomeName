@@ -23,13 +23,12 @@ namespace SomeName.Items.ItemFactories
             var item = new SimpleSword()
             {
                 Level = level,
-                DamageValueKoef = damageValueKoef,
-                BaseGoldValue = GetWeaponGoldValue(level, damageValueKoef),
-                BaseDamage = WeaponStatsBalance.GetDamage(level, damageValueKoef),
+                Damage = WeaponStatsBalance.GetDamage(level, damageValueKoef),
                 Bonuses = ItemBonusesFactory.Build(WeaponStatsBalance, level, additionalKoef)
             };
-            item.Damage = item.BaseDamage;
-            item.GoldValue = item.BaseGoldValue;
+            item.GoldValue.Base = GetBaseWeaponGoldValue(level);
+            item.UpdateGoldValueKoef();
+
             return item;
         }
     }

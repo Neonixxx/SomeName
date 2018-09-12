@@ -13,10 +13,9 @@ namespace SomeName.Items.Impl
         public BeginnerSword()
         {
             Level = 1;
-            GoldValue = 0;
             Description = "Меч ученика";
-            BaseDamage = 5;
-            Damage = 5;
+            Damage.Base = 5;
+            Damage.Koef = 1.0;
             Bonuses = new Bonuses.ItemBonuses();
             Image = ItemImages.BeginnerSword;
         }

@@ -1,5 +1,6 @@
 ﻿using SomeName.Balance;
 using SomeName.Balance.ItemStats;
+using SomeName.Domain;
 using SomeName.Items.Bonuses;
 using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
@@ -22,13 +23,12 @@ namespace SomeName.Items.ItemFactories
             var item = new SimpleChest()
             {
                 Level = level,
-                DamageValueKoef = damageValueKoef,
-                BaseGoldValue = GetChestGoldValue(level, damageValueKoef),
-                BaseDefence = ChestStatsBalance.GetDefence(level, damageValueKoef),
-                Bonuses = ItemBonusesFactory.Build(ChestStatsBalance, level, additionalKoef)
+                Defence = ChestStatsBalance.GetDefence(level, damageValueKoef),
+                Bonuses = ItemBonusesFactory.Build(ChestStatsBalance, level, additionalKoef),
             };
-            item.Defence = item.BaseDefence;
-            item.GoldValue = item.BaseGoldValue;
+            item.GoldValue.Base = GetBaseChestGoldValue(level);
+            item.UpdateGoldValueKoef();
+
             return item;
         }
     }

@@ -1,4 +1,5 @@
-﻿using SomeName.Items.Bonuses;
+﻿using SomeName.Domain;
+using SomeName.Items.Bonuses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,15 +40,15 @@ namespace SomeName.Balance.ItemStats
             => ToDouble((GetMaxItemBonusesCount(level) - GetMinItemBonusesCount(level))) / PossibleItemBonuses.Length;
 
 
-        public int GetPower(int level, double damageValueKoef)
-            => ToInt32(GetBasePower(level) * damageValueKoef);
+        public BaseKoefValue<int> GetPower(int level, double damageValueKoef)
+            => new BaseKoefValue<int> { Base = GetBasePower(level), Koef = damageValueKoef };
 
         private int GetBasePower(int level)
             => ToInt32(GetBaseStat(level) * PowerKoef);
 
 
-        public int GetVitality(int level, double damageValueKoef)
-            => ToInt32(GetBaseVitality(level) * damageValueKoef);
+        public BaseKoefValue<int> GetVitality(int level, double damageValueKoef)
+            => new BaseKoefValue<int> { Base = GetBaseVitality(level), Koef = damageValueKoef };
 
         private int GetBaseVitality(int level)
             => ToInt32(GetBaseStat(level) * VitalityKoef);
@@ -56,15 +57,15 @@ namespace SomeName.Balance.ItemStats
             => ToInt32(Pow(level, 1.3));
 
 
-        public int GetAccuracy(int level, double damageValueKoef)
-            => ToInt32(GetBaseAccuracy(level) * damageValueKoef);
+        public BaseKoefValue<int> GetAccuracy(int level, double damageValueKoef)
+            => new BaseKoefValue<int> { Base = GetBaseAccuracy(level), Koef = damageValueKoef };
 
         private int GetBaseAccuracy(int level)
             => ToInt32(GetBaseAccuracyEvasion(level) * AccuracyKoef);
 
 
-        public int GetEvasion(int level, double damageValueKoef)
-            => ToInt32(GetBaseEvasion(level) * damageValueKoef);
+        public BaseKoefValue<int> GetEvasion(int level, double damageValueKoef)
+            => new BaseKoefValue<int> { Base = GetBaseEvasion(level), Koef = damageValueKoef };
 
         private int GetBaseEvasion(int level)
             => ToInt32(GetBaseAccuracyEvasion(level) * EvasionKoef);
@@ -73,28 +74,29 @@ namespace SomeName.Balance.ItemStats
             => ToInt32(Pow(level, 1.4));
 
 
-        public double GetCritChance(int level, double damageValueKoef)
+        public BaseKoefValue<double> GetCritChance(int level, double damageValueKoef)
         {
             var baseCritCoef = Sqrt(damageValueKoef);
             var critKoef = baseCritCoef > 2.0
                 ? 2.0
                 : baseCritCoef;
-            return Round(GetBaseCritChance(level) * critKoef, 3);
+
+            return new BaseKoefValue<double> { Base = GetBaseCritChance(level), Koef = critKoef };
         }
 
         private double GetBaseCritChance(int level)
             => CritChanceKoef * level / 2500 + 0.01;
 
 
-        public double GetCritDamage(int level, double damageValueKoef)
-            => Round(GetBaseCritDamage(level) * damageValueKoef, 3);
+        public BaseKoefValue<double> GetCritDamage(int level, double damageValueKoef)
+            => new BaseKoefValue<double> { Base = GetBaseCritDamage(level), Koef = damageValueKoef };
 
         private double GetBaseCritDamage(int level)
             => CritDamageKoef * level / 300 + 0.05;
 
 
-        public long GetHealthPerHit(int level, double damageValueKoef)
-            => ToInt64(GetBaseHealthPerHit(level) * damageValueKoef);
+        public BaseKoefValue<long> GetHealthPerHit(int level, double damageValueKoef)
+            => new BaseKoefValue<long> { Base = GetBaseHealthPerHit(level), Koef = damageValueKoef };
 
         private long GetBaseHealthPerHit(int level)
             => ToInt64(PlayerStatsBalance.Standard.GetDefaultMaxHealth(level) * HealthPerSecondKoef / 350);

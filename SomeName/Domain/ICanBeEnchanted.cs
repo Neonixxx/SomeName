@@ -1,13 +1,7 @@
-﻿using SomeName.Items.Interfaces;
-
-namespace SomeName.Domain
+﻿namespace SomeName.Domain
 {
-    public interface ICanBeEnchanted : IEquippment
+    public interface ICanBeEnchanted : IHaveMainStat
     {
-        long BaseStatToEnchant { get; set; }
-
-        long StatToEnchant { get; set; }
-
         int EnchantmentLevel { get; set; }
     }
 }

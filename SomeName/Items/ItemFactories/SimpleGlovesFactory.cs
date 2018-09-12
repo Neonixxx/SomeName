@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SomeName.Domain;
 using SomeName.Items.Bonuses;
 using SomeName.Items.Impl;
 using SomeName.Items.Interfaces;
@@ -20,13 +21,12 @@ namespace SomeName.Items.ItemFactories
             var item = new SimpleGloves()
             {
                 Level = level,
-                DamageValueKoef = damageValueKoef,
-                BaseGoldValue = GetGlovesGoldValue(level, damageValueKoef),
-                BaseDefence = GlovesStatsBalance.GetDefence(level, damageValueKoef),
+                Defence = GlovesStatsBalance.GetDefence(level, damageValueKoef),
                 Bonuses = ItemBonusesFactory.Build(GlovesStatsBalance, level, additionalKoef)
             };
-            item.Defence = item.BaseDefence;
-            item.GoldValue = item.BaseGoldValue;
+            item.GoldValue.Base = GetBaseGlovesGoldValue(level);
+            item.UpdateGoldValueKoef();
+
             return item;
         }
     }

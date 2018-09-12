@@ -1,4 +1,5 @@
-﻿using SomeName.Items.Bonuses;
+﻿using SomeName.Domain;
+using SomeName.Items.Bonuses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +32,8 @@ namespace SomeName.Balance.ItemStats
         protected override double HealthPerSecondKoef => 1.0;
 
 
-        public long GetDamage(int level, double damageValueKoef)
-            => ToInt64(GetBaseDamage(level) * damageValueKoef);
+        public MainStat<long> GetDamage(int level, double damageValueKoef)
+            => new MainStat<long> { Base = GetBaseDamage(level), Koef = damageValueKoef, EnchantKoef = 1.0 };
 
         private long GetBaseDamage(int level)
             => ToInt64(20 * Pow(E, 0.04 * level) - 15);

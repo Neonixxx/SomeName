@@ -14,7 +14,10 @@ namespace SomeName.Items.Interfaces
     {
         public int Level { get; set; }
 
-        public long GoldValue { get; set; }
+        public BaseKoefValue<long> GoldValue { get; set; } = new BaseKoefValue<long>();
+
+        public virtual void UpdateGoldValueKoef()
+            => GoldValue.Koef = 1.0;
 
         public string Description { get; set; }
 
